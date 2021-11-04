@@ -1,0 +1,9 @@
+[package]
+name = "this_thing_i_wanted_to_make"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tools = { path = ".rdeps/tools" }
