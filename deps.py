@@ -28,15 +28,12 @@ def clone(rep, destination=""):
         run("git clone --recursive https://github.com/vladasz/" + rep + " " + destination)
 
 
-clone("tools", tools_path)
-
-
 def link_deps():
+    clone("tools", tools_path)
     try:
         print("Symlimk: " + deps_path + " to: " + this_path + "/.rdeps")
         os.symlink(deps_path, this_path + "/.rdeps")
     except FileExistsError:
         print("exists")
-
 
 link_deps()
