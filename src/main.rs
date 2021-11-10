@@ -7,11 +7,14 @@ mod mac_installer;
 #[cfg(windows)]
 mod windows_installer;
 
+#[cfg(target_os = "linux")]
+use crate::linux_installer::LinuxInstaller;
+
 // use std::path::PathBuf;
 
 // use git2::Repository;
 // use home::home_dir;
-use crate::{installer::Installer as InstallerTrait, mac_installer::MacInstaller};
+use crate::{installer::Installer as InstallerTrait};
 
 pub type Result<T, E = &'static str> = std::result::Result<T, E>;
 

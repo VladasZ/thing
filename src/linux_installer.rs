@@ -25,14 +25,15 @@ impl Installer for LinuxInstaller {
     }
 }
 
+impl LinuxInstaller {
+    fn update(&self) {
+        
+    }
+}
+
 impl Default for LinuxInstaller {
     fn default() -> Self {
         let default = Self {};
-        if default.missing("apt").expect("Failed to get apt status") {
-            panic!("Please install apt")
-        } else {
-            println!("apt: OK")
-        }
         default
     }
 }

@@ -36,4 +36,11 @@ def link_deps():
     except FileExistsError:
         print("exists")
 
+
+def linux_setup():
+    run("sudo apt update")
+    run("sudo apt install gcc libssl-dev")
+    run("curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh")
+
 link_deps()
+linux_setup()
