@@ -10,6 +10,9 @@ mod windows_installer;
 #[cfg(target_os = "linux")]
 use crate::linux_installer::LinuxInstaller;
 
+#[cfg(target_os = "macos")]
+use crate::mac_installer::MacInstaller;
+
 // use std::path::PathBuf;
 
 // use git2::Repository;
