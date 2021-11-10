@@ -1,13 +1,17 @@
 mod dep;
 mod installer;
+#[cfg(target_os = "linux")]
+mod linux_installer;
+#[cfg(target_os = "macos")]
+mod mac_installer;
+#[cfg(windows)]
 mod windows_installer;
 
 // use std::path::PathBuf;
 
 // use git2::Repository;
 // use home::home_dir;
-
-use crate::{installer::Installer, windows_installer::WindowsInstaller};
+use crate::{installer::Installer as InstallerTrait, mac_installer::MacInstaller};
 
 pub type Result<T, E = &'static str> = std::result::Result<T, E>;
 
@@ -62,11 +66,20 @@ pub type Result<T, E = &'static str> = std::result::Result<T, E>;
 //     }
 // }
 
+#[cfg(target_os = "macos")]
+type Installer = MacInstaller;
+
+#[cfg(target_os = "linux")]
+type Installer = LinuxInstaller;
+
+#[cfg(windows)]
+type Installer = WindowsInstaller;
+
 fn main() {
     // let thing = Thing::default();
     // thing.update_repo();
 
-    let installer = WindowsInstaller::default();
+    let installer = Installer::default();
 
-    installer.install("git");
+    dbg!(installer.install("git").unwrap());
 }

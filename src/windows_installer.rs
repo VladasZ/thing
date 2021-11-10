@@ -1,5 +1,6 @@
-use std::process::Command;
-use std::str;
+#![cfg(windows)]
+use std::{process::Command, str};
+
 use crate::installer::Installer;
 
 pub struct WindowsInstaller {}
@@ -24,7 +25,6 @@ impl Installer for WindowsInstaller {
             .output()
         {
             Ok(output) => {
-
                 println!("{}", str::from_utf8(&output.stdout).unwrap());
                 if output.status.success() {
                     Ok(())
