@@ -42,5 +42,6 @@ def linux_setup():
     run("sudo apt -y install curl pkg-config gcc libssl-dev")
     run("curl https://sh.rustup.rs -sSf | sh -s -- -y")
 
+
 link_deps()
 linux_setup()
