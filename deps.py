@@ -39,7 +39,7 @@ def link_deps():
 
 def linux_setup():
     run("sudo apt update")
-    run("sudo apt install curl gcc libssl-dev")
+    run("sudo apt install curl pkg-config gcc libssl-dev")
     run("curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh")
 
 link_deps()
