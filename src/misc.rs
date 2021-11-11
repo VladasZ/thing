@@ -8,6 +8,7 @@ fn strip_trailing_newline(input: &str) -> &str {
 }
 
 pub trait Call {
+    #[cfg(unix)]
     fn sudo() -> Self;
     fn call(&mut self) -> String;
     fn silent_call(&mut self) -> String;
@@ -15,6 +16,7 @@ pub trait Call {
 }
 
 impl Call for Command {
+    #[cfg(unix)]
     fn sudo() -> Self {
         Command::new("sudo")
     }

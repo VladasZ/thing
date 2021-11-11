@@ -13,11 +13,13 @@ mod windows_installer;
 
 use misc::config_git_credentials;
 
+use crate::installer::Installer as InstallerTrait;
 #[cfg(target_os = "linux")]
 use crate::linux_installer::LinuxInstaller;
 #[cfg(target_os = "macos")]
 use crate::mac_installer::MacInstaller;
-use crate::{installer::Installer as InstallerTrait, misc::vscode_watch_large};
+#[cfg(windows)]
+use crate::windows_installer::WindowsInstaller;
 
 pub type Result<T, E = &'static str> = std::result::Result<T, E>;
 
@@ -31,9 +33,10 @@ type Installer = LinuxInstaller;
 type Installer = WindowsInstaller;
 
 fn main() {
-    // let installer = Installer::default();
-    // dbg!(installer.install("git").unwrap());
+    let installer = Installer::default();
+    installer.install("git").unwrap();
 
+    #[cfg(target_os = "linux")]
     vscode_watch_large();
     config_git_credentials();
 }

@@ -33,7 +33,6 @@ pub trait Installer {
         }
     }
 
-    fn installer_name(&self) -> &str;
     fn check_command(&self) -> Command;
     fn install_command(&self) -> Command;
 }
