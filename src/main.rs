@@ -2,16 +2,20 @@
 #![allow(unused_imports)]
 
 mod dep;
+mod git;
 mod installer;
 #[cfg(target_os = "linux")]
 mod linux_installer;
 #[cfg(target_os = "macos")]
 mod mac_installer;
 mod misc;
+mod paths;
 #[cfg(windows)]
 mod windows_installer;
 
-use misc::config_git_credentials;
+use git::config_git;
+#[cfg(target_os = "linux")]
+use misc::vscode_watch_large;
 
 use crate::installer::Installer as InstallerTrait;
 #[cfg(target_os = "linux")]
@@ -38,5 +42,5 @@ fn main() {
 
     #[cfg(target_os = "linux")]
     vscode_watch_large();
-    config_git_credentials();
+    config_git();
 }

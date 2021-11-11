@@ -22,7 +22,7 @@ impl Call for Command {
     }
 
     fn call(&mut self) -> String {
-        println!("{}", self.command());
+        print!("{}", self.command());
         let output = self.output().unwrap();
         let output_str = std::str::from_utf8(&output.stdout).unwrap().to_string();
         println!("{}", output_str);
@@ -61,15 +61,6 @@ fn get_watches_count() -> u64 {
     output.parse().unwrap()
 }
 
-pub fn config_git_credentials() {
-    Command::new("git")
-        .arg("config")
-        .arg("--global")
-        .arg("credential.helper")
-        .arg("store")
-        .call();
-}
-
 #[cfg(target_os = "linux")]
 pub fn vscode_watch_large() {
     if get_watches_count() > 500000 {
@@ -90,6 +81,7 @@ pub fn vscode_watch_large() {
     println!("Watches: {}", get_watches_count());
 }
 
+#[cfg(target_os = "linux")]
 fn write_watches() {
     let mut file = OpenOptions::new()
         .write(true)

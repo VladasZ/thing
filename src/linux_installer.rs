@@ -8,10 +8,6 @@ use crate::installer::Installer;
 pub struct LinuxInstaller {}
 
 impl Installer for LinuxInstaller {
-    fn installer_name(&self) -> &str {
-        "apt"
-    }
-
     fn check_command(&self) -> Command {
         let mut command = Command::new("command");
         command.arg("-V");
