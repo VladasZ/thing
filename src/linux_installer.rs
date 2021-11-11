@@ -4,6 +4,7 @@ use std::{process::Command, str};
 
 use crate::installer::Installer;
 
+#[derive(Default)]
 pub struct LinuxInstaller {}
 
 impl Installer for LinuxInstaller {
@@ -26,14 +27,5 @@ impl Installer for LinuxInstaller {
 }
 
 impl LinuxInstaller {
-    fn update(&self) {
-        
-    }
-}
-
-impl Default for LinuxInstaller {
-    fn default() -> Self {
-        let default = Self {};
-        default
-    }
+    fn update(&self) {}
 }
