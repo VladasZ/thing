@@ -2,7 +2,7 @@ use std::{fs::OpenOptions, io::Write, ops::Add, process::Command};
 
 use crate::command::Call;
 
-fn strip_trailing_newline(input: &str) -> &str {
+pub fn strip_trailing_newline(input: &str) -> &str {
     input
         .strip_suffix("\r\n")
         .or_else(|| input.strip_suffix('\n'))
