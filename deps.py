@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 
 import os
+import platform
+
+is_windows = platform.system() == "Windows"
+is_mac     = platform.system() == "Darwin"
+is_linux   = platform.system() == "Linux"
 
 
 def _get_home():
@@ -44,4 +49,6 @@ def linux_setup():
 
 
 link_deps()
-linux_setup()
+
+if is_linux:
+    linux_setup()
