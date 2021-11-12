@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 #![allow(unused_imports)]
 
+mod command;
 mod dep;
 mod git;
 mod installer;
@@ -13,7 +14,9 @@ mod paths;
 #[cfg(windows)]
 mod windows_installer;
 
-use git::config_git;
+use std::process::Command;
+
+use command::Call;
 #[cfg(target_os = "linux")]
 use misc::vscode_watch_large;
 
@@ -42,5 +45,5 @@ fn main() {
 
     #[cfg(target_os = "linux")]
     vscode_watch_large();
-    config_git();
+    git::config();
 }
