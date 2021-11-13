@@ -18,6 +18,8 @@ choco install visualstudio2017-workload-vctools `--params "$params"
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 refreshenv
 
+pip3 install cmake
+
 Invoke-WebRequest https://win.rustup.rs/x86_64 -OutFile rustup-init.exe
 
 .\rustup-init.exe
@@ -25,4 +27,4 @@ Invoke-WebRequest https://win.rustup.rs/x86_64 -OutFile rustup-init.exe
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 refreshenv
 
-# git clone https://github.com/vladasz/thing
+git clone https://github.com/vladasz/thing

@@ -5,3 +5,4 @@ Cargo.lock
 /.idea
 .rdeps
 .vagrant/
+rustup-init.exe
