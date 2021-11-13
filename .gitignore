@@ -6,3 +6,4 @@ Cargo.lock
 .rdeps
 .vagrant/
 rustup-init.exe
+thing/
