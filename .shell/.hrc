@@ -1,0 +1,4 @@
+export AWS_PROFILE=data-plane-isolated
+
+export PATH=$PATH:~/elastio/target/debug
+export PATH=$PATH:~/.shell

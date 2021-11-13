@@ -68,8 +68,6 @@ impl Drop for PathsAdder {
 
 pub fn setup() {
     let mut adder = PathsAdder::default();
-
     adder.add("~/.shell/shorts");
     adder.add("~/elastio/target/debug");
-    adder.add("~/spesogon/validol2");
 }

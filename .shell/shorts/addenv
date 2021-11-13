@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+import os
+import sys
+
+args = sys.argv
+
+if len(args) < 3:
+    print("addenv script accepts 2 arguments: variable name and value")
+    exit()
+
+
+name = args[1]
+value = args[2]
+
+os.environ[name] += value
+

@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+import os
+import sys
+
+args = sys.argv
+
+if len(args) < 2:
+    print("addpypath script accepts 1 argument: value")
+    exit()
+
+os.environ["PYTHONPATH"] += args[1]
+

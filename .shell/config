@@ -1,0 +1,39 @@
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+
+Host s
+    Hostname shannon.elastio.dev
+    User uzakreuskis
+    IdentityFile ~/.ssh/id_ed25519
+    ForwardAgent yes
+
+Host aws
+    Hostname ec2-3-17-64-101.us-east-2.compute.amazonaws.com
+    User ubuntu
+    IdentityFile ~/.ssh/vladas-isolated.pem
+    ForwardAgent yes
+
+Host test
+    Hostname ec2-18-223-133-64.us-east-2.compute.amazonaws.com
+    User ec2-user
+    IdentityFile ~/.ssh/temp.pem
+    ForwardAgent yes
+
+Host my
+    Hostname ec2-18-116-234-22.us-east-2.compute.amazonaws.com
+    User ubuntu
+    IdentityFile ~/.ssh/free.pem
+    ForwardAgent yes
+
+Host pi
+    Hostname 192.168.0.62
+    User pi
+    ForwardAgent yes
+
+Host multi
+    Hostname 172.31.80.102
+    User ubuntu
+    ForwardAgent yes
+    IdentityFile ~/.ssh/id_ed25519

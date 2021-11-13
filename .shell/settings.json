@@ -1,0 +1,7 @@
+{
+    "rust-analyzer.checkOnSave.enable": false,
+    "rust-analyzer.server.extraEnv": {
+        "CARGO_TARGET_DIR": "/home/admin/temp/"
+    },
+    "rust-analyzer.inlayHints.enable": false
+}

@@ -1,0 +1,8 @@
+
+C:\Windows\System32\WindowsPowerShell\v1.0
+
+Set-ExecutionPolicy RemoteSigned
+
+
+win + r 
+Shell:common startup
