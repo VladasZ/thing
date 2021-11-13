@@ -37,3 +37,14 @@ Host multi
     User ubuntu
     ForwardAgent yes
     IdentityFile ~/.ssh/id_ed25519
+
+Host macallan
+    Hostname 63.135.170.178
+    User administrator
+    IdentityFile ~/.ssh/id_ed25519
+    ForwardAgent yes
+
+Host buntu
+    Hostname localhost
+    Port 2200
+    ForwardAgent yes
