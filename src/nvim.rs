@@ -1,5 +1,6 @@
 use std::process::Command;
 
+use home::home_dir;
 use semver::Version;
 use tools::regex::find_match;
 
@@ -13,9 +14,11 @@ fn version(name: impl AsRef<str>) -> Version {
 
 fn build() {
     Command::exec("pwd");
-    Command::exec("mkdir -p ~/.rdeps/");
-    git::clone("neovim/neovim", "~/.rdeps/neovim");
-    Command::exec("make -C ~/.rdeps/neovim CMAKE_BUILD_TYPE=RelWithDebInfo");
+
+    let path = format!("{}/.rdeps/neovim", home_dir().unwrap().to_string_lossy());
+
+    git::clone("neovim/neovim", &path);
+    Command::exec(format!("make -C {} CMAKE_BUILD_TYPE=RelWithDebInfo", path));
 }
 
 pub fn install(installer: &impl crate::installer::Installer) {

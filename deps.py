@@ -44,7 +44,7 @@ def link_deps():
 
 def linux_setup():
     run("sudo apt update")
-    run("sudo apt -y install curl pkg-config gcc libssl-dev")
+    run("sudo apt -y install curl pkg-config libssl-dev make cmake gcc g++ unzip automake libtool-bin")
     run("curl https://sh.rustup.rs -sSf | sh -s -- -y")
 
 
