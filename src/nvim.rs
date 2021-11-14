@@ -3,15 +3,20 @@ use std::process::Command;
 use semver::Version;
 use tools::regex::find_match;
 
-use crate::command::Call;
+use crate::{command::Call, git};
 
 fn version(name: impl AsRef<str>) -> Version {
-    let output = Command::exec(format!("{} --version", name.as_ref()));
+    let output = Command::exec_silent(format!("{} --version", name.as_ref()));
     let version = find_match(output, r#"NVIM v(\d+)(\.\d+)(\.\d+)"#);
     Version::parse(&find_match(version, r#"(\d+)(\.\d+)(\.\d+)"#)).unwrap()
 }
 
-fn build() {}
+fn build() {
+
+    Command::exec("pwd");
+    //git::clone("neovim/neovim", "~/.rdeps/neovim");
+
+}
 
 pub fn install(installer: &impl crate::installer::Installer) {
     if installer.ok("nvim") {
@@ -25,8 +30,7 @@ pub fn install(installer: &impl crate::installer::Installer) {
         println!("nvim: OK");
         return;
     }
-
-    dbg!(version("nvim"));
-
-    println!("segel");
+    else {
+        println!("no nvim");
+    }
 }
