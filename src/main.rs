@@ -10,6 +10,7 @@ mod linux_installer;
 #[cfg(target_os = "macos")]
 mod mac_installer;
 mod misc;
+mod nvim;
 mod paths;
 #[cfg(windows)]
 mod windows_installer;
@@ -41,11 +42,13 @@ type Installer = WindowsInstaller;
 
 fn main() {
     let installer = Installer::default();
-    installer.install("git").unwrap();
+    // installer.install("git").unwrap();
 
-    paths::setup();
+    // paths::setup();
 
-    #[cfg(target_os = "linux")]
-    vscode_watch_large();
-    git::config();
+    // #[cfg(target_os = "linux")]
+    // vscode_watch_large();
+    // git::config();
+
+    nvim::install(&installer);
 }

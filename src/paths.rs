@@ -3,15 +3,26 @@ use std::process::Command;
 use crate::{command::Call, misc::strip_trailing_newline};
 
 struct PathsAdder {
-    #[cfg(target_os = "unix")]
+    #[cfg(unix)]
     hrc: String,
 }
 
 impl PathsAdder {
-    #[cfg(target_os = "unix")]
+    #[cfg(unix)]
     pub fn add(&mut self, path: &str) {
+        println!("Adding {} to path", path);
+
+        if self.hrc.contains(path) {
+            println!("{} OK", path);
+            return;
+        }
+
+        println!("not in path, adding");
+
         self.hrc.push_str(path);
         self.hrc.push('\n');
+
+        // dbg!(&self.hrc);
     }
 
     #[cfg(windows)]
@@ -47,8 +58,14 @@ impl PathsAdder {
 impl Default for PathsAdder {
     #[cfg(target_os = "linux")]
     fn default() -> Self {
+        use home::home_dir;
+
         println!("lin init");
-        let hrc = std::fs::read_to_string("~/.bashrc").expect("Failed to read .bashrc");
+        let poth = "~/.bashrc";
+        let home = home_dir().unwrap();
+        let kok = home.join(".bashrc");
+        let canon = std::fs::canonicalize(poth);
+        let hrc = std::fs::read_to_string(kok).expect("Failed to read .bashrc");
         Self { hrc }
     }
 
@@ -62,7 +79,7 @@ impl Default for PathsAdder {
 #[cfg(unix)]
 impl Drop for PathsAdder {
     fn drop(&mut self) {
-        todo!()
+        println!("drop paths adder");
     }
 }
 

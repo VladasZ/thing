@@ -3,19 +3,19 @@ use std::process::Command;
 use crate::Result;
 
 pub trait Installer {
-    fn missing(&self, dep: impl AsRef<str>) -> crate::Result<bool> {
+    fn missing(&self, dep: impl AsRef<str>) -> bool {
         match self.check_command().arg(dep.as_ref()).output() {
-            Ok(output) => Ok(!output.status.success()),
-            Err(_error) => Ok(true),
+            Ok(output) => !output.status.success(),
+            Err(_error) => true,
         }
     }
 
-    fn ok(&self, dep: impl AsRef<str>) -> Result<bool> {
-        self.missing(dep).map(|a| !a)
+    fn ok(&self, dep: impl AsRef<str>) -> bool {
+        !self.missing(dep)
     }
 
-    fn install(&self, dep: impl AsRef<str>) -> crate::Result<()> {
-        if self.ok(&dep)? {
+    fn install(&self, dep: impl AsRef<str>) -> Result<()> {
+        if self.ok(&dep) {
             println!("{}: OK", dep.as_ref());
             return Ok(());
         }
