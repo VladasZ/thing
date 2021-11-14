@@ -5,12 +5,17 @@ use crate::command::Call;
 /// Clone from github. Ignore all errors.
 pub fn clone(link: impl AsRef<str>, to: impl AsRef<str>) {
     #![allow(unused_must_use)]
-    Command::new("git")
+    println!("clone: {}", link.as_ref());
+    let mut com = Command::new("git");
+
+    com
         .arg("clone")
         .arg("--recursive")
         .arg(format!("https://github.com/{}", link.as_ref()))
         .arg(to.as_ref())
         .output();
+
+    dbg!(com.command());
 }
 
 pub fn config() {

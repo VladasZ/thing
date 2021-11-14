@@ -51,4 +51,5 @@ fn main() {
     // git::config();
 
     nvim::install(&installer);
+
 }

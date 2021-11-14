@@ -1,13 +1,11 @@
 use std::process::Command;
+use crate::command::Call;
 
-use crate::Result;
+use crate::{Result, command};
 
 pub trait Installer {
     fn missing(&self, dep: impl AsRef<str>) -> bool {
-        match self.check_command().arg(dep.as_ref()).output() {
-            Ok(output) => !output.status.success(),
-            Err(_error) => true,
-        }
+        which::which(dep.as_ref()).is_err()
     }
 
     fn ok(&self, dep: impl AsRef<str>) -> bool {
@@ -33,6 +31,5 @@ pub trait Installer {
         }
     }
 
-    fn check_command(&self) -> Command;
     fn install_command(&self) -> Command;
 }

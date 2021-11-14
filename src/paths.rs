@@ -61,10 +61,10 @@ impl Default for PathsAdder {
         use home::home_dir;
 
         println!("lin init");
-        let poth = "~/.bashrc";
+       // let poth = "~/.bashrc";
         let home = home_dir().unwrap();
         let kok = home.join(".bashrc");
-        let canon = std::fs::canonicalize(poth);
+        //let canon = std::fs::canonicalize(poth);
         let hrc = std::fs::read_to_string(kok).expect("Failed to read .bashrc");
         Self { hrc }
     }

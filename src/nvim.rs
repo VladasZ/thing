@@ -12,10 +12,10 @@ fn version(name: impl AsRef<str>) -> Version {
 }
 
 fn build() {
-
     Command::exec("pwd");
-    //git::clone("neovim/neovim", "~/.rdeps/neovim");
-
+    Command::exec("mkdir -p ~/.rdeps/");
+    git::clone("neovim/neovim", "~/.rdeps/neovim");
+    Command::exec("make -C ~/.rdeps/neovim CMAKE_BUILD_TYPE=RelWithDebInfo");
 }
 
 pub fn install(installer: &impl crate::installer::Installer) {
@@ -29,8 +29,8 @@ pub fn install(installer: &impl crate::installer::Installer) {
 
         println!("nvim: OK");
         return;
-    }
-    else {
+    } else {
         println!("no nvim");
+        build();
     }
 }
