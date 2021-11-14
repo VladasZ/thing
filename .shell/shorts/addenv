@@ -13,4 +13,3 @@ name = args[1]
 value = args[2]
 
 os.environ[name] += value
-
