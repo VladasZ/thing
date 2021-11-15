@@ -6,9 +6,9 @@ use crate::{command::Call, misc::strip_trailing_newline};
 
 struct PathsAdder {
     #[cfg(unix)]
-    hrc: String,
+    hrc:      String,
     #[cfg(unix)]
-    hrc_path: String
+    hrc_path: String,
 }
 
 impl PathsAdder {
@@ -63,7 +63,10 @@ impl Default for PathsAdder {
         #[cfg(target_os = "macos")]
         let hrc_path = home.join(".zshrc");
         let hrc = std::fs::read_to_string(&hrc_path).expect("Failed to read .bashrc");
-        Self { hrc, hrc_path: hrc_path.to_string_lossy().into_owned() }
+        Self {
+            hrc,
+            hrc_path: hrc_path.to_string_lossy().into_owned(),
+        }
     }
 
     #[cfg(target_os = "windows")]
@@ -84,15 +87,32 @@ impl Drop for PathsAdder {
 
 pub fn setup() {
     let mut adder = PathsAdder::default();
+    #[cfg(windows)]
     adder.add("~/thing/.shell/shorts");
+    #[cfg(unix)]
+    adder.add("~/thing/_shorts");
     adder.add("~/elastio/target/debug");
 
     let shorts = format!("{}/thing/.shell/shorts", home_dir().unwrap().display());
 
     let paths = std::fs::read_dir(shorts).unwrap();
 
+    let home = home_dir().unwrap();
+    let home = home.to_string_lossy();
+
+    Command::exec(format!(
+        "mkdir -p {}/thing/_shorts",
+        home
+    ));
+
     for path in paths {
-        allow_exec(&path.unwrap().path().to_string_lossy())
+        let path = path.unwrap().path();
+        let name = path.file_stem().unwrap().to_string_lossy();
+        let path = path.to_string_lossy();
+        dbg!(&name);
+        dbg!(&path);
+        Command::exec(format!("ln -sf {} {}/thing/_shorts/{}", path, home, name));
+        allow_exec(&path);
     }
 }
 

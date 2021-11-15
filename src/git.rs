@@ -8,8 +8,7 @@ pub fn clone(link: impl AsRef<str>, to: impl AsRef<str>) {
     println!("clone: {}", link.as_ref());
     let mut com = Command::new("git");
 
-    com
-        .arg("clone")
+    com.arg("clone")
         .arg("--recursive")
         .arg(format!("https://github.com/{}", link.as_ref()))
         .arg(to.as_ref())

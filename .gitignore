@@ -7,3 +7,4 @@ Cargo.lock
 .vagrant/
 rustup-init.exe
 thing/
+_shorts/

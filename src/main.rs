@@ -50,6 +50,5 @@ fn main() {
     // vscode_watch_large();
     // git::config();
 
-    nvim::install(&installer);
-
+    // nvim::install(&installer);
 }

@@ -1,7 +1,6 @@
 use std::process::Command;
-use crate::command::Call;
 
-use crate::{Result, command};
+use crate::{command, command::Call, Result};
 
 pub trait Installer {
     fn missing(&self, dep: impl AsRef<str>) -> bool {
