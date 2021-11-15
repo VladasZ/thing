@@ -46,9 +46,9 @@ fn main() {
 
     paths::setup();
 
-    // #[cfg(target_os = "linux")]
-    // vscode_watch_large();
-    // git::config();
+    #[cfg(target_os = "linux")]
+    vscode_watch_large();
+    git::config();
 
-    // nvim::install(&installer);
+    nvim::install();
 }

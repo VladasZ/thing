@@ -100,10 +100,7 @@ pub fn setup() {
     let home = home_dir().unwrap();
     let home = home.to_string_lossy();
 
-    Command::exec(format!(
-        "mkdir -p {}/thing/_shorts",
-        home
-    ));
+    Command::exec(format!("mkdir -p {}/thing/_shorts", home));
 
     for path in paths {
         let path = path.unwrap().path();

@@ -46,8 +46,7 @@ def linux_setup():
     run("sudo apt update")
     run("sudo apt -y install curl pkg-config libssl-dev make cmake gcc g++ unzip automake libtool-bin")
     run("curl https://sh.rustup.rs -sSf | sh -s -- -y")
-    run(". \"$HOME/.cargo/env\"")
-
+    
 
 link_deps()
 
