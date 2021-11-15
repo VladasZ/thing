@@ -95,6 +95,8 @@ pub fn setup() {
 
     let shorts = format!("{}/thing/.shell/shorts", home_dir().unwrap().display());
 
+    dbg!(&shorts);
+
     let paths = std::fs::read_dir(shorts).unwrap();
 
     let home = home_dir().unwrap();

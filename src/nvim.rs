@@ -47,5 +47,6 @@ pub fn install() {
 
     Command::exec("sudo add-apt-repository ppa:neovim-ppa/unstable");
     Command::exec("sudo apt-get update");
-    Command::exec("sudo apt-get install neovim");
+    Command::exec("sudo apt-get -y install neovim");
+
 }

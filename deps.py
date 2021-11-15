@@ -46,6 +46,8 @@ def linux_setup():
     run("sudo apt update")
     run("sudo apt -y install curl pkg-config libssl-dev make cmake gcc g++ unzip automake libtool-bin")
     run("curl https://sh.rustup.rs -sSf | sh -s -- -y")
+    run("sh -c \'curl -fLo \"${XDG_DATA_HOME:-$HOME/.local/share}\"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim\'")
     
 
 link_deps()
