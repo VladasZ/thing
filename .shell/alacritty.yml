@@ -1,7 +1,7 @@
 font:
-  size: 18.0
+  size: 16.0
 
 window:
   dimensions:
-    columns: 160
+    columns: 168
     lines: 40
