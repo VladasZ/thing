@@ -6,7 +6,7 @@ pub trait Call {
     fn call(&mut self) -> String;
     fn exec(command: impl AsRef<str>) -> String;
     fn exec_silent(command: impl AsRef<str>) -> String;
-    fn exec_param(command: &str, param: &str) -> String;
+    fn exec_param(command: impl AsRef<str>, param: impl AsRef<str>) -> String;
     fn exec_param_silent(command: &str, param: &str) -> String;
     fn silent_call(&mut self) -> String;
     fn command(&self) -> String;
@@ -58,8 +58,8 @@ impl Call for Command {
         Self::exec_silent(&format!("{} {}", command, param))
     }
 
-    fn exec_param(command: &str, param: &str) -> String {
-        Self::exec(&format!("{} {}", command, param))
+    fn exec_param(command: impl AsRef<str>, param: impl AsRef<str>) -> String {
+        Self::exec(format!("{} {}", command.as_ref(), param.as_ref()))
     }
 
     fn silent_call(&mut self) -> String {

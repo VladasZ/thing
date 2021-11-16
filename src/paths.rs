@@ -32,7 +32,7 @@ impl PathsAdder {
 
     #[cfg(windows)]
     pub fn add(&mut self, path: &str) {
-        //check if exists
+        //fix for win, wrong command
 
         if self.ok(path) {
             println!("{} : OK", path);

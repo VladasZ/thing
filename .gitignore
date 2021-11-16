@@ -8,3 +8,4 @@ Cargo.lock
 rustup-init.exe
 thing/
 _shorts/
+neovim/
