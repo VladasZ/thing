@@ -41,14 +41,15 @@ type Installer = LinuxInstaller;
 type Installer = WindowsInstaller;
 
 fn main() {
-    // let installer = Installer::default();
-    // installer.install("git").unwrap();
+    let installer = Installer::default();
+    installer.install("git").unwrap();
 
-    //paths::setup();
+    paths::setup();
 
     #[cfg(target_os = "linux")]
-   // vscode_watch_large();
+    vscode_watch_large();
     git::config();
 
+    #[cfg(target_os = "linux")]
     nvim::install();
 }

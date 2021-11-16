@@ -1,0 +1,7 @@
+font:
+  size: 18.0
+
+window:
+  dimensions:
+    columns: 160
+    lines: 40

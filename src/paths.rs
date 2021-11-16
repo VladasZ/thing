@@ -95,8 +95,6 @@ pub fn setup() {
 
     let shorts = format!("{}/thing/.shell/shorts", home_dir().unwrap().display());
 
-    dbg!(&shorts);
-
     let paths = std::fs::read_dir(shorts).unwrap();
 
     let home = home_dir().unwrap();
@@ -113,6 +111,8 @@ pub fn setup() {
         Command::exec(format!("ln -sf {} {}/thing/_shorts/{}", path, home, name));
         allow_exec(&path);
     }
+
+    Command::exec(format!("ln -sf {}/thing/.shell/alacritty.yml {}/.alacritty.yml", home, home));
 }
 
 #[cfg(unix)]
