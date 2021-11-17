@@ -23,8 +23,10 @@ refreshenv
 pip3 install cmake
 
 Invoke-WebRequest https://win.rustup.rs/x86_64 -OutFile rustup-init.exe
+Invoke-WebRequest https://github.com/alacritty/alacritty/releases/download/v0.9.0/Alacritty-v0.9.0-installer.msi -OutFile alacritty.msi
 
 .\rustup-init.exe
+.\alacritty.msi
 
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 refreshenv
