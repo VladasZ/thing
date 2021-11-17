@@ -34,10 +34,10 @@ impl PathsAdder {
     pub fn add(&mut self, path: &str) {
         //fix for win, wrong command
 
-        if self.ok(path) {
-            println!("{} : OK", path);
-            return;
-        }
+        // if self.ok(path) {
+        //     println!("{} : OK", path);
+        //     return;
+        // }
 
         println!("Adding {}", path);
 
@@ -109,10 +109,14 @@ pub fn setup() {
         dbg!(&name);
         dbg!(&path);
         Command::exec(format!("ln -sf {} {}/thing/_shorts/{}", path, home, name));
+        #[cfg(unix)]
         allow_exec(&path);
     }
 
-    Command::exec(format!("ln -sf {}/thing/.shell/alacritty.yml {}/.alacritty.yml", home, home));
+    Command::exec(format!(
+        "ln -sf {}/thing/.shell/alacritty.yml {}/.alacritty.yml",
+        home, home
+    ));
 }
 
 #[cfg(unix)]

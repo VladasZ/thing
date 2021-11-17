@@ -2,7 +2,6 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 choco feature enable -n allowGlobalConfirmation
 choco install git
 choco install make
-choco install msys2
 choco install python3
 choco install firefox
 choco install visualstudio2019community
