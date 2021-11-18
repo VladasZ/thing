@@ -20,6 +20,12 @@ Host test
     IdentityFile ~/.ssh/vladas-manual-test.pem
     ForwardAgent yes
 
+Host test-isolated
+    Hostname ec2-13-59-106-246.us-east-2.compute.amazonaws.com
+    User ubuntu
+    IdentityFile ~/.ssh/vladas-isolated.pem
+    ForwardAgent yes
+
 Host my
     Hostname ec2-18-116-234-22.us-east-2.compute.amazonaws.com
     User ubuntu
