@@ -1,6 +1,5 @@
 Host *
   AddKeysToAgent yes
-  UseKeychain yes
   IdentityFile ~/.ssh/id_ed25519
 
 Host s
@@ -16,9 +15,9 @@ Host aws
     ForwardAgent yes
 
 Host test
-    Hostname ec2-18-223-133-64.us-east-2.compute.amazonaws.com
-    User ec2-user
-    IdentityFile ~/.ssh/temp.pem
+    Hostname ec2-18-188-101-90.us-east-2.compute.amazonaws.com
+    User admin
+    IdentityFile ~/.ssh/vladas-manual-test.pem
     ForwardAgent yes
 
 Host my
