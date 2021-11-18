@@ -35,4 +35,4 @@ Invoke-WebRequest https://github.com/alacritty/alacritty/releases/download/v0.9.
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 refreshenv
 
-git clone https://github.com/vladasz/thing "$env:UserName\thing"
+git clone https://github.com/vladasz/thing "C:/Users/$env:UserName/thing"
