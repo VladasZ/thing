@@ -7,6 +7,7 @@ Cargo.lock
 .vagrant/
 rustup-init.exe
 thing/
-_shorts/
-neovim/
+/_shorts/
+/neovim/
 /temp/
+/extern/
