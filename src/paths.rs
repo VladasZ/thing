@@ -80,7 +80,6 @@ impl Default for PathsAdder {
 impl Drop for PathsAdder {
     fn drop(&mut self) {
         println!("drop paths adder");
-        println!("{}", self.hrc);
         std::fs::write(&self.hrc_path, &self.hrc).expect("Unable to write file");
     }
 }
@@ -94,6 +93,8 @@ pub fn setup() {
     adder.add("~/elastio/target/debug");
 
     let shorts = format!("{}/thing/.shell/shorts", home_dir().unwrap().display());
+
+    dbg!(&shorts);
 
     let paths = std::fs::read_dir(shorts).unwrap();
 

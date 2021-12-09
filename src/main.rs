@@ -44,8 +44,8 @@ fn main() {
     // let installer = Installer::default();
     // installer.install("git").unwrap();
 
-    #[cfg(target_os = "linux")]
-    paths::setup();
+   // #[cfg(target_os = "linux")]
+   // paths::setup();
     
     #[cfg(target_os = "linux")]
     vscode_watch_large();
