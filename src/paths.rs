@@ -62,6 +62,9 @@ impl Default for PathsAdder {
         let hrc_path = home.join(".bashrc");
         #[cfg(target_os = "macos")]
         let hrc_path = home.join(".zshrc");
+
+        dbg!(&hrc_path);
+
         let hrc = std::fs::read_to_string(&hrc_path).expect("Failed to read .bashrc");
         Self {
             hrc,
