@@ -20,10 +20,22 @@ Host test
     IdentityFile ~/.ssh/vladas-manual-test.pem
     ForwardAgent yes
 
-Host test-isolated
-    Hostname ec2-3-144-146-52.us-east-2.compute.amazonaws.com
+Host isolated
+    Hostname ec2-13-58-189-251.us-east-2.compute.amazonaws.com
     User ubuntu
     IdentityFile ~/.ssh/vladas-isolated.pem
+    ForwardAgent yes
+
+Host product-test
+    Hostname ec2-18-191-155-13.us-east-2.compute.amazonaws.com
+    User ubuntu
+    IdentityFile ~/.ssh/vladas-product-test.pem
+    ForwardAgent yes
+
+Host product-test-nitro
+    Hostname ec2-3-144-137-138.us-east-2.compute.amazonaws.com
+    User ubuntu
+    IdentityFile ~/.ssh/vladas-product-test.pem
     ForwardAgent yes
 
 Host my
@@ -33,9 +45,8 @@ Host my
     ForwardAgent yes
 
 Host pi
-    Hostname 192.168.0.62
-    User pi
-    # IdentityFile ~/.ssh/id_ed25519
+    Hostname 192.168.0.63
+    User ubuntu
     ForwardAgent yes
 
 Host multi
