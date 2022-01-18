@@ -4,34 +4,48 @@ use home::home_dir;
 
 use crate::{command::Call, misc::strip_trailing_newline};
 
-struct PathsAdder {
+struct TerminalConfig {
     #[cfg(unix)]
     hrc:      String,
     #[cfg(unix)]
     hrc_path: String,
 }
 
-impl PathsAdder {
+impl TerminalConfig {
+    pub fn say_hello(&mut self) {
+        if self.hrc.contains("Helloy") {
+            return;
+        }
+        self.hrc.push_str("\necho Helloy\n");
+    }
+
+    pub fn add_var(&mut self, var: &str, value: &str) {
+        if self.hrc.contains(var) {
+            return;
+        }
+        self.hrc.push_str(&format!("\nexport {var}={value}\n"));
+    }
+
     #[cfg(unix)]
-    pub fn add(&mut self, path: &str) {
+    pub fn add_path(&mut self, path: &str) {
         use std::fmt::format;
 
-        println!("Adding {} to path", path);
+        println!("Adding {path} to path");
 
         if self.hrc.contains(path) {
-            println!("{} OK", path);
+            println!("{path} OK");
             return;
         }
 
         println!("not in path, adding");
 
-        let entry = format!("\nexport PATH=$PATH:{}\n", path);
+        let entry = format!("\nexport PATH=$PATH:{path}\n");
 
         self.hrc.push_str(&entry);
     }
 
     #[cfg(windows)]
-    pub fn add(&mut self, path: &str) {
+    pub fn add_path(&mut self, path: &str) {
         //fix for win, wrong command
 
         // if self.ok(path) {
@@ -39,20 +53,20 @@ impl PathsAdder {
         //     return;
         // }
 
-        println!("Adding {}", path);
+        // println!("Adding {}", path);
 
-        //elevate
+        // //elevate
 
-        Command::new("powershell")
-            .arg(format!(
-                r#"[Environment]::SetEnvironmentVariable("Path", $env:Path + ";{}", "Machine")"#,
-                path
-            ))
-            .call();
+        // Command::new("powershell")
+        //     .arg(format!(
+        //         r#"[Environment]::SetEnvironmentVariable("Path", $env:Path +
+        // ";{}", "Machine")"#,         path
+        //     ))
+        //     .call();
     }
 }
 
-impl Default for PathsAdder {
+impl Default for TerminalConfig {
     #[cfg(unix)]
     fn default() -> Self {
         use home::home_dir;
@@ -80,7 +94,7 @@ impl Default for PathsAdder {
 }
 
 #[cfg(unix)]
-impl Drop for PathsAdder {
+impl Drop for TerminalConfig {
     fn drop(&mut self) {
         println!("drop paths adder");
         std::fs::write(&self.hrc_path, &self.hrc).expect("Unable to write file");
@@ -88,12 +102,18 @@ impl Drop for PathsAdder {
 }
 
 pub fn setup() {
-    let mut adder = PathsAdder::default();
+    let mut terminal = TerminalConfig::default();
+
+    terminal.say_hello();
+
     #[cfg(windows)]
-    adder.add("~/thing/.shell/shorts");
+    terminal.add("~/thing/.shell/shorts");
     #[cfg(unix)]
-    adder.add("~/thing/_shorts");
-    adder.add("~/elastio/target/debug");
+    terminal.add_path("~/thing/_shorts");
+    terminal.add_path("~/elastio/target/debug");
+
+    terminal.add_var("AWS_PROFILE", "data-plane-isolated");
+    terminal.add_var("ELASTIO_ARTIFACTS_SOURCE", "ci:master");
 
     let shorts = format!("{}/thing/.shell/shorts", home_dir().unwrap().display());
 
@@ -119,6 +139,11 @@ pub fn setup() {
 
     Command::exec(format!(
         "ln -sf {}/thing/.shell/alacritty.yml {}/.alacritty.yml",
+        home, home
+    ));
+
+    Command::exec(format!(
+        "ln -sf {}/thing/.shell/config {}/.ssh/config",
         home, home
     ));
 }
