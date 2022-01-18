@@ -55,13 +55,25 @@ Host multi
     ForwardAgent yes
     IdentityFile ~/.ssh/id_ed25519
 
-Host macallan
-    Hostname 63.135.170.178
+Host lenovo
+    Hostname 192.168.0.128
+    User vladas
+    ForwardAgent yes
+
+Host macarthur
+    Hostname macarthur.elastio.dev
     User administrator
     IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
 
-Host buntu
-    Hostname localhost
-    Port 2200
+Host macdonald
+    Hostname macdonald.elastio.dev
+    User administrator
+    IdentityFile ~/.ssh/id_ed25519
+    ForwardAgent yes
+
+Host maclaren
+    Hostname maclaren.elastio.dev
+    User hetzner
+    IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
