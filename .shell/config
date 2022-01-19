@@ -77,3 +77,8 @@ Host maclaren
     User hetzner
     IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
+
+Host mac
+    Hostname 192.168.0.184
+    User vladas
+    ForwardAgent yes
