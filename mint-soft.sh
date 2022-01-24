@@ -5,5 +5,6 @@ flatpak install clion -y
 flatpak install wps -y
 flatpak install gitkraken -y
 flatpak install com.Valvesoftware.steam -y
+flatpak install zoom -y
 
 #com.visualstudio.code
