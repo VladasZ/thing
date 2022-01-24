@@ -69,7 +69,7 @@ Host macarthur
 Host macdonald
     Hostname macdonald.elastio.dev
     User administrator
-    IdentityFile ~/.ssh/id_ed25519
+IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
 
 Host maclaren
@@ -80,5 +80,10 @@ Host maclaren
 
 Host mac
     Hostname 192.168.0.184
+    User vladas
+    ForwardAgent yes
+
+Host pc
+    Hostname 192.168.0.181
     User vladas
     ForwardAgent yes
