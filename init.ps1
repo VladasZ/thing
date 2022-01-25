@@ -1,11 +1,8 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 choco feature enable -n allowGlobalConfirmation
 choco install git
-choco install far
 choco install make
-choco install vscode
 choco install python3
-choco install firefox
 choco install visualstudio2019community
 
 $vc_components = @(
@@ -25,15 +22,7 @@ refreshenv
 pip3 install cmake
 
 Invoke-WebRequest https://win.rustup.rs/x86_64 -OutFile rustup-init.exe
-Invoke-WebRequest https://github.com/alacritty/alacritty/releases/download/v0.9.0/Alacritty-v0.9.0-installer.msi -OutFile alacritty.msi
-
 .\rustup-init.exe
-.\alacritty.msi
-
-[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\\Users\\$env:UserName\\elastio\\target\\debug", [System.EnvironmentVariableTarget]::Machine)
-[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\\Users\\$env:UserName\\thing\\.shell\\shorts", [System.EnvironmentVariableTarget]::Machine)
 
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 refreshenv
-
-git clone https://github.com/vladasz/thing "$env:UserName\thing"
