@@ -1,5 +1,6 @@
 #no vscode
 #no clion
+#no deezer
 #choco install far
 #choco install firefox
 choco install gitkraken
