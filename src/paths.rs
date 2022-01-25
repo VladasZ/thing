@@ -46,23 +46,6 @@ impl TerminalConfig {
 
     #[cfg(windows)]
     pub fn add_path(&mut self, path: &str) {
-        //fix for win, wrong command
-
-        // if self.ok(path) {
-        //     println!("{} : OK", path);
-        //     return;
-        // }
-
-        // println!("Adding {}", path);
-
-        // //elevate
-
-        // Command::new("powershell")
-        //     .arg(format!(
-        //         r#"[Environment]::SetEnvironmentVariable("Path", $env:Path +
-        // ";{}", "Machine")"#,         path
-        //     ))
-        //     .call();
     }
 }
 
@@ -106,8 +89,6 @@ pub fn setup() {
 
     terminal.say_hello();
 
-    #[cfg(windows)]
-    terminal.add("~/thing/.shell/shorts");
     #[cfg(unix)]
     terminal.add_path("~/thing/_shorts");
     terminal.add_path("~/elastio/target/debug");

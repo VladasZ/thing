@@ -11,3 +11,4 @@ thing/
 /neovim/
 /temp/
 /extern/
+*.msi

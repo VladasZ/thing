@@ -3,6 +3,7 @@ choco feature enable -n allowGlobalConfirmation
 choco install git
 choco install make
 choco install python3
+choco install firefox
 choco install visualstudio2019community
 
 $vc_components = @(
