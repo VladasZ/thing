@@ -9,4 +9,4 @@ home = "0.5.3"
 which = "4.2.2"
 semver = "0.9.0"
 
-rtools = { path = ".rdeps/tools" }
+rtools = { path = ".rdeps/rtools" }
