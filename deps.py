@@ -17,7 +17,7 @@ def _get_home():
 home = _get_home()
 deps_path = home + "/.rdeps/"
 
-tools_path = deps_path + "tools/"
+rtools_path = deps_path + "rtools/"
 
 this_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -34,7 +34,7 @@ def clone(rep, destination=""):
 
 
 def link_deps():
-    clone("tools", tools_path)
+    clone("rtools", rtools_path)
     try:
         print("Symlimk: " + deps_path + " to: " + this_path + "/.rdeps")
         os.symlink(deps_path, this_path + "/.rdeps")
