@@ -78,6 +78,12 @@ Host maclaren
     IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
 
+Host mactest
+    Hostname mactest.elastio.dev
+    User administrator
+    IdentityFile ~/.ssh/id_ed25519
+    ForwardAgent yes
+
 Host mac
     Hostname 192.168.0.184
     User vladas
