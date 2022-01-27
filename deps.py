@@ -15,9 +15,6 @@ def _get_home():
     
 
 home = _get_home()
-deps_path = home + "/.rdeps/"
-
-rtools_path = deps_path + "rtools/"
 
 this_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -33,22 +30,11 @@ def clone(rep, destination=""):
         run("git clone --recursive https://github.com/vladasz/" + rep + " " + destination)
 
 
-def link_deps():
-    clone("rtools", rtools_path)
-    try:
-        print("Symlimk: " + deps_path + " to: " + this_path + "/.rdeps")
-        os.symlink(deps_path, this_path + "/.rdeps")
-    except FileExistsError:
-        print("exists")
-
-
 def linux_setup():
     run("sudo apt update")
     run("sudo apt -y install curl pkg-config libssl-dev make cmake gcc g++ unzip automake libtool-bin")
     run("curl https://sh.rustup.rs -sSf | sh -s -- -y")
-    
 
-link_deps()
 
 if is_linux:
     linux_setup()
