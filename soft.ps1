@@ -13,3 +13,4 @@ choco install krita
 choco install steam
 choco install transmission
 choco install crystaldiskmark
+choco install speccy
