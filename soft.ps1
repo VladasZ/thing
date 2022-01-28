@@ -13,6 +13,3 @@ choco install krita
 choco install steam
 choco install transmission
 choco install crystaldiskmark
-
-Invoke-WebRequest https://github.com/alacritty/alacritty/releases/download/v0.9.0/Alacritty-v0.9.0-installer.msi -OutFile alacritty.msi
-.\alacritty.msi
