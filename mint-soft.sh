@@ -7,4 +7,6 @@ flatpak install gitkraken -y
 flatpak install com.Valvesoftware.steam -y
 flatpak install zoom -y
 
-#com.visualstudio.code
+add-apt-repository ppa:jonmagon/kdiskmark
+apt update
+apt install kdiskmark
