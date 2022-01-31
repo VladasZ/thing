@@ -91,6 +91,7 @@ pub fn setup() {
 
     #[cfg(unix)]
     terminal.add_path("~/thing/_shorts");
+    terminal.add_path("~/thing/");
     terminal.add_path("~/elastio/target/debug");
 
     terminal.add_var("AWS_PROFILE", "data-plane-isolated");
