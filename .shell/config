@@ -5,7 +5,6 @@ Host *
 Host s
     Hostname shannon.elastio.dev
     User uzakreuskis
-    IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
 
 Host aws
@@ -53,7 +52,6 @@ Host multi
     Hostname 172.31.80.102
     User ubuntu
     ForwardAgent yes
-    IdentityFile ~/.ssh/id_ed25519
 
 Host lenovo
     Hostname 192.168.0.128
@@ -63,25 +61,21 @@ Host lenovo
 Host macarthur
     Hostname macarthur.elastio.dev
     User administrator
-    IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
 
 Host macdonald
     Hostname macdonald.elastio.dev
     User administrator
-IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
 
 Host maclaren
     Hostname maclaren.elastio.dev
     User hetzner
-    IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
 
 Host mactest
     Hostname mactest.elastio.dev
     User administrator
-    IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
 
 Host mac
