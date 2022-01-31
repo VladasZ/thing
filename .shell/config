@@ -1,89 +1,74 @@
 Host *
   AddKeysToAgent yes
   IdentityFile ~/.ssh/id_ed25519
+  ForwardAgent yes
 
 Host s
     Hostname shannon.elastio.dev
     User uzakreuskis
-    ForwardAgent yes
 
 Host aws
     Hostname ec2-3-17-64-101.us-east-2.compute.amazonaws.com
     User ubuntu
     IdentityFile ~/.ssh/vladas-isolated.pem
-    ForwardAgent yes
 
 Host test
     Hostname ec2-52-14-239-207.us-east-2.compute.amazonaws.com
     User admin
     IdentityFile ~/.ssh/vladas-manual-test.pem
-    ForwardAgent yes
 
 Host isolated
     Hostname ec2-13-58-189-251.us-east-2.compute.amazonaws.com
     User ubuntu
     IdentityFile ~/.ssh/vladas-isolated.pem
-    ForwardAgent yes
 
 Host product-test
     Hostname ec2-18-191-155-13.us-east-2.compute.amazonaws.com
     User ubuntu
     IdentityFile ~/.ssh/vladas-product-test.pem
-    ForwardAgent yes
 
 Host product-test-nitro
     Hostname ec2-3-144-137-138.us-east-2.compute.amazonaws.com
     User ubuntu
     IdentityFile ~/.ssh/vladas-product-test.pem
-    ForwardAgent yes
 
 Host my
     Hostname ec2-18-116-234-22.us-east-2.compute.amazonaws.com
     User ubuntu
     IdentityFile ~/.ssh/free.pem
-    ForwardAgent yes
 
 Host pi
     Hostname 192.168.0.63
     User ubuntu
-    ForwardAgent yes
 
 Host multi
     Hostname 172.31.80.102
     User ubuntu
-    ForwardAgent yes
 
 Host lenovo
     Hostname 192.168.0.128
     User vladas
-    ForwardAgent yes
 
 Host macarthur
     Hostname macarthur.elastio.dev
     User administrator
-    ForwardAgent yes
 
 Host macdonald
     Hostname macdonald.elastio.dev
     User administrator
-    ForwardAgent yes
 
 Host maclaren
     Hostname maclaren.elastio.dev
     User hetzner
-    ForwardAgent yes
 
 Host mactest
     Hostname mactest.elastio.dev
     User administrator
-    ForwardAgent yes
 
 Host mac
     Hostname 192.168.0.184
     User vladas
-    ForwardAgent yes
 
 Host pc
     Hostname 192.168.0.181
     User vladas
-    ForwardAgent yes
