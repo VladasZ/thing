@@ -58,7 +58,7 @@ impl Default for TerminalConfig {
         #[cfg(target_os = "linux")]
         let hrc_path = home.join(".bashrc");
         #[cfg(target_os = "macos")]
-        let hrc_path = home.join(".zshrc");
+        let hrc_path = home.join(".zprofile");
 
         dbg!(&hrc_path);
 
