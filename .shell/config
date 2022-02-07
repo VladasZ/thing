@@ -29,7 +29,7 @@ Host maclaren
 
 Host mactest
     Hostname mactest.elastio.dev
-    User administrator
+    User uzakreuskis
 
 Host mac
     Hostname 192.168.0.184
@@ -38,3 +38,8 @@ Host mac
 Host pc
     Hostname 192.168.0.181
     User vladas
+
+Host iso
+    Hostname 18.117.100.101
+    User ubuntu
+    IdentityFile ~/.ssh/vladas-isolated.pem
