@@ -13,3 +13,4 @@ choco install transmission
 choco install crystaldiskmark
 choco install speccy
 choco install vscode
+choco install scanner
