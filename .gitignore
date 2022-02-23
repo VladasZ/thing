@@ -12,3 +12,5 @@ thing/
 /temp/
 /extern/
 *.msi
+
+.DS_Store

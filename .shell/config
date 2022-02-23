@@ -40,6 +40,6 @@ Host pc
     User vladas
 
 Host iso
-    Hostname 18.117.100.101
+    Hostname ec2-3-145-60-195.us-east-2.compute.amazonaws.com
     User ubuntu
     IdentityFile ~/.ssh/vladas-isolated.pem
