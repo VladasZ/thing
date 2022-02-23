@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+
+import os
+
+os.system("ELASTIO_ARTIFACTS_SOURCE=ci:master elastio stack deploy --tenant-name dev.staging.elastio.us --provisioner-kms-key alias/elastio-provisioner-auth-signing-key")
