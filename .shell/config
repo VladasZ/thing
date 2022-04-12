@@ -8,7 +8,7 @@ Host s
     User uzakreuskis
     
 Host pi
-    Hostname 192.168.0.63
+    Hostname 192.168.1.175
     User ubuntu
 
 Host lenovo
@@ -40,6 +40,11 @@ Host pc
     User vladas
 
 Host iso
-    Hostname ec2-3-145-60-195.us-east-2.compute.amazonaws.com
+    Hostname ec2-18-191-14-201.us-east-2.compute.amazonaws.com
+    User ubuntu
+    IdentityFile ~/.ssh/vladas-isolated.pem
+
+Host back
+    Hostname ec2-3-143-247-99.us-east-2.compute.amazonaws.com
     User ubuntu
     IdentityFile ~/.ssh/vladas-isolated.pem

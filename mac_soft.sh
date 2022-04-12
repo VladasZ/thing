@@ -4,5 +4,6 @@ brew install zoom
 brew install gitkraken
 brew install steam
 brew install vlc
-brew install --cask transmission
 brew install htop
+brew install --cask transmission
+brew install --cask amethyst
