@@ -3,4 +3,4 @@
 import os
 
 os.system("git pull")
-os.system("git submodule update --recursive --remote")
+os.system("git pull --recurse-submodules --jobs=10")
