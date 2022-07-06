@@ -14,3 +14,4 @@ choco install crystaldiskmark
 choco install speccy
 choco install vscode
 choco install scanner
+choco install alacritty

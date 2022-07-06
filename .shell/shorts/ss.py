@@ -2,4 +2,4 @@
 
 import os
 
-os.system("exa -1 --icons -a")
+os.system("exa --icons -a")
