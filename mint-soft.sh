@@ -10,3 +10,6 @@ flatpak install zoom -y
 add-apt-repository ppa:jonmagon/kdiskmark
 apt update
 apt install kdiskmark
+
+cargo install starship --locked
+cargo install exa

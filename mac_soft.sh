@@ -8,5 +8,6 @@ brew install htop
 brew install --cask transmission
 brew install --cask amethyst
 brew install --cask karabiner-elements
-brew install starship
+
+cargo install starship --locked
 brew install exa
