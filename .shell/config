@@ -20,27 +20,22 @@ Host mac86
     User vladas
 
 Host macarthur
-    UseKeychain yes
     Hostname macarthur.elastio.dev
     User administrator
 
 Host macdonald
-    UseKeychain yes
     Hostname macdonald.elastio.dev
     User administrator
 
 Host maclaren
-    UseKeychain yes
     Hostname maclaren.elastio.dev
     User hetzner
 
 Host mactest
-    UseKeychain yes
     Hostname mactest.elastio.dev
     User uzakreuskis
 
 Host mactest_hetzner
-    UseKeychain yes
     Hostname mactest.elastio.dev
     User hetzner
 
