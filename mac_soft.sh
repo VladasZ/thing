@@ -10,4 +10,4 @@ brew install --cask amethyst
 brew install --cask karabiner-elements
 
 cargo install starship --locked
-brew install exa
+cargo install exa
