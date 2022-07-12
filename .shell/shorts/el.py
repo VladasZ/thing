@@ -8,6 +8,8 @@ args = ""
 for arg in sys.argv[1:]:
     args += arg + " "
 
-print(args)
+command = "sudo -E ./target/debug/elastio " + args + " --foreground"
 
-os.system("sudo -E ./target/debug/elastio " + sys.argv[1] + " --foreground")
+print("command: " + command)
+
+os.system(command)
