@@ -123,11 +123,6 @@ pub fn setup() {
         "ln -sf {}/thing/.shell/alacritty.yml {}/.alacritty.yml",
         home, home
     ));
-
-    Command::exec(format!(
-        "ln -sf {}/thing/.shell/config {}/.ssh/config",
-        home, home
-    ));
 }
 
 #[cfg(unix)]

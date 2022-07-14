@@ -48,7 +48,7 @@ Host pc
     User vladas
 
 Host iso
-    Hostname ec2-3-137-185-103.us-east-2.compute.amazonaws.com
+    Hostname ec2-3-143-5-212.us-east-2.compute.amazonaws.com
     User ubuntu
     IdentityFile ~/.ssh/vladas-isolated.pem
     ForwardAgent yes
