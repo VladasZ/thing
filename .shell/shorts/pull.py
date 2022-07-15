@@ -2,5 +2,7 @@
 
 import os
 
+os.system("git stash")
 os.system("git pull")
 os.system("git pull --recurse-submodules --jobs=10")
+os.system("git stash pop")
