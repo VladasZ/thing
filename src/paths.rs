@@ -45,8 +45,7 @@ impl TerminalConfig {
     }
 
     #[cfg(windows)]
-    pub fn add_path(&mut self, path: &str) {
-    }
+    pub fn add_path(&mut self, path: &str) {}
 }
 
 impl Default for TerminalConfig {
