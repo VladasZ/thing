@@ -126,5 +126,5 @@ pub fn setup() {
 
 #[cfg(unix)]
 fn allow_exec(path: impl AsRef<str>) {
-    Command::exec(format!("sudo chmod +x {}", path.as_ref()));
+    Command::exec(format!("chmod +x {}", path.as_ref()));
 }
