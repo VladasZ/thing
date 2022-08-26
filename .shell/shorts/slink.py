@@ -36,7 +36,9 @@ def link_win(orig, link):
 
 if is_unix:
     link_unix(orig, link)
-else:
+elif is_windows:
     link_win(orig, link)
+else:
+    print("yak yak yak yak yak yak?")
 
 print("Linked " + orig + " to: " + link)
