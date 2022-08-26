@@ -31,14 +31,13 @@ def link_unix(orig, link):
     run("ln -s " + orig + " " + link)
 
 def link_win(orig, link):
-    print("lalal kokodksodsokd")
-    return False
+    raise Exception("lalal kokodksodsokd")
 
 if is_unix:
     link_unix(orig, link)
 elif is_windows:
     link_win(orig, link)
 else:
-    print("yak yak yak yak yak yak?")
+    raise Exception("yak yak yak yak yak yak?")
 
 print("Linked " + orig + " to: " + link)
