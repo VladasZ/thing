@@ -20,6 +20,6 @@ pub fn clone(link: impl AsRef<str>, to: impl AsRef<str>) {
 pub fn config() {
     Command::exec("git config pull.ff only");
     Command::exec("git config --global credential.helper store");
-    Command::exec("git config --global user.name \"Vladas Zakrevskis\"");
-    Command::exec("git config --global user.email \"146100@gmail.com\"");
+    Command::exec(r#"git config --global user.name "Vladas Zakrevskis""#);
+    Command::exec(r#"git config --global user.email "146100@gmail.com""#);
 }
