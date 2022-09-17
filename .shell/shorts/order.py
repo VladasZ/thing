@@ -5,5 +5,5 @@ import os
 os.system("cargo +nightly fmt --all")
 os.system("cargo clippy")
 os.system("cargo test")
-os.system("cargo build")
+os.system("cargo build --all")
 os.system("typos")
