@@ -31,7 +31,8 @@ def link_unix(orig, link):
     run("ln -s " + orig + " " + link)
 
 def link_win(orig, link):
-    raise Exception("lalal kokodksodsokd")
+    run("mklink \"" + link + "\" \"" + orig + "\"")
+
 
 if is_unix:
     link_unix(orig, link)
