@@ -8,10 +8,6 @@ Vagrant.configure("2") do |config|
     v.cpus = 8
   end
 
-  config.vm.define "mac" do |mac|
-    mac.vm.box = "yzgyyang/macOS-10.14"
-  end
-
   config.vm.define "lin" do |lin|
     lin.vm.box = "generic/ubuntu2204"
   end
