@@ -1,9 +1,15 @@
 
 Vagrant.configure("2") do |config|
 
+  config.ssh.forward_agent = true
+
   config.vm.provider "virtualbox" do |v|
-    v.memory = 2048
-    v.cpus = 4
+    v.memory = 2048 * 4
+    v.cpus = 8
+  end
+
+  config.vm.define "mac" do |mac|
+    mac.vm.box = "yzgyyang/macOS-10.14"
   end
 
   config.vm.define "lin" do |lin|
@@ -11,7 +17,7 @@ Vagrant.configure("2") do |config|
   end
  
   config.vm.define "win" do |win|
-    win.vm.box = "gusztavvargadr/windows-10"
+    win.vm.box = "gusztavvargadr/visual-studio"
   end
 
 end

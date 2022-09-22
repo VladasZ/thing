@@ -8,8 +8,8 @@ choco install visualstudio2019community
 $vc_components = @(
     "Microsoft.VisualStudio.Component.VC.ATL",
     "Microsoft.VisualStudio.Component.VC.ATLMFC",
-    # "Microsoft.VisualStudio.Component.VC.Tools.ARM",
-    # "Microsoft.VisualStudio.Component.VC.Tools.ARM64",
+    "Microsoft.VisualStudio.Component.VC.Tools.ARM",
+    "Microsoft.VisualStudio.Component.VC.Tools.ARM64",
     "Microsoft.VisualStudio.Component.Windows81SDK"
 )
 
