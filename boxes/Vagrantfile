@@ -1,4 +1,9 @@
 
+# Tells us if the host system is an Apple Silicon Mac running Rosetta
+def is_arm64()
+  `uname -m` == "arm64" || `/usr/bin/arch -64 sh -c "sysctl -in sysctl.proc_translated"`.strip() == "0"
+end
+
 Vagrant.configure("2") do |config|
 
   config.ssh.forward_agent = true
@@ -9,13 +14,21 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "lin" do |lin|
-    lin.vm.box = "generic/ubuntu2204"
-#     lin.vm.box = "jharoian3/ubuntu-22.04-arm64"
+    if is_arm64()
+      lin.vm.box = "jharoian3/ubuntu-22.04-arm64"
+    else
+      lin.vm.box = "generic/ubuntu2204"
+    end
   end
- 
+
   config.vm.define "win" do |win|
-    win.vm.box = "gusztavvargadr/visual-studio"
-#     win.vm.box = "nullx/windows-arm64"
+    if is_arm64()
+      win.vm.box = "nullx/windows-arm64"
+    else
+      lin.vm.box = "gusztavvargadr/visual-studio"
+    end
   end
 
 end
+
+# vagrant plugin install vagrant-parallels
