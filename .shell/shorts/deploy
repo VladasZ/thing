@@ -5,4 +5,5 @@ import os
 print("AWS_PROFILE: " + os.environ["AWS_PROFILE"])
 print("ELASTIO_ARTIFACTS_SOURCE: " + os.environ["ELASTIO_ARTIFACTS_SOURCE"])
 
+print("sudo -E ./target/debug/elastio stack deploy --tenant-name vladas.staging.elastio.us --provisioner-kms-key alias/elastio-provisioner-auth-signing-key --ignore-migrations")
 os.system("sudo -E ./target/debug/elastio stack deploy --tenant-name vladas.staging.elastio.us --provisioner-kms-key alias/elastio-provisioner-auth-signing-key --ignore-migrations")
