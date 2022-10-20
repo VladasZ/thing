@@ -6,4 +6,4 @@ import sys
 if len(sys.argv) > 1:
     os.system("cargo publish -p" + sys.argv[1] + " --allow-dirty")
 else:
-    os.system("cargo publish")
+    os.system("cargo publish --allow-dirty")
