@@ -1,44 +1,24 @@
-#!/usr/bin/env python3
-
 import os
-import sys
 import platform
 
-is_windows = platform.system() == "Windows"
-is_mac     = platform.system() == "Darwin"
-is_linux   = platform.system() == "Linux"
+def create_symlink(src, dst):
+    target_is_directory = os.path.isdir(src)
 
-is_unix = is_mac or is_linux
+    if platform.system() == 'Windows':
+        try:
+            os.symlink(src, dst, target_is_directory=target_is_directory)
+            print(f"Symlink created: {src} -> {dst}")
+        except:
+            print(f"Failed to create symlink: {src} -> {dst}")
+    else:
+        try:
+            os.symlink(src, dst)
+            print(f"Symlink created: {src} -> {dst}")
+        except:
+            print(f"Failed to create symlink: {src} -> {dst}")
 
-orig = sys.argv[1]
-link = sys.argv[2]
+if __name__ == '__main__':
+    src = '/path/to/source'
+    dst = '/path/to/destination'
 
-is_dir = os.path.isdir(orig)
-
-if is_dir:
-    print("Linking directory")
-else:
-    print("Linking file")
-
-
-def run(string):
-    print(string)
-    if os.system(string):
-        raise Exception("Shell script has failed")
-
-
-def link_unix(orig, link):
-    run("ln -s " + orig + " " + link)
-
-def link_win(orig, link):
-    run("mklink \"" + link + "\" \"" + orig + "\"")
-
-
-if is_unix:
-    link_unix(orig, link)
-elif is_windows:
-    link_win(orig, link)
-else:
-    raise Exception("yak yak yak yak yak yak?")
-
-print("Linked " + orig + " to: " + link)
+    create_symlink(src, dst)
