@@ -4,6 +4,7 @@ import os
 import sys
 import subprocess
 
+os.system("cargo install cargo-workspaces")
 os.system("cargo fmt --all")
 
 if len(sys.argv) > 1:
