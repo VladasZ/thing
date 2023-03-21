@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import platform
 
@@ -11,14 +13,14 @@ def create_symlink(src, dst):
         except:
             print(f"Failed to create symlink: {src} -> {dst}")
     else:
-        try:
-            os.symlink(src, dst)
-            print(f"Symlink created: {src} -> {dst}")
-        except:
-            print(f"Failed to create symlink: {src} -> {dst}")
+        # try:
+        os.symlink(src, dst)
+        print(f"Symlink created: {src} -> {dst}")
+        # except:
+        #     print(f"Failed to create symlink: {src} -> {dst}")
 
 if __name__ == '__main__':
-    src = '/path/to/source'
-    dst = '/path/to/destination'
+    src = '~/Dropbox/.ssh'
+    dst = '~/.ssh'
 
-    create_symlink(src, dst)
+    create_symlink(os.path.expanduser(src), os.path.expanduser(dst))
