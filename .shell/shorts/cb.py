@@ -4,6 +4,11 @@ import os
 import sys
 import subprocess
 
+import time
+
+# Start the timer
+start_time = time.time()
+
 os.system("cargo install cargo-workspaces")
 os.system("cargo fmt --all")
 
@@ -22,3 +27,13 @@ else:
     # Run `cargo build -p` for each project
     for project_name in project_names:
         subprocess.run(['cargo', 'build', '-p', project_name])
+
+
+# End the timer
+end_time = time.time()
+
+# Calculate the elapsed time
+elapsed_time = end_time - start_time
+
+# Print the elapsed time
+print(f"Elapsed time: {elapsed_time:.4f} seconds")
