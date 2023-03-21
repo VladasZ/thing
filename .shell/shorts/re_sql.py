@@ -19,6 +19,9 @@ for folder in os.listdir(cwd):
             
             print(folder)
 
+            with open(folder + "/.env", "w") as f:
+                f.write("DATABASE_URL=postgresql://test:tester@localhost/" + folder)
+
             # change current working directory to the service folder
             os.chdir(os.path.join(cwd, folder))
             # run the sqlx database drop command
