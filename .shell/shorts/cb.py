@@ -14,6 +14,7 @@ os.system("cargo fmt --all")
 
 if len(sys.argv) > 1:
     os.system("cargo build -p" + sys.argv[1])
+    exit(0)
 else:
 
     # Run the `cargo workspaces list` command and get the output
@@ -27,6 +28,9 @@ else:
     # Run `cargo build -p` for each project
     for project_name in project_names:
         subprocess.run(['cargo', 'build', '-p', project_name])
+
+
+os.system("cargo build")
 
 
 # End the timer
