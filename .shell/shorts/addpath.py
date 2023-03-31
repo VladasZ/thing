@@ -1,5 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import os
+import sys
 import platform
 
 
@@ -49,6 +50,10 @@ def add_to_path(directory):
         print(f"Updated shell configuration file: {shell_config}")
 
 if __name__ == '__main__':
-    directory = '/path/to/directory'
+    directory = sys.argv[1]
+
+    directory = os.path.expanduser(directory)
+
+    print(f"Adding to path: {directory}");
 
     add_to_path(directory)
