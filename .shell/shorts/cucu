@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+
+import sys
+import subprocess
+import os
+
+logs_dir = os.path.join(os.getcwd(), 'logs')
+for filename in os.listdir(logs_dir):
+    if filename != '.gitkeep':
+        os.remove(os.path.join(logs_dir, filename))
+
+feature = sys.argv[-1]
+
+command = ['RUST_TARGET=debug', 'bundle', 'exec', 'cucumber', 'features/events.feature', feature]
+
+subprocess.run(command, check=True)
