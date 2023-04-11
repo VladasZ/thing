@@ -11,6 +11,6 @@ for filename in os.listdir(logs_dir):
 
 feature = sys.argv[-1]
 
-command = ['RUST_TARGET=debug', 'bundle', 'exec', 'cucumber', 'features/events.feature', feature]
+command = ['RUST_TARGET=debug', 'bundle', 'exec', 'cucumber', 'features/' + feature + '.feature']
 
 subprocess.run(command, check=True)
