@@ -4,6 +4,12 @@ import sys
 import subprocess
 import os
 
+cwd = os.getcwd()
+
+os.chdir('..')
+subprocess.run(['cargo', 'build'], check=True)
+os.chdir(cwd)
+
 logs_dir = os.path.join(os.getcwd(), 'logs')
 for filename in os.listdir(logs_dir):
     if filename != '.gitkeep':
@@ -11,6 +17,7 @@ for filename in os.listdir(logs_dir):
 
 feature = sys.argv[-1]
 
-command = ['RUST_TARGET=debug', 'bundle', 'exec', 'cucumber', 'features/' + feature + '.feature']
+command = ['bundle', 'exec', 'cucumber', 'features/' + feature + '.feature']
 
+os.environ['RUST_TARGET'] = 'debug'
 subprocess.run(command, check=True)
