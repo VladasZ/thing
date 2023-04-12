@@ -15,9 +15,13 @@ for filename in os.listdir(logs_dir):
     if filename != '.gitkeep':
         os.remove(os.path.join(logs_dir, filename))
 
-feature = sys.argv[-1]
+has_arg = len(sys.argv) > 1
 
-command = ['bundle', 'exec', 'cucumber', 'features/' + feature + '.feature']
+if has_arg:
+    feature = sys.argv[-1]
+    command = ['bundle', 'exec', 'cucumber', 'features/' + feature + '.feature']
+else:
+    command = ['bundle', 'exec', 'cucumber']
 
 os.environ['RUST_TARGET'] = 'debug'
 subprocess.run(command, check=True)

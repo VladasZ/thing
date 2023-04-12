@@ -11,6 +11,7 @@ thing/
 /neovim/
 /temp/
 /extern/
+generated/
 *.msi
 
 .DS_Store
