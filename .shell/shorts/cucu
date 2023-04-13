@@ -4,22 +4,39 @@ import sys
 import subprocess
 import os
 
-cwd = os.getcwd()
 
-os.chdir('..')
-subprocess.run(['cargo', 'build'], check=True)
-os.chdir(cwd)
+def delete_logs():
+    logs_dir = os.path.join(os.getcwd(), 'logs')
+    for filename in os.listdir(logs_dir):
+        if filename != '.gitkeep':
+            os.remove(os.path.join(logs_dir, filename))
 
-logs_dir = os.path.join(os.getcwd(), 'logs')
-for filename in os.listdir(logs_dir):
-    if filename != '.gitkeep':
-        os.remove(os.path.join(logs_dir, filename))
+
+def build_project():
+    cwd = os.getcwd()
+    os.chdir('..')
+    subprocess.run(['cargo', 'build'], check=True)
+    os.chdir(cwd)
+
 
 has_arg = len(sys.argv) > 1
+is_test = False
 
 if has_arg:
-    feature = sys.argv[-1]
-    command = ['bundle', 'exec', 'cucumber', 'features/' + feature + '.feature']
+    is_test = sys.argv[-1] == 'test'
+
+if not is_test:
+    delete_logs()
+    build_project()
+
+
+if has_arg:
+    arg = sys.argv[-1]
+
+    if arg == 'test':
+        command = ['cargo', 'test', '--test', 'all', '--', '--ignored', '--nocapture']
+    else:
+        command = ['bundle', 'exec', 'cucumber', 'features/' + arg + '.feature']
 else:
     command = ['bundle', 'exec', 'cucumber']
 
