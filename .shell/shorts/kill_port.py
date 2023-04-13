@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
+import sys
 import psutil
+
 
 
 def kill_process_using_port(port):
@@ -14,5 +16,7 @@ def kill_process_using_port(port):
             pass
 
 
-# example usage:
-kill_process_using_port(3030)
+if len(sys.argv) > 1:
+    kill_process_using_port(sys.argv[1])
+else:
+    print("No arguments provided")
