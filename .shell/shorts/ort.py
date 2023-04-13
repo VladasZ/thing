@@ -18,6 +18,9 @@ for conn in connections:
     local_addr = f"{conn.laddr.ip}:{conn.laddr.port}"
     foreign_addr = f"{conn.raddr.ip}:{conn.raddr.port}" if conn.raddr else ""
 
+    if local_addr == "0.0.0.0:0":
+        continue
+
     # Get connection state
     state = conn.status
 
