@@ -3,7 +3,10 @@
 import sys
 import subprocess
 
-status = sys.argv[1] is not None and sys.argv[1] == "st"
+status = False
+
+if len(sys.argv) > 1:
+    status = sys.argv[1] == "st"
 
 if not status:
     subprocess.run(["sudo", "docker-compose", "stop"])
