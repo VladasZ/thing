@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import sys
 import platform
 
 def create_symlink(src, dst):
@@ -20,7 +21,7 @@ def create_symlink(src, dst):
         #     print(f"Failed to create symlink: {src} -> {dst}")
 
 if __name__ == '__main__':
-    src = '~/Dropbox/.ssh'
-    dst = '~/.ssh'
+    src = sys.argv[1]
+    dst = sys.argv[2]
 
     create_symlink(os.path.expanduser(src), os.path.expanduser(dst))
