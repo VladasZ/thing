@@ -5,8 +5,10 @@ import subprocess
 import os
 
 
-def delete_logs():
-    logs_dir = os.path.join(os.getcwd(), 'logs')
+def delete_logs(dir):
+    logs_dir = os.path.join(os.getcwd(), dir)
+    if not os.path.exists(logs_dir):
+        return
     for filename in os.listdir(logs_dir):
         if filename != '.gitkeep':
             os.remove(os.path.join(logs_dir, filename))
@@ -26,7 +28,9 @@ if has_arg:
     is_test = sys.argv[-1] == 'test'
 
 if not is_test:
-    delete_logs()
+    delete_logs('logs')
+    delete_logs('test/logs')
+    delete_logs('tests/logs')
     build_project()
 
 
