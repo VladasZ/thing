@@ -40,7 +40,7 @@ if has_arg:
     if arg == 'test':
         command = ['cargo', 'test', '--test', 'all', '--', '--ignored', '--nocapture']
     else:
-        command = ['bundle', 'exec', 'cucumber', 'features/' + arg + '.feature']
+        command = ['bundle', 'exec', 'cucumber', arg]
 else:
     command = ['bundle', 'exec', 'cucumber']
 
