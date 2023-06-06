@@ -28,10 +28,10 @@ if has_arg:
     is_test = sys.argv[-1] == 'test'
 
 if not is_test:
+    build_project()
     delete_logs('logs')
     delete_logs('test/logs')
     delete_logs('tests/logs')
-    build_project()
 
 
 if has_arg:
