@@ -19,8 +19,10 @@ for folder in os.listdir(cwd):
             
             print(folder)
 
+            db_name = folder.rstrip("-service")
+
             with open(folder + "/.env", "w") as f:
-                f.write("DATABASE_URL=postgresql://test:tester@localhost/" + folder)
+                f.write("DATABASE_URL=postgresql://test:tester@localhost/" + db_name)
 
             # change current working directory to the service folder
             os.chdir(os.path.join(cwd, folder))
