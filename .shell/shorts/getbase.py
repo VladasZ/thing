@@ -13,7 +13,7 @@ def download_file(hostname, remote_path, local_path):
 
 hostname = "my"
 
-remote_path = "~/money/base.sqlite"
+remote_path = "~/base.sqlite"
 local_path = os.path.expanduser("~/money/base.sqlite")
 backup_path = os.path.expanduser("~/Dropbox/Archive/Spesogon/base_" + datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S") + ".sqlite")
 
