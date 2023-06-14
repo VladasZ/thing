@@ -3,15 +3,9 @@
 import os
 import sys
 
-pg = False
-cucu = False
-stop = False
 
-
-if len(sys.argv) > 1:
-    pg = sys.argv[1] == "pg"
-    cucu = sys.argv[1] == "cucu"
-
+pg = "pg" in sys.argv
+cucu = "cucu" in sys.argv
 
 ports = """-L 9092:127.0.0.1:9092 \
 -L 3030:127.0.0.1:3030 \
@@ -25,9 +19,11 @@ ports = """-L 9092:127.0.0.1:9092 \
 -R 3589:127.0.0.1:3589 \
 """
 
+ports = ""
+
 if pg:
     # ports = "-R 5432:127.0.0.1:5432"
-    ports = "-L 5432:127.0.0.1:5432"
+    ports += "-L 5432:127.0.0.1:5432 "
 
 if cucu:
     ports = "-L 9092:127.0.0.1:9092 -L 6379:127.0.0.1:6379 -L 4566:127.0.0.1:4566"

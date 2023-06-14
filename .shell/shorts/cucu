@@ -15,6 +15,7 @@ def delete_logs(dir):
 
 
 def build_project():
+    # os.environ['CARGO_TARGET_DIR'] = '/Users/vladas/cucu_target'
     cwd = os.getcwd()
     os.chdir('..')
     subprocess.run(['cargo', 'build'], check=True)
