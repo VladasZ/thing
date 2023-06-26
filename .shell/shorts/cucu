@@ -5,8 +5,8 @@ import subprocess
 import os
 
 
-def delete_logs(dir):
-    logs_dir = os.path.join(os.getcwd(), dir)
+def delete_logs(logs_dir: str):
+    logs_dir = os.path.join(os.getcwd(), logs_dir)
     if not os.path.exists(logs_dir):
         return
     for filename in os.listdir(logs_dir):
@@ -14,36 +14,69 @@ def delete_logs(dir):
             os.remove(os.path.join(logs_dir, filename))
 
 
-def build_project():
-    # os.environ['CARGO_TARGET_DIR'] = '/Users/vladas/cucu_target'
+def build_project(project_dir: str = '.'):
+    os.environ['CARGO_TARGET_DIR'] = '/Users/vladas/cucu_target'
     cwd = os.getcwd()
-    os.chdir('..')
+    os.chdir(project_dir)
     subprocess.run(['cargo', 'build'], check=True)
     os.chdir(cwd)
 
 
-has_arg = len(sys.argv) > 1
-is_test = False
-
-if has_arg:
-    is_test = sys.argv[-1] == 'test'
-
-if not is_test:
-    build_project()
-    delete_logs('logs')
-    delete_logs('test/logs')
-    delete_logs('tests/logs')
-
-
-if has_arg:
-    arg = sys.argv[-1]
-
-    if arg == 'test':
-        command = ['cargo', 'test', '--test', 'all', '--', '--ignored', '--nocapture']
-    else:
-        command = ['bundle', 'exec', 'cucumber', '--tags', arg]
-else:
-    command = ['bundle', 'exec', 'cucumber']
+feat = "feat" in sys.argv
+scen = "scen" in sys.argv
+tag = "tag" in sys.argv
 
 os.environ['RUST_TARGET'] = 'debug'
-subprocess.run(command, check=True)
+build_project()
+delete_logs('logs')
+delete_logs('test/logs')
+delete_logs('tests/logs')
+
+
+ruby_tests = os.path.exists("acc")
+
+print("Ruby tests: " + str(ruby_tests))
+
+if ruby_tests:
+
+    os.chdir("acc")
+
+    if len(sys.argv) < 2:
+        command = ['bundle', 'exec', 'cucumber']
+    elif feat:
+        command = ['bundle', 'exec', 'cucumber', sys.argv[2]]
+    elif tag:
+        command = ['bundle', 'exec', 'cucumber', '--tags', sys.argv[2]]
+
+    subprocess.run(command, check=True)
+
+
+if feat:
+    feature = sys.argv[2]
+    print("Executing feature: " + feature)
+    os.environ['CUCUMBER_FEATURE_RE'] = feature
+    subprocess.run(['cargo', 'test', '--test', '*', '--', '--ignored', '--nocapture'], check=True)
+
+if scen:
+    scenario = sys.argv[2]
+    print("Executing scenario: " + scenario)
+    os.environ['CUCUMBER_SCENARIO_RE'] = scenario
+
+
+if feat or scen:
+    subprocess.run(['cargo', 'test', '--test', '*', '--', '--ignored', '--nocapture'], check=True)
+
+
+#
+# if has_arg:
+#     arg = sys.argv[-1]
+#
+#     if arg == 'test':
+#         command = ['cargo', 'test', '--test', '*', '--', '--ignored', '--nocapture']
+#     else:
+#         command = ['bundle', 'exec', 'cucumber', '--tags', arg]
+# else:
+#     command = ['bundle', 'exec', 'cucumber']
+
+# subprocess.run(command, check=True)
+# CUCUMBER_FEATURE_RE=Update RUST_TARGET=debug cargo test -p pechkin-service --test '*' -- --ignored --nocapture
