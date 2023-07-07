@@ -5,6 +5,7 @@ import sys
 
 
 pg = "pg" in sys.argv
+mypg = "mypg" in sys.argv
 cucu = "cucu" in sys.argv
 
 ports = """-L 9092:127.0.0.1:9092 \
@@ -27,6 +28,11 @@ if pg:
 
 if cucu:
     ports += "-L 9092:127.0.0.1:9092 -L 6379:127.0.0.1:6379 -L 4566:127.0.0.1:4566 "
+
+if mypg:
+    os.system("ssh -L 5432:127.0.0.1:5432 my")
+    exit(0)
+
 
 print(ports)
 
