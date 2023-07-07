@@ -15,7 +15,7 @@ def delete_logs(logs_dir: str):
 
 
 def build_project(project_dir: str = '.'):
-    os.environ['CARGO_TARGET_DIR'] = '/Users/vladas/cucu_target'
+    # os.environ['CARGO_TARGET_DIR'] = '/Users/vladas/cucu_target'
     cwd = os.getcwd()
     os.chdir(project_dir)
     subprocess.run(['cargo', 'build'], check=True)
@@ -26,12 +26,14 @@ feat = "feat" in sys.argv
 scen = "scen" in sys.argv
 tag = "tag" in sys.argv
 
-os.environ['RUST_TARGET'] = 'debug'
-build_project()
 delete_logs('logs')
+delete_logs('acc/logs')
 delete_logs('test/logs')
 delete_logs('tests/logs')
 
+
+os.environ['RUST_TARGET'] = 'debug'
+build_project()
 
 ruby_tests = os.path.exists("acc")
 
@@ -40,6 +42,8 @@ print("Ruby tests: " + str(ruby_tests))
 if ruby_tests:
 
     os.chdir("acc")
+
+    command = ""
 
     if len(sys.argv) < 2:
         command = ['bundle', 'exec', 'cucumber']
