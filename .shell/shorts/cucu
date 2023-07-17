@@ -5,6 +5,9 @@ import subprocess
 import os
 
 
+os.environ['RUST_BACKTRACE'] = '1'
+
+
 def delete_logs(logs_dir: str):
     logs_dir = os.path.join(os.getcwd(), logs_dir)
     if not os.path.exists(logs_dir):
@@ -25,6 +28,7 @@ def build_project(project_dir: str = '.'):
 feat = "feat" in sys.argv
 scen = "scen" in sys.argv
 tag = "tag" in sys.argv
+test = "test" in sys.argv
 
 delete_logs('logs')
 delete_logs('acc/logs')
@@ -67,7 +71,7 @@ if scen:
     os.environ['CUCUMBER_SCENARIO_RE'] = scenario
 
 
-if feat or scen:
+if feat or scen or test:
     subprocess.run(['cargo', 'test', '--test', '*', '--', '--ignored', '--nocapture'], check=True)
 
 
