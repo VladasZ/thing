@@ -91,10 +91,6 @@ pub fn setup() {
     terminal.add_path("~/thing/");
     #[cfg(unix)]
     terminal.add_path("~/thing/_shorts");
-    terminal.add_path("~/elastio/target/debug");
-
-    terminal.add_var("AWS_PROFILE", "data-plane-isolated");
-    terminal.add_var("ELASTIO_ARTIFACTS_SOURCE", "ci:master");
 
     let shorts = format!("{}/thing/.shell/shorts", home_dir().unwrap().display());
 
