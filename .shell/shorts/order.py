@@ -5,6 +5,9 @@ import os
 os.system("cargo install cargo-machete")
 os.system("cargo install typos-cli")
 
+os.system("brew install taplo")
+os.system("taplo fmt")
+
 os.system("cargo +nightly fmt --all")
 os.system("cargo test --all")
 os.system("cargo test --all --release")
