@@ -6,3 +6,6 @@ Set-ExecutionPolicy RemoteSigned
 
 win + r 
 Shell:common startup
+
+New-Item -ItemType Junction -Path "C:\Users\vladas\AppData\Local\nvim" -Target "C:\Users\vladas\thing\.shell\nvim"
+
