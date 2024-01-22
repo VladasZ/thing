@@ -19,6 +19,13 @@ impl TerminalConfig {
         self.hrc.push_str("\necho Helloy\n");
     }
 
+    pub fn add_statement(&mut self, statement: &str) {
+        if self.hrc.contains(statement) {
+            return;
+        }
+        self.hrc.push_str(&format!("\n{statement}\n"));
+    }
+
     pub fn add_var(&mut self, var: &str, value: &str) {
         if self.hrc.contains(var) {
             return;
@@ -91,6 +98,8 @@ pub fn setup() {
     terminal.add_path("~/thing/");
     #[cfg(unix)]
     terminal.add_path("~/thing/_shorts");
+
+    terminal.add_statement("alias v=nvim");
 
     let shorts = format!("{}/thing/.shell/shorts", home_dir().unwrap().display());
 
