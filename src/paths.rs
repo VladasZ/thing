@@ -101,6 +101,8 @@ pub fn setup() {
 
     terminal.add_statement("alias v=nvim");
     terminal.add_statement("alias al='cd ~/.config/nvim/ && v'");
+    terminal.add_statement("alias th='cd ~/thing/ && v'");
+    terminal.add_statement("alias te='cd ~/money/money/test_engine/ && v'");
 
     let shorts = format!("{}/thing/.shell/shorts", home_dir().unwrap().display());
 

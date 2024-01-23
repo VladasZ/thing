@@ -34,7 +34,10 @@ local plugins = {
   },
   {
     "mfussenegger/nvim-dap",
-  }
+  },
+  {
+    "Pocco81/auto-save.nvim",
+  },
 }
 
 return plugins

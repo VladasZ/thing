@@ -13,7 +13,11 @@ M.rust = {
   n = {
     ["<leader>ru"] = {
       "<cmd> RustRunnables <CR>",
-      "Runnables"
+      "Runnables."
+    },
+    ["<leader>ex"] = {
+      "<cmd> RustExpandMacro <CR>",
+      "Expand rust macro."
     },
   },
 }
