@@ -64,7 +64,7 @@ impl Default for TerminalConfig {
         #[cfg(target_os = "linux")]
         let hrc_path = home.join(".bashrc");
         #[cfg(target_os = "macos")]
-        let hrc_path = home.join(".zprofile");
+        let hrc_path = home.join(".zshenv");
 
         dbg!(&hrc_path);
 
@@ -100,6 +100,7 @@ pub fn setup() {
     terminal.add_path("~/thing/_shorts");
 
     terminal.add_statement("alias v=nvim");
+    terminal.add_statement("alias al='cd ~/.config/nvim/ && v'");
 
     let shorts = format!("{}/thing/.shell/shorts", home_dir().unwrap().display());
 
