@@ -54,12 +54,12 @@ impl Call for Command {
         command.silent_call()
     }
 
-    fn exec_param_silent(command: &str, param: &str) -> String {
-        Self::exec_silent(&format!("{} {}", command, param))
-    }
-
     fn exec_param(command: impl AsRef<str>, param: impl AsRef<str>) -> String {
         Self::exec(format!("{} {}", command.as_ref(), param.as_ref()))
+    }
+
+    fn exec_param_silent(command: &str, param: &str) -> String {
+        Self::exec_silent(&format!("{} {}", command, param))
     }
 
     fn silent_call(&mut self) -> String {

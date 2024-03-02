@@ -1,9 +1,9 @@
-use std::{path::Path, process::Command};
+use std::{ process::Command};
 
 use crate::command::Call;
 
 /// Clone from github. Ignore all errors.
-pub fn clone(link: impl AsRef<str>, to: impl AsRef<str>) {
+pub fn _clone(link: impl AsRef<str>, to: impl AsRef<str>) {
     #![allow(unused_must_use)]
     println!("clone: {}", link.as_ref());
     let mut com = Command::new("git");

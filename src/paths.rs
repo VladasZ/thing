@@ -2,12 +2,10 @@ use std::process::Command;
 
 use home::home_dir;
 
-use crate::{command::Call, misc::strip_trailing_newline};
+use crate::{command::Call};
 
 struct TerminalConfig {
-    #[cfg(unix)]
     hrc:      String,
-    #[cfg(unix)]
     hrc_path: String,
 }
 
@@ -33,7 +31,6 @@ impl TerminalConfig {
         self.hrc.push_str(&format!("\nexport {var}={value}\n"));
     }
 
-    #[cfg(unix)]
     pub fn add_path(&mut self, path: &str) {
         use std::fmt::format;
 
@@ -50,13 +47,9 @@ impl TerminalConfig {
 
         self.hrc.push_str(&entry);
     }
-
-    #[cfg(windows)]
-    pub fn add_path(&mut self, path: &str) {}
 }
 
 impl Default for TerminalConfig {
-    #[cfg(unix)]
     fn default() -> Self {
         use home::home_dir;
         println!("lin init");
@@ -75,11 +68,6 @@ impl Default for TerminalConfig {
         }
     }
 
-    #[cfg(target_os = "windows")]
-    fn default() -> Self {
-        println!("win init");
-        Self {}
-    }
 }
 
 #[cfg(unix)]

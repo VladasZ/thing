@@ -4,5 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-home = "0.5.3"
-which = "4.2.2"
+home = "0.5"
+which = "6.0"
+anyhow = "1.0"
