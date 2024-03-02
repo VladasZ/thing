@@ -5,7 +5,8 @@ mod git;
 mod termial;
 
 fn setup_termial() {
-    Terminal::add_hello();
+    let ter = Terminal::default();
+    ter.add_hello();
 }
 
 fn main() {
