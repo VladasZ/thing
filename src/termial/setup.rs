@@ -1,6 +1,9 @@
 use std::path::PathBuf;
 
-pub trait TermialSetup: Default {
+use anyhow::Result;
+
+pub trait TermialSetup: Sized {
+    fn new() -> Result<Self>;
     fn setup_file() -> PathBuf;
     fn add_hello(&self);
     fn add_alias(&self, alias: impl ToString, command: impl ToString);
