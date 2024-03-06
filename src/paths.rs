@@ -126,10 +126,6 @@ pub fn setup() {
         allow_exec(&path);
     }
 
-    Command::exec(format!(
-        "ln -sf {}/thing/.shell/alacritty.yml {}/.alacritty.yml",
-        home, home
-    ));
 }
 
 #[cfg(unix)]

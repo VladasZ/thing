@@ -16,6 +16,7 @@ mod paths;
 mod windows_installer;
 
 use std::process::Command;
+use home::home_dir;
 
 use command::Call;
 #[cfg(target_os = "linux")]
@@ -41,16 +42,25 @@ type Installer = LinuxInstaller;
 type Installer = WindowsInstaller;
 
 fn main() {
-    // let installer = Installer::default();
-    // installer.install("git").unwrap();
+    // // let installer = Installer::default();
+    // // installer.install("git").unwrap();
+    //
+    // #[cfg(unix)]
+    // paths::setup();
+    //
+    // #[cfg(target_os = "linux")]
+    // vscode_watch_large();
+    // git::config();
+    //
+    // #[cfg(target_os = "linux")]
+    // nvim::install();
 
-    #[cfg(unix)]
-    paths::setup();
+    let home = home_dir().unwrap();
+    let home = home.to_string_lossy();
 
-    #[cfg(target_os = "linux")]
-    vscode_watch_large();
-    git::config();
+    Command::exec(format!(
+        "ln -sf {}/dev/thing/.shell/alacritty.yml {}/.alacritty.yml",
+        home, home
+    ));
 
-    #[cfg(target_os = "linux")]
-    nvim::install();
 }
