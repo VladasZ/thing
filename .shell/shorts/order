@@ -21,3 +21,5 @@ run("make lint")
 run("cargo build --all")
 run("cargo test --all")
 run("cargo test --all --release")
+
+run("echo order: OK")
