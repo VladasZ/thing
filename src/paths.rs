@@ -125,7 +125,6 @@ pub fn setup() {
         #[cfg(unix)]
         allow_exec(&path);
     }
-
 }
 
 #[cfg(unix)]

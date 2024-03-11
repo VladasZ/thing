@@ -16,9 +16,9 @@ mod paths;
 mod windows_installer;
 
 use std::process::Command;
-use home::home_dir;
 
 use command::Call;
+use home::home_dir;
 #[cfg(target_os = "linux")]
 use misc::vscode_watch_large;
 
@@ -62,5 +62,4 @@ fn main() {
         "ln -sf {}/dev/thing/.shell/alacritty.yml {}/.alacritty.yml",
         home, home
     ));
-
 }

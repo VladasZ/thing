@@ -1,17 +1,23 @@
 #!/usr/bin/env python3
 
 import os
+import subprocess
 
-os.system("cargo install cargo-machete")
-os.system("cargo install typos-cli")
-os.system("cargo install taplo-cli")
 
-os.system("taplo fmt")
+def run(command):
+    print("Run: " + command)
+    subprocess.run(command, shell=True, check=True)
 
-os.system("cargo +nightly fmt --all")
-os.system("cargo test --all")
-os.system("cargo test --all --release")
-os.system("cargo build --all")
-os.system("make lint")
-os.system("typos")
-os.system("cargo machete")
+
+run("cargo install cargo-machete")
+run("cargo install typos-cli")
+run("cargo install taplo-cli")
+
+run("taplo fmt")
+run("cargo +nightly fmt --all")
+run("typos")
+run("cargo machete")
+run("make lint")
+run("cargo build --all")
+run("cargo test --all")
+run("cargo test --all --release")
