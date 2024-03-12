@@ -16,5 +16,8 @@ alias d='sudo docker'
 alias tf=terraform
 alias l=lazygit
 
-alias al='hx ~/.ssh/shell.sh'
+alias al='hx ~/dev/thing/.shell/shell.sh'
+
+alias install_mac=~/dev/thing/.shell/install_mac.sh
+alias install_lin=~/dev/thing/.shell/install_lin.sh
 
