@@ -10,6 +10,7 @@ alias dotf='terraform apply -auto-approve'
 alias untf='terraform destroy -auto-approve'
 
 alias te='cd ~/dev/test_engine/'
+alias hx=helix
 
 alias d='sudo docker'
 

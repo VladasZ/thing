@@ -19,8 +19,8 @@ chars = "\u0003"
 key = "C"
 mods = "Control|Shift"
 
-[window]
-option_as_alt = "Both"
+#[window]
+#option_as_alt = "Both"
 
 [window.dimensions]
 columns = 168
