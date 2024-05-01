@@ -19,7 +19,6 @@ run("typos")
 run("cargo machete")
 run("make lint")
 run("cargo build --all")
-run("cargo test --all")
-run("cargo test --all --release")
+run("make test")
 
 print("order: Ok")
