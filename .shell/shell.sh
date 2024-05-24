@@ -9,7 +9,7 @@ alias z=zellij
 alias dotf='terraform apply -auto-approve'
 alias untf='terraform destroy -auto-approve'
 
-alias te='cd ~/dev/test_engine/'
+alias te='cd ~/dev/test-engine/'
 alias th='cd ~/dev/thing'
 alias hx=helix
 
