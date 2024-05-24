@@ -23,5 +23,5 @@ mods = "Control|Shift"
 #option_as_alt = "Both"
 
 [window.dimensions]
-columns = 168
-lines = 40
+columns = 140
+lines = 28
