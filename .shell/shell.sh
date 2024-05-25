@@ -3,9 +3,16 @@ echo Helloy
 
 PROMPT='v %1~ %# '
 
-export PATH=$PATH:~/dev/thing/.shell/shorts
-
 ln -sf ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
+
+mkdir -p ~/dev/thing/.shell/_shorts
+
+ln -sf ~/dev/thing/.shell/shorts/order.py ~/dev/thing/.shell/_shorts/order
+
+chmod +x ~/dev/thing/.shell/_shorts/order
+
+export PATH=$PATH:~/dev/thing/.shell/shorts
+export PATH=$PATH:~/dev/thing/.shell/_shorts
 
 alias z=zellij
 alias dotf='terraform apply -auto-approve'

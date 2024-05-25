@@ -1,3 +1,5 @@
+.DS_Store
+
 /target/
 Cargo.lock
 **/*.rs.bk
@@ -7,11 +9,10 @@ Cargo.lock
 .vagrant/
 rustup-init.exe
 thing/
-/_shorts/
 /neovim/
 /temp/
 /extern/
 generated/
 *.msi
 
-.DS_Store
+.shell/_shorts
