@@ -4,7 +4,6 @@ echo Helloy
 PROMPT='v %1~ %# '
 
 ln -sf ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
-ln -sf ~/dev/thing/.shell/zed ~/.config/
 
 mkdir -p ~/dev/thing/.shell/_shorts
 
@@ -34,3 +33,19 @@ alias hy='hx ~/dev/thing/.shell/hyprland.conf'
 alias install_mac=~/dev/thing/.shell/install_mac.sh
 alias install_lin=~/dev/thing/.shell/install_lin.sh
 
+
+target_link=~/.config/zed
+
+if [ ! -e "$target_link" ]; then
+    if [[ "$(uname)" == "Darwin" ]]; then
+        source_path=~/dev/thing/.shell/zed
+    elif [[ "$(uname)" == "Linux" ]]; then
+        source_path=~/dev/thing/.shell/zed_lin
+    else
+        echo "Unsupported operating system"
+        exit 1
+    fi
+
+    ln -sf $source_path $target_link
+    echo "Zed link: OK"
+fi

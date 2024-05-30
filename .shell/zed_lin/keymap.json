@@ -1,0 +1,24 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-[": "pane::GoBack",
+      "alt-]": "pane::GoForward"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-t": "workspace::NewTerminal",
+      "ctrl-shift-t": "theme_selector::Toggle",
+      "alt-r": "task::Spawn",
+      "alt-1": "project_symbols::Toggle",
+      "ctrl-p": [
+        "projects::OpenRecent",
+        {
+          "create_new_window": false
+        }
+      ]
+    }
+  }
+]
