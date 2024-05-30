@@ -4,6 +4,7 @@ echo Helloy
 PROMPT='v %1~ %# '
 
 ln -sf ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
+ln -sf ~/dev/thing/.shell/zed ~/.config/
 
 mkdir -p ~/dev/thing/.shell/_shorts
 

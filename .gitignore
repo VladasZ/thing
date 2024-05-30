@@ -16,3 +16,5 @@ generated/
 *.msi
 
 .shell/_shorts
+.tmp*
+embeddings_db*
