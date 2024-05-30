@@ -3,17 +3,20 @@
     "context": "Editor",
     "bindings": {
       "alt-[": "pane::GoBack",
-      "alt-]": "pane::GoForward"
+      "alt-]": "pane::GoForward",
+      "ctrl-t": "workspace::NewTerminal"
     }
   },
   {
     "context": "Workspace",
     "bindings": {
       "ctrl-t": "workspace::NewTerminal",
-      "ctrl-shift-t": "theme_selector::Toggle",
-      "alt-t": "task::Spawn",
+      "alt-e": "task::Spawn",
       "alt-r": "task::Rerun",
+      "alt-f": "file_finder::Toggle",
       "alt-1": "project_symbols::Toggle",
+      "alt-shift-t": "theme_selector::Toggle",
+      "alt-shift-p": "command_palette::Toggle",
       "ctrl-p": [
         "projects::OpenRecent",
         {
