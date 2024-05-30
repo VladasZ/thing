@@ -20,5 +20,11 @@
         }
       ]
     }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-1": "project_symbols::Toggle"
+    }
   }
 ]
