@@ -53,5 +53,5 @@ fi
 function clone {
     echo $0
     echo $1
-    cargo run --manifest-path ~/dev/thing/Cargo.toml -p clone -- $1
+    cargo run --manifest-path ~/dev/thing/Cargo.toml -p clone -- "$@"
 }
