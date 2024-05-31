@@ -49,3 +49,9 @@ if [ ! -e "$target_link" ]; then
     ln -sf $source_path $target_link
     echo "Zed link: OK"
 fi
+
+function clone {
+    echo $0
+    echo $1
+    cargo run --manifest-path ~/dev/thing/Cargo.toml -p clone -- $1
+}

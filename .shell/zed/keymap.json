@@ -34,11 +34,16 @@
         }
       ],
       "cmd-e": "task::Spawn",
-      "cmd-r": "task::Rerun",
+      "cmd-r": [
+        "task::Spawn",
+        {
+          "task_name": "Run"
+        }
+      ],
       "cmd-b": [
         "task::Spawn",
         {
-          "task_name": "Build All"
+          "task_name": "Build"
         }
       ],
       "cmd-1": "project_symbols::Toggle",

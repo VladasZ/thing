@@ -23,8 +23,8 @@
     "command": "make lint"
   },
   {
-    "label": "Build All",
-    "command": "cargo build --all"
+    "label": "Build",
+    "command": "cargo build"
   },
   {
     "label": "Run",

@@ -1,6 +1,13 @@
-[package]
-name = "thing"
-version = "0.1.0"
-edition = "2021"
+[workspace]
 
-[dependencies]
+default-members = ["crates/clone"]
+members = ["crates/clone"]
+
+resolver = "2"
+
+[workspace.metadata.cargo-machete]
+ignored = []
+
+[workspace.dependencies]
+anyhow = "1.0"
+structopt = "0.3"
