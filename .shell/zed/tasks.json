@@ -15,7 +15,31 @@
   //   "allow_concurrent_runs": false
   // }
   {
-    "label": "Helloyyy",
-    "command": "echo hello"
+    "label": "Order",
+    "command": "order"
+  },
+  {
+    "label": "Lint",
+    "command": "make lint"
+  },
+  {
+    "label": "Build All",
+    "command": "cargo build --all"
+  },
+  {
+    "label": "Run",
+    "command": "cargo run"
+  },
+  {
+    "label": "Run Release",
+    "command": "cargo run --release"
+  },
+  {
+    "label": "Lazygit",
+    "command": "lazygit"
+  },
+  {
+    "label": "Upload to TestFlight",
+    "command": "make fly"
   }
 ]

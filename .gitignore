@@ -17,4 +17,4 @@ generated/
 
 .shell/_shorts
 .tmp*
-embeddings_db*
+.shell/zed/embeddings/
