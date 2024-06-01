@@ -30,10 +30,6 @@ fn run(command: impl Into<String>) -> Result<()> {
         bail!("Empty command");
     }
 
-    //  let mut parts: Vec<_> = command.split(' ').collect();
-
-    //  let command = parts.remove(0);
-
     Command::new("bash")
         .arg("-c")
         .arg(command)
