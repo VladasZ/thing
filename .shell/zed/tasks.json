@@ -41,5 +41,13 @@
   {
     "label": "Upload to TestFlight",
     "command": "make fly"
+  },
+  {
+    "label": "Open iOS project",
+    "command": "ios"
+  },
+  {
+    "label": "Profile",
+    "command": "make profile"
   }
 ]

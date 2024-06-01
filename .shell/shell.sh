@@ -51,7 +51,9 @@ if [ ! -e "$target_link" ]; then
 fi
 
 function clone {
-    echo $0
-    echo $1
     cargo run --manifest-path ~/dev/thing/Cargo.toml -p clone -- "$@"
+}
+
+function push {
+    cargo run --manifest-path ~/dev/thing/Cargo.toml -p push -- "$@"
 }

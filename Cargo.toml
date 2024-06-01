@@ -1,7 +1,7 @@
 [workspace]
 
-default-members = ["crates/clone"]
-members = ["crates/clone"]
+default-members = ["crates/push"]
+members = ["crates/clone", "crates/push"]
 
 resolver = "2"
 

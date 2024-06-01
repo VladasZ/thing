@@ -1,0 +1,13 @@
+[package]
+name = "push"
+version = "0.1.0"
+authors = ["Vladas Zakrevksis <146100@gmail.com>"]
+edition = "2021"
+
+[[bin]]
+name = "push"
+path = "src/push.rs"
+
+[dependencies]
+anyhow = { workspace = true }
+structopt = { workspace = true }
