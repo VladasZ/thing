@@ -47,12 +47,7 @@
         }
       ],
       "cmd-1": "project_symbols::Toggle",
-      "cmd-p": [
-        "projects::OpenRecent",
-        {
-          "create_new_window": false
-        }
-      ]
+      "cmd-p": "projects::OpenRecent"
     }
   }
 ]
