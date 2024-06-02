@@ -18,8 +18,12 @@ fn main() -> Result<()> {
     let commit_message = args.commit_message.join(" ");
 
     run("git pull")?;
-    run("git add -A")?;
-    run(format!("git commit -m \"{}\"", commit_message))?;
+
+    if !commit_message.is_empty() {
+        run("git add -A")?;
+        run(format!("git commit -m \"{}\"", commit_message))?;
+    }
+
     run("git push")?;
 
     Ok(())
