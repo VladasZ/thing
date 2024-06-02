@@ -24,7 +24,11 @@
   },
   {
     "label": "Build",
-    "command": "cargo build"
+    "command": "RUSTFLAGS=\"-Awarnings\" cargo build --all --target-dir .build/build_no_warnings_target"
+  },
+  {
+    "label": "Build All",
+    "command": "cargo build --all"
   },
   {
     "label": "Run",
