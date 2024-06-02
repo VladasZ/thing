@@ -1,13 +1,18 @@
 [package]
 authors = ["Vladas Zakrevksis <146100@gmail.com>"]
 edition = "2021"
-name = "clone"
+name = "st"
 version = "0.1.0"
 
 [[bin]]
-name = "clone"
-path = "src/clone.rs"
+name = "st"
+path = "src/st.rs"
 
 [dependencies]
 anyhow = { workspace = true }
+dirs = { workspace = true }
+git2 = { workspace = true }
 structopt = { workspace = true }
+walkdir = { workspace = true }
+
+command = { workspace = true }

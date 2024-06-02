@@ -51,9 +51,13 @@ if [ ! -e "$target_link" ]; then
 fi
 
 function clone {
-    cargo run --manifest-path ~/dev/thing/Cargo.toml -p clone --target-dir ~/dev/thing/target -- "$@"
+    cargo +nightly run --manifest-path ~/dev/thing/Cargo.toml -p clone --release --target-dir ~/dev/thing/target -- "$@"
 }
 
 function push {
-    cargo run --manifest-path ~/dev/thing/Cargo.toml -p push --target-dir ~/dev/thing/target -- "$@"
+    cargo +nightly run --manifest-path ~/dev/thing/Cargo.toml -p push --release --target-dir ~/dev/thing/target -- "$@"
+}
+
+function st {
+    cargo +nightly run --manifest-path ~/dev/thing/Cargo.toml -p st --release --target-dir ~/dev/thing/target -- "$@"
 }

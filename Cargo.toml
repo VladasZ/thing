@@ -1,7 +1,7 @@
 [workspace]
 
-default-members = ["crates/push"]
-members = ["crates/clone", "crates/push"]
+default-members = ["crates/st"]
+members = ["crates/clone", "crates/push", "crates/st", "crates/command"]
 
 resolver = "2"
 
@@ -10,4 +10,9 @@ ignored = []
 
 [workspace.dependencies]
 anyhow = "1.0"
+dirs = "5.0"
+git2 = "0.18"
 structopt = "0.3"
+walkdir = "2.5"
+
+command = { path = "crates/command" }

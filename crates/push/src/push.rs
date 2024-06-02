@@ -1,11 +1,6 @@
-#![feature(exit_status_error)]
-
-use std::process::{Command, Stdio};
-
-use anyhow::{bail, Result};
+use anyhow::Result;
+use command::run;
 use structopt::StructOpt;
-
-const DRY_RUN: bool = false;
 
 #[derive(StructOpt, Debug)]
 struct Args {
@@ -25,31 +20,6 @@ fn main() -> Result<()> {
     }
 
     run("git push")?;
-
-    Ok(())
-}
-
-fn run(command: impl Into<String>) -> Result<()> {
-    let command: String = command.into();
-
-    println!("{command}");
-
-    if DRY_RUN {
-        return Ok(());
-    }
-
-    if command.is_empty() {
-        bail!("Empty command");
-    }
-
-    Command::new("bash")
-        .arg("-c")
-        .arg(command)
-        .stdout(Stdio::inherit())
-        .stderr(Stdio::inherit())
-        .output()?
-        .status
-        .exit_ok()?;
 
     Ok(())
 }
