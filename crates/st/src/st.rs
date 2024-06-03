@@ -32,6 +32,10 @@ fn check_all() -> Result<()> {
         .into_iter()
         .flatten()
     {
+        if dir.path().to_string_lossy().contains("target") {
+            continue;
+        }
+
         if is_git_repo(dir.path()) && repo_has_changes(dir.path()) {
             println!("{}", dir.path().display());
         }
