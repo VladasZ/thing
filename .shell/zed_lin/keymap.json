@@ -17,12 +17,7 @@
       "alt-1": "project_symbols::Toggle",
       "alt-shift-t": "theme_selector::Toggle",
       "alt-shift-p": "command_palette::Toggle",
-      "ctrl-p": [
-        "projects::OpenRecent",
-        {
-          "create_new_window": false
-        }
-      ]
+      "ctrl-p": "projects::OpenRecent"
     }
   },
   {

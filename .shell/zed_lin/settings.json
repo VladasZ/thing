@@ -16,5 +16,15 @@
   "ui_font_size": 18,
   "buffer_font_size": 16,
   "autosave": "on_focus_change",
-  "format_on_save": "on"
+  "format_on_save": "on",
+  "open_new_workspace_in_current_window": true,
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "rust": {
+          "analyzerTargetDir": ".build/analyzer"
+        }
+      }
+    }
+  }
 }
