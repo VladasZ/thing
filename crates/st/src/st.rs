@@ -28,6 +28,8 @@ fn main() -> Result<()> {
 fn check_all() -> Result<()> {
     let home = home_dir().ok_or(anyhow!("Can't get home dir"))?;
 
+    let mut any = false;
+
     for dir in WalkDir::new(format!("{}/dev", home.display()))
         .into_iter()
         .flatten()
@@ -38,7 +40,12 @@ fn check_all() -> Result<()> {
 
         if is_git_repo(dir.path()) && repo_has_changes(dir.path()) {
             println!("{}", dir.path().display());
+            any = true;
         }
+    }
+
+    if !any {
+        println!("No uncommited repositories");
     }
 
     Ok(())
