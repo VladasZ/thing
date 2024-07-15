@@ -45,7 +45,7 @@ fn check_all() -> Result<()> {
     }
 
     if !any {
-        println!("No uncommited repositories");
+        println!("No uncommitted repositories");
     }
 
     Ok(())
