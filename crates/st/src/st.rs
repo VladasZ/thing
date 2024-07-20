@@ -1,4 +1,4 @@
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 use anyhow::{anyhow, Result};
 use command::run;
@@ -10,7 +10,9 @@ use walkdir::WalkDir;
 #[derive(StructOpt, Debug)]
 struct Args {
     #[structopt(long)]
-    all: bool,
+    all:  bool,
+    #[structopt(long)]
+    pull: bool,
 }
 
 fn main() -> Result<()> {
@@ -18,6 +20,8 @@ fn main() -> Result<()> {
 
     if args.all {
         check_all()?;
+    } else if args.pull {
+        pull_all()?;
     } else {
         run("git status")?;
     }
@@ -25,21 +29,26 @@ fn main() -> Result<()> {
     Ok(())
 }
 
-fn check_all() -> Result<()> {
-    let home = home_dir().ok_or(anyhow!("Can't get home dir"))?;
+fn pull_all() -> Result<()> {
+    for dir in iter_repos()? {
+        if repo_has_changes(&dir) {
+            panic!(
+                "Repo: {} has changes. Commit all changes before pulling.",
+                dir.display()
+            );
+        }
+        run("git pull")?;
+    }
 
+    Ok(())
+}
+
+fn check_all() -> Result<()> {
     let mut any = false;
 
-    for dir in WalkDir::new(format!("{}/dev", home.display()))
-        .into_iter()
-        .flatten()
-    {
-        if dir.path().to_string_lossy().contains("target") {
-            continue;
-        }
-
-        if is_git_repo(dir.path()) && repo_has_changes(dir.path()) {
-            println!("{}", dir.path().display());
+    for dir in iter_repos()? {
+        if repo_has_changes(&dir) {
+            println!("{}", dir.display());
             any = true;
         }
     }
@@ -49,6 +58,18 @@ fn check_all() -> Result<()> {
     }
 
     Ok(())
+}
+
+fn iter_repos() -> Result<impl Iterator<Item = PathBuf>> {
+    let home = home_dir().ok_or(anyhow!("Can't get home dir"))?;
+
+    let iter = WalkDir::new(format!("{}/dev", home.display()))
+        .into_iter()
+        .flatten()
+        .filter(|a| !a.path().to_string_lossy().contains("target") && is_git_repo(a.path()))
+        .map(|a| a.path().to_owned());
+
+    Ok(iter)
 }
 
 fn is_git_repo(path: &Path) -> bool {
