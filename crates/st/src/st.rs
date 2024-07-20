@@ -37,6 +37,7 @@ fn pull_all() -> Result<()> {
                 dir.display()
             );
         }
+        println!("Pulling: {}", dir.display());
         run("git pull")?;
     }
 
