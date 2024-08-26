@@ -1,4 +1,7 @@
-use std::path::{Path, PathBuf};
+use std::{
+    env::set_current_dir,
+    path::{Path, PathBuf},
+};
 
 use anyhow::{anyhow, Result};
 use command::run;
@@ -38,6 +41,7 @@ fn pull_all() -> Result<()> {
             );
         }
         println!("Pulling: {}", dir.display());
+        set_current_dir(&dir)?;
         run("git pull")?;
     }
 
