@@ -1,5 +1,3 @@
-#![feature(exit_status_error)]
-
 use std::{
     process::{Command, Stdio},
     sync::atomic::{AtomicBool, Ordering},
@@ -33,14 +31,15 @@ pub fn run(command: impl Into<String>) -> Result<()> {
         bail!("Empty command");
     }
 
-    Command::new("bash")
+    let status = Command::new("bash")
         .arg("-c")
         .arg(command)
         .stdout(Stdio::inherit())
         .stderr(Stdio::inherit())
         .output()?
-        .status
-        .exit_ok()?;
+        .status;
+
+    assert!(status.success());
 
     Ok(())
 }
