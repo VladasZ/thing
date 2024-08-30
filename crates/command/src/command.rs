@@ -36,6 +36,7 @@ pub fn run(command: impl Into<String>) -> Result<()> {
         .arg(command)
         .stdout(Stdio::inherit())
         .stderr(Stdio::inherit())
+        .stdin(Stdio::inherit())
         .output()?
         .status;
 
