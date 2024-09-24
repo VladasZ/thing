@@ -13,6 +13,7 @@ chmod +x ~/dev/thing/.shell/_shorts/order
 
 export PATH=$PATH:~/dev/thing/.shell/shorts
 export PATH=$PATH:~/dev/thing/.shell/_shorts
+export PATH=$PATH:~/dev/deps/qw/target/debug
 
 alias z=zellij
 alias dotf='terraform apply -auto-approve'
