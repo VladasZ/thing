@@ -11,7 +11,7 @@ ignored = []
 [workspace.dependencies]
 anyhow = "1.0"
 dirs = "5.0"
-git2 = "0.18"
+git2 = "0.19"
 structopt = "0.3"
 walkdir = "2.5"
 
