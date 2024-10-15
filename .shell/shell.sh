@@ -1,4 +1,3 @@
-
 echo Helloy
 
 PROMPT='v %1~ %# '
@@ -34,7 +33,6 @@ alias hy='hx ~/dev/thing/.shell/hyprland.conf'
 alias install_mac=~/dev/thing/.shell/install_mac.sh
 alias install_lin=~/dev/thing/.shell/install_lin.sh
 
-
 target_link=~/.config/zed
 
 if [ ! -e "$target_link" ]; then
@@ -61,4 +59,10 @@ function push {
 
 function st {
     cargo run --manifest-path ~/dev/thing/Cargo.toml -p st --release --target-dir ~/dev/thing/target -- "$@"
+}
+
+function reset_db {
+    git checkout HEAD -- ./db/structure.sql
+    bin/rails db:reset RAILS_ENV=test
+    bin/rails db:migrate RAILS_ENV=test
 }
