@@ -9,9 +9,9 @@ def run(command):
     subprocess.run(command, shell=True, check=True)
 
 
-run("cargo install cargo-machete")
-run("cargo install typos-cli")
-run("cargo install taplo-cli")
+run("cargo install cargo-machete --locked")
+run("cargo install typos-cli --locked")
+run("cargo install taplo-cli --locked")
 
 run("taplo fmt")
 run("cargo +nightly fmt --all")
