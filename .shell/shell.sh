@@ -30,19 +30,31 @@ alias al='hx ~/dev/thing/.shell/shell.sh'
 alias hy='hx ~/dev/thing/.shell/hyprland.conf'
 
 function clone {
-    cargo run --manifest-path ~/dev/thing/Cargo.toml -p clone --release --target-dir ~/dev/thing/target -- "$@"
+    binary_path="$HOME/dev/thing/target/release/clone"
+
+    if [ -f "$binary_path" ]; then
+        "$binary_path" "$@"
+    else
+        cargo run --manifest-path "$HOME/dev/thing/Cargo.toml" -p clone --release --target-dir "$HOME/dev/thing/target" -- "$@"
+    fi
 }
 
 function push {
-    cargo run --manifest-path ~/dev/thing/Cargo.toml -p push --release --target-dir ~/dev/thing/target -- "$@"
+    binary_path="$HOME/dev/thing/target/release/push"
+
+    if [ -f "$binary_path" ]; then
+        "$binary_path" "$@"
+    else
+        cargo run --manifest-path "$HOME/dev/thing/Cargo.toml" -p push --release --target-dir "$HOME/dev/thing/target" -- "$@"
+    fi
 }
 
 function st {
-    cargo run --manifest-path ~/dev/thing/Cargo.toml -p st --release --target-dir ~/dev/thing/target -- "$@"
-}
+    binary_path="$HOME/dev/thing/target/release/st"
 
-function reset_db {
-    git checkout HEAD -- ./db/structure.sql
-    bin/rails db:reset RAILS_ENV=test
-    bin/rails db:migrate RAILS_ENV=test
+    if [ -f "$binary_path" ]; then
+        "$binary_path" "$@"
+    else
+        cargo run --manifest-path "$HOME/dev/thing/Cargo.toml" -p st --release --target-dir "$HOME/dev/thing/target" -- "$@"
+    fi
 }
