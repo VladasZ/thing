@@ -18,6 +18,8 @@ alias z=zellij
 alias dotf='terraform apply -auto-approve'
 alias untf='terraform destroy -auto-approve'
 
+alias pull='st --pull'
+
 alias te='cd ~/dev/test-engine/'
 alias th='cd ~/dev/thing'
 alias be='cd ~/dev/sweatcoin/sweatcoin-backend'
