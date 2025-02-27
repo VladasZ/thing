@@ -13,20 +13,16 @@ use walkdir::WalkDir;
 #[derive(StructOpt, Debug)]
 struct Args {
     #[structopt(long)]
-    all:  bool,
-    #[structopt(long)]
     pull: bool,
 }
 
 fn main() -> Result<()> {
     let args = Args::from_args();
 
-    if args.all {
-        check_all()?;
-    } else if args.pull {
+    if args.pull {
         pull_all()?;
     } else {
-        run("git status")?;
+        check_all()?;
     }
 
     Ok(())
