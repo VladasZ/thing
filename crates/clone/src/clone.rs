@@ -1,6 +1,6 @@
 use std::process::{Command, Stdio};
 
-use anyhow::{bail, Result};
+use anyhow::{Result, bail};
 use structopt::StructOpt;
 
 #[derive(StructOpt, Debug)]

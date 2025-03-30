@@ -3,7 +3,7 @@ use std::{
     sync::atomic::{AtomicBool, Ordering},
 };
 
-use anyhow::{bail, Result};
+use anyhow::{Result, bail};
 
 static DRY_RUN: AtomicBool = AtomicBool::new(false);
 static LOG_COMMAND: AtomicBool = AtomicBool::new(true);

@@ -5,6 +5,7 @@ echo Helloy
 del alias:gp -Force
 
 New-Alias which get-command
+New-Alias l lazygit
 
 function touch {
 
@@ -28,6 +29,10 @@ function mn {
 
 function te {
   cd ~/dev/test-engine
+}
+
+function th {
+  cd ~/dev/thing
 }
 
 function clone {
@@ -55,4 +60,8 @@ function st {
     )
 
     cargo run --manifest-path $HOME/dev/thing/Cargo.toml -p st --release --target-dir $HOME/dev/thing/target -- $args
+}
+
+function order {
+  py $HOME/dev/thing/.shell/shorts/order.py
 }
