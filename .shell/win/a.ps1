@@ -65,3 +65,12 @@ function st {
 function order {
   py $HOME/dev/thing/.shell/shorts/order.py
 }
+
+function publish {
+    param (
+        [Parameter(ValueFromRemainingArguments=$true)]
+        $args
+    )
+    
+    cargo publish -p $args --allow-dirty
+}
