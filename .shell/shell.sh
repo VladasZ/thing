@@ -1,4 +1,6 @@
-echo Helloy
+if [[ $- == *i* ]]; then
+  echo Helloy
+fi
 
 PROMPT='v %1~ %# '
 
