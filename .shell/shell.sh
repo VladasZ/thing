@@ -1,5 +1,5 @@
 if [[ $- == *i* ]]; then
-  echo Helloy
+    echo Helloy
 fi
 
 PROMPT='v %1~ %# '
@@ -32,9 +32,7 @@ alias d='sudo docker'
 
 alias tf=terraform
 alias l=lazygit
-
-alias al='hx ~/dev/thing/.shell/shell.sh'
-alias hy='hx ~/dev/thing/.shell/hyprland.conf'
+apias ansible-playbook=pb
 
 function clone {
     binary_path="$HOME/dev/thing/target/release/clone"
