@@ -7,19 +7,19 @@ if [ -f /swapfile ]; then
 fi
 
 # Allocate space for the swap file
-sudo fallocate -l 4G /swapfile
+fallocate -l 4G /swapfile
 
 # Set appropriate permissions
-sudo chmod 600 /swapfile
+chmod 600 /swapfile
 
 # Set up the swap area
-sudo mkswap /swapfile
+mkswap /swapfile
 
 # Enable the swap
-sudo swapon /swapfile
+swapon /swapfile
 
 # Make the swap permanent
-echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
 
 # Display the new swap status
-sudo swapon --show
+swapon --show
