@@ -32,6 +32,7 @@ alias d='sudo docker'
 
 alias tf=terraform
 alias l=lazygit
+alias k=kubectl
 alias pb=ansible-playbook
 
 function clone {
