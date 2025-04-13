@@ -33,7 +33,8 @@ alias d='sudo docker'
 alias tf=terraform
 alias l=lazygit
 alias k=kubectl
-alias pb=ansible-playbook
+alias a=ansible
+alias p=ansible-playbook
 
 function clone {
     binary_path="$HOME/dev/thing/target/release/clone"
