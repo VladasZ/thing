@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+
+import subprocess
+import time
+import sys
+
+
+def run_shell_command(command):
+    start_time = time.time()
+
+    # Run the command in an interactive login Bash shell
+    bash_command = f"bash -l -c \"{command}\""
+
+    process = subprocess.Popen(bash_command, shell=True)
+
+    try:
+        process.communicate()
+    except KeyboardInterrupt:
+        process.terminate()
+        print("\nCommand interrupted.")
+
+    end_time = time.time()
+
+    print(f"\nExit code: {process.returncode}")
+    print(f"Execution time: {end_time - start_time:.4f} seconds")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: python3 run_command.py '<your shell command>'")
+        sys.exit(1)
+
+    command = " ".join(sys.argv[1:])
+    run_shell_command(command)
