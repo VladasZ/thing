@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+
+import os
+
+
+def rename_avi_files(folder_path):
+    # Get all .avi files sorted alphabetically
+    files = sorted([f for f in os.listdir(folder_path) if f.endswith('.avi')])
+
+    for i, filename in enumerate(files, start=1):
+        # Create the new filename
+        name_part = filename.split('. ', 1)[-1]  # Remove existing number prefix if there
+        new_name = f"{i:02d}. {name_part}"
+
+        # Full paths
+        src = os.path.join(folder_path, filename)
+        dst = os.path.join(folder_path, new_name)
+
+        # Rename the file
+        os.rename(src, dst)
+        print(f'Renamed: {filename} -> {new_name}')
+
+
+# Example usage:
+rename_avi_files('/Volumes/hdd/Shows/A/Season 4')
