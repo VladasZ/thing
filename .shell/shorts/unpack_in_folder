@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+import os
+import zipfile
+
+
+def unzip_all_in_dir(directory):
+    for file in os.listdir(directory):
+        if file.endswith(".zip"):
+            zip_path = os.path.join(directory, file)
+            folder_name = os.path.splitext(file)[0]
+            extract_path = os.path.join(directory, folder_name)
+
+            print(f"Extracting {file} to {folder_name}/")
+            os.makedirs(extract_path, exist_ok=True)
+            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                zip_ref.extractall(extract_path)
+
+
+if __name__ == "__main__":
+    unzip_all_in_dir(".")  # Change '.' to your full path if running outside that folder

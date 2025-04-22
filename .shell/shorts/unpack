@@ -1,21 +1,33 @@
 #!/usr/bin/env python3
 
 import os
-import zipfile
+import subprocess
+import sys
 
 
-def unzip_all_in_dir(directory):
-    for file in os.listdir(directory):
-        if file.endswith(".zip"):
-            zip_path = os.path.join(directory, file)
-            folder_name = os.path.splitext(file)[0]
-            extract_path = os.path.join(directory, folder_name)
+def extract_zpaq(archive_path):
+    if not os.path.isfile(archive_path):
+        print("Provided path is not a valid .zpaq archive.")
+        return
 
-            print(f"Extracting {file} to {folder_name}/")
-            os.makedirs(extract_path, exist_ok=True)
-            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-                zip_ref.extractall(extract_path)
+    if not archive_path.endswith(".zpaq"):
+        print("File does not have a .zpaq extension.")
+        return
+
+    folder_name = os.path.splitext(os.path.basename(archive_path))[0]
+    os.makedirs(folder_name, exist_ok=True)
+
+    command = ["zpaq", "extract", archive_path, "-to", folder_name]
+
+    try:
+        subprocess.run(command, check=True)
+        print(f"Successfully extracted archive to: {folder_name}")
+    except subprocess.CalledProcessError as e:
+        print(f"Extraction failed: {e}")
 
 
 if __name__ == "__main__":
-    unzip_all_in_dir(".")  # Change '.' to your full path if running outside that folder
+    if len(sys.argv) != 2:
+        print("Usage: python3 unpack_zpaq.py <archive_path>")
+    else:
+        extract_zpaq(sys.argv[1])
