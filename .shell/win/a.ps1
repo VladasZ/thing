@@ -62,6 +62,22 @@ function st {
     cargo run --manifest-path $HOME/dev/thing/Cargo.toml -p st --release --target-dir $HOME/dev/thing/target -- $args
 }
 
+function pull {
+    $basePath = "$HOME\dev"
+    # Get all subdirectories that contain a .git folder (indicating a git repo)
+    $gitRepos = Get-ChildItem -Path $basePath -Directory | Where-Object {
+        Test-Path (Join-Path $_.FullName ".git")
+    }
+
+    foreach ($repo in $gitRepos) {
+        Write-Host "Pulling: $($repo.FullName)"
+        Push-Location $repo.FullName
+        git pull
+        Pop-Location
+    }
+}
+
+
 function order {
   py $HOME/dev/thing/.shell/shorts/order.py
 }
