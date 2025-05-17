@@ -65,3 +65,7 @@ function st {
         cargo run --manifest-path "$HOME/dev/thing/Cargo.toml" -p st --release --target-dir "$HOME/dev/thing/target" -- "$@"
     fi
 }
+
+function pull {
+    st --pull
+}
