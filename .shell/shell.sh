@@ -11,6 +11,8 @@ ln -sf ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
 mkdir -p ~/dev/thing/.shell/_shorts
 
 ln -sf ~/dev/thing/.shell/shorts/order.py ~/dev/thing/.shell/_shorts/order
+ln -sf ~/dev/thing/.shell/shorts/publish.py ~/dev/thing/.shell/_shorts/publish
+ln -sf ~/dev/thing/.shell/shorts/slink.py ~/dev/thing/.shell/_shorts/slink
 
 chmod +x ~/dev/thing/.shell/_shorts/order
 
