@@ -64,8 +64,8 @@ function st {
 
 function pull {
     $basePath = "$HOME\dev"
-    # Get all subdirectories that contain a .git folder (indicating a git repo)
-    $gitRepos = Get-ChildItem -Path $basePath -Directory | Where-Object {
+    # Recursively find all directories containing a .git folder
+    $gitRepos = Get-ChildItem -Path $basePath -Directory -Recurse | Where-Object {
         Test-Path (Join-Path $_.FullName ".git")
     }
 
@@ -76,7 +76,6 @@ function pull {
         Pop-Location
     }
 }
-
 
 function order {
   py $HOME/dev/thing/.shell/shorts/order.py
