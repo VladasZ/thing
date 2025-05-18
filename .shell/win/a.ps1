@@ -81,6 +81,10 @@ function order {
   py $HOME/dev/thing/.shell/shorts/order.py
 }
 
+function k {
+    kubectl $args
+}
+
 function publish {
     param (
         [Parameter(ValueFromRemainingArguments=$true)]
