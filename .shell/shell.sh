@@ -38,6 +38,7 @@ alias l=lazygit
 alias k=kubectl
 alias a=ansible
 alias p=ansible-playbook
+alias m=micro
 
 function clone {
     binary_path="$HOME/dev/thing/target/release/clone"
