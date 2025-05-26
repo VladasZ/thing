@@ -71,5 +71,6 @@ function st {
 }
 
 function pull {
+    st
     st --pull
 }
