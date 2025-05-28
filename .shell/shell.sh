@@ -72,3 +72,14 @@ function pull {
     st
     st --pull
 }
+
+function close {
+    pkill -x Gitnuro
+    pkill -x Obsidian
+    osascript -e 'quit app "Firefox"'
+    osascript -e 'quit app "Telegram"'
+    osascript -e 'quit app "RustRover"'
+    osascript -e 'quit app "Slack"'
+    osascript -e 'quit app "Finder"'
+    osascript -e 'quit app "Alacritty"'
+}
