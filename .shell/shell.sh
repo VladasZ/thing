@@ -80,10 +80,10 @@ function close {
     osascript -e 'quit app "Telegram"'
     osascript -e 'quit app "RustRover"'
     osascript -e 'quit app "Slack"'
-    osascript -e 'quit app "Alacritty"'
     osascript -e 'quit app "Discord"'
     osascript -e 'quit app "Finder"'
     osascript -e 'quit app "System Settings"'
+    osascript -e 'quit app "Alacritty"'
 }
 
 function allow() {
