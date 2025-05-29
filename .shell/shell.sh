@@ -80,6 +80,25 @@ function close {
     osascript -e 'quit app "Telegram"'
     osascript -e 'quit app "RustRover"'
     osascript -e 'quit app "Slack"'
-    osascript -e 'quit app "Finder"'
     osascript -e 'quit app "Alacritty"'
+    osascript -e 'quit app "Discord"'
+    osascript -e 'quit app "Finder"'
+    osascript -e 'quit app "System Settings"'
+}
+
+function allow() {
+  local target_path="$1"
+
+  if [[ -z "$target_path" ]]; then
+    echo "Usage: unquarantine_app /full/path/to/target"
+    return 1
+  fi
+
+  if [[ ! -e "$target_path" ]]; then
+    echo "Error: $target_path does not exist."
+    return 1
+  fi
+
+  sudo xattr -rd com.apple.quarantine "$target_path"
+  echo "Unquarantined: $target_path"
 }
