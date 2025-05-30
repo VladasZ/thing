@@ -76,6 +76,7 @@ function pull {
 function close {
     pkill -x Gitnuro
     pkill -x Obsidian
+    pkill -x RubyMine
     osascript -e 'quit app "Firefox"'
     osascript -e 'quit app "Telegram"'
     osascript -e 'quit app "RustRover"'
