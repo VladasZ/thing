@@ -108,6 +108,11 @@ function allow() {
 function hello() {
     rustup update
 
+    if [[ "$(uname)" == "Darwin" ]]; then
+        brew update
+        brew upgrade
+    fi
+
     if command -v apt >/dev/null 2>&1; then
         sudo apt update
         sudo apt upgrade
@@ -117,9 +122,9 @@ function hello() {
 }
 
 function bye {
-    st
+    st || return 1
 
     if [[ "$(uname)" == "Darwin" ]]; then
-      close
+        close
     fi
 }

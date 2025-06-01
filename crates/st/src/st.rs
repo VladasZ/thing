@@ -1,6 +1,7 @@
 use std::{
     env::set_current_dir,
     path::{Path, PathBuf},
+    process::exit,
 };
 
 use anyhow::{Result, anyhow};
@@ -55,7 +56,10 @@ fn check_all() -> Result<()> {
         }
     }
 
-    if !any {
+    if any {
+        println!("Uncommitted changes");
+        exit(1);
+    } else {
         println!("No uncommitted repositories");
     }
 
