@@ -104,3 +104,22 @@ function allow() {
   sudo xattr -rd com.apple.quarantine "$target_path"
   echo "Unquarantined: $target_path"
 }
+
+function hello() {
+    rustup update
+
+    if command -v apt >/dev/null 2>&1; then
+        sudo apt update
+        sudo apt upgrade
+    fi
+
+    pull
+}
+
+function bye {
+    st
+
+    if [[ "$(uname)" == "Darwin" ]]; then
+      close
+    fi
+}
