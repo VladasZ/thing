@@ -83,6 +83,7 @@ function close {
     osascript -e 'quit app "Slack"'
     osascript -e 'quit app "Discord"'
     osascript -e 'quit app "Finder"'
+    osascript -e 'quit app "Xcode"'
     osascript -e 'quit app "System Settings"'
     osascript -e 'quit app "JetBrains Toolbox"'
     osascript -e 'quit app "Alacritty"'
