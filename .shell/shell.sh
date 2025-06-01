@@ -106,7 +106,7 @@ function allow() {
   echo "Unquarantined: $target_path"
 }
 
-function hello() {
+function hi() {
     rustup update
 
     if [[ "$(uname)" == "Darwin" ]]; then
@@ -122,7 +122,7 @@ function hello() {
     pull
 }
 
-function bye {
+function bb {
     st || return 1
 
     if [[ "$(uname)" == "Darwin" ]]; then
