@@ -97,12 +97,22 @@ fn repo_has_changes(path: &Path) -> bool {
                     return false;
                 }
 
-                entry.status().is_wt_new()
+                let changed = entry.status().is_wt_new()
                     || entry.status().is_wt_modified()
                     || entry.status().is_wt_deleted()
                     || entry.status().is_index_new()
                     || entry.status().is_index_modified()
-                    || entry.status().is_index_deleted()
+                    || entry.status().is_index_deleted();
+
+                if changed {
+                    println!(
+                        "{} - {:?}",
+                        entry.path().unwrap().to_string(),
+                        entry.status()
+                    );
+                }
+
+                changed
             });
         }
     }
