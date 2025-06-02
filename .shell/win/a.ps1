@@ -109,3 +109,12 @@ function publish {
     
     cargo publish -p $args --allow-dirty
 }
+
+function hi {
+    rustup update
+    pull
+}
+
+function bb {
+    st
+}
