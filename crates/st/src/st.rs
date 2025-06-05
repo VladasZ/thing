@@ -39,6 +39,7 @@ fn pull_all() -> Result<()> {
         }
         println!("\nPulling: {}", dir.display());
         set_current_dir(&dir)?;
+        run("git fetch --prune")?;
         run("git pull --recurse-submodules")?;
         run("git submodule update --init --recursive")?;
     }
