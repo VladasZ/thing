@@ -82,6 +82,7 @@ function close {
     osascript -e 'quit app "RustRover"'
     osascript -e 'quit app "RubyMine"'
     osascript -e 'quit app "Slack"'
+    osascript -e 'quit app "Steam"'
     osascript -e 'quit app "Discord"'
     osascript -e 'quit app "Messenger"'
     osascript -e 'quit app "Calendar"'
