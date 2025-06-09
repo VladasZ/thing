@@ -102,6 +102,8 @@ services.xserver.xkb = {
     openssl.dev # nix-shell -p pkg-config openssl
     zlib
     libiconv
+    python3
+    python3Packages.pip
 
     rustup
     alacritty
