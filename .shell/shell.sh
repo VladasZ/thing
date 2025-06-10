@@ -4,6 +4,13 @@ fi
 
 PROMPT='v %1~ %# '
 
+[ -e /etc/NIXOS ] && [ "$(readlink -f /etc/nixos/configuration.nix)" != "$HOME/dev/thing/.shell/configuration.nix" ] && \
+  sudo ln -sf "$HOME/dev/thing/.shell/configuration.nix" /etc/nixos/configuration.nix
+
+function re {
+    sudo nixos-rebuild switch
+}
+
 export VAGRANT_DEFAULT_PROVIDER=utm
 
 ln -sf ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
