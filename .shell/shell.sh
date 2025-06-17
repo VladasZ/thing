@@ -32,6 +32,8 @@ alias z=zellij
 alias dotf='terraform apply -auto-approve'
 alias untf='terraform destroy -auto-approve'
 
+alias migr=' bin/rails db:migrate RAILS_ENV=test'
+
 alias te='cd ~/dev/test-engine/'
 alias th='cd ~/dev/thing'
 alias be='cd ~/dev/sweatcoin/sweatcoin-backend'
