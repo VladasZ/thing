@@ -125,6 +125,9 @@ function allow() {
 }
 
 function hi() {
+    cargo install cargo-update
+    cargo install-update -a
+
     rustup update
 
     if [[ "$(uname)" == "Darwin" ]]; then
