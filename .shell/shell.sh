@@ -150,3 +150,11 @@ function bb {
         close
     fi
 }
+
+function reset {
+    make d
+    bin/rails db:reset RAILS_ENV=test
+    bin/rails db:migrate RAILS_ENV=test
+    bin/rails db:reset
+    bin/rails db:migrate
+}
