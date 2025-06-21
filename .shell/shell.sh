@@ -87,6 +87,7 @@ function close {
     pkill -x Obsidian
     pkill -x RubyMine
     osascript -e 'quit app "Firefox"'
+    osascript -e 'quit app "Gitkraken"'
     osascript -e 'quit app "Telegram"'
     osascript -e 'quit app "RustRover"'
     osascript -e 'quit app "RubyMine"'
