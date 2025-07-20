@@ -7,6 +7,10 @@ del alias:gp -Force
 New-Alias which get-command
 New-Alias l lazygit
 
+# scoop bucket add extras
+# scoop install protobuf
+# scoop install python
+
 function touch {
 
   $file = $args[0]
