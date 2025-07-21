@@ -115,6 +115,7 @@ function publish {
 }
 
 function hi {
+    scoop update *
     rustup update
     pull
 }
