@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+import sys
+import subprocess
+import os
+
+if len(sys.argv) != 3:
+    print("Usage: python3 decrypt_zpaq.py <archive_path> <password>")
+    sys.exit(1)
+
+archive = sys.argv[1]
+key = sys.argv[2]
+
+if not os.path.exists(archive):
+    print(f"Error: Archive '{archive}' does not exist.")
+    sys.exit(1)
+
+try:
+    subprocess.run(["zpaq", "x", archive, "-key", key], check=True)
+    print(f"Archive decrypted: {archive}")
+except subprocess.CalledProcessError:
+    print("Error: Failed to decrypt archive.")
+    sys.exit(1)
