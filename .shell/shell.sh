@@ -89,8 +89,6 @@ function close {
     osascript -e 'quit app "Firefox"'
     osascript -e 'quit app "Gitkraken"'
     osascript -e 'quit app "Telegram"'
-    osascript -e 'quit app "RustRover"'
-    osascript -e 'quit app "RubyMine"'
     osascript -e 'quit app "Slack"'
     osascript -e 'quit app "Steam"'
     osascript -e 'quit app "Discord"'
@@ -102,6 +100,10 @@ function close {
     osascript -e 'quit app "System Settings"'
     osascript -e 'quit app "JetBrains Toolbox"'
     osascript -e 'quit app "zoom.us"'
+
+    osascript -e 'quit app "RustRover"'
+    osascript -e 'quit app "RubyMine"'
+    osascript -e 'quit app "WebStorm"'
 
     sleep 2
 
