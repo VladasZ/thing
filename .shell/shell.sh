@@ -89,8 +89,11 @@ function close {
     osascript -e 'quit app "Lens"'
     osascript -e 'quit app "Finder"'
     osascript -e 'quit app "Xcode"'
+    osascript -e 'quit app "Transmission"'
+    osascript -e 'quit app "Deezer"'
     osascript -e 'quit app "System Settings"'
     osascript -e 'quit app "JetBrains Toolbox"'
+    osascript -e 'quit app "Visual Studio Code"'
     osascript -e 'quit app "zoom.us"'
 
     osascript -e 'quit app "RustRover"'
