@@ -9,11 +9,11 @@ static DRY_RUN: AtomicBool = AtomicBool::new(false);
 static LOG_COMMAND: AtomicBool = AtomicBool::new(true);
 
 pub fn dry_run(dry: bool) {
-    DRY_RUN.store(dry, Ordering::Relaxed)
+    DRY_RUN.store(dry, Ordering::Relaxed);
 }
 
 pub fn log_command(log: bool) {
-    LOG_COMMAND.store(log, Ordering::Relaxed)
+    LOG_COMMAND.store(log, Ordering::Relaxed);
 }
 
 pub fn run(command: impl Into<String>) -> Result<()> {

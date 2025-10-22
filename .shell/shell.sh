@@ -1,15 +1,10 @@
+# to .zshrc
+
 if [[ $- == *i* ]]; then
     echo Helloy
 fi
 
 PROMPT='v %1~ %# '
-
-[ -e /etc/NIXOS ] && [ "$(readlink -f /etc/nixos/configuration.nix)" != "$HOME/dev/thing/.shell/configuration.nix" ] && \
-  sudo ln -sf "$HOME/dev/thing/.shell/configuration.nix" /etc/nixos/configuration.nix
-
-function re {
-    sudo nixos-rebuild switch
-}
 
 export VAGRANT_DEFAULT_PROVIDER=utm
 
@@ -29,14 +24,12 @@ export PATH=$PATH:~/dev/thing/.shell/_shorts
 export PATH=$PATH:~/dev/deps/qw/target/debug
 
 alias z=zellij
+
 alias dotf='terraform apply -auto-approve'
 alias untf='terraform destroy -auto-approve'
 
-alias migr=' bin/rails db:migrate RAILS_ENV=test'
-
 alias te='cd ~/dev/test-engine/'
 alias th='cd ~/dev/thing'
-alias be='cd ~/dev/sweatcoin/sweatcoin-backend'
 
 alias d='sudo docker'
 
@@ -45,7 +38,6 @@ alias l=lazygit
 alias k=kubectl
 alias a=ansible
 alias p=ansible-playbook
-alias m=micro
 
 function clone {
     binary_path="$HOME/dev/thing/target/release/clone"
@@ -152,12 +144,4 @@ function bb {
     if [[ "$(uname)" == "Darwin" ]]; then
         close
     fi
-}
-
-function reset {
-    make d
-    bin/rails db:reset RAILS_ENV=test
-    bin/rails db:migrate RAILS_ENV=test
-    bin/rails db:reset
-    bin/rails db:migrate
 }

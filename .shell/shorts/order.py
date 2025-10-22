@@ -38,11 +38,17 @@ run("taplo fmt")
 run("cargo +nightly fmt --all")
 run("typos")
 run("cargo machete")
-run("make lint")
+
+if has_make_target("lint"):
+    run("make lint")
+
 run("cargo build --all")
-run("make test")
+
+if has_make_target("test"):
+    run("make test")
 
 if has_make_target("cleanup"):
     run("make cleanup")
+
 
 print("order: Ok")

@@ -89,30 +89,16 @@ fn repo_has_changes(path: &Path) -> bool {
 
         if let Ok(statuses) = repo.statuses(Some(&mut status_opts)) {
             return statuses.iter().any(|entry| {
-                if entry
-                    .path()
-                    .map(|path| path.contains(".mmdb"))
-                    .unwrap_or_default()
-                {
+                if entry.path().is_some_and(|path| path.contains(".mmdb")) {
                     return false;
                 }
 
-                let changed = entry.status().is_wt_new()
+                entry.status().is_wt_new()
                     || entry.status().is_wt_modified()
                     || entry.status().is_wt_deleted()
                     || entry.status().is_index_new()
                     || entry.status().is_index_modified()
-                    || entry.status().is_index_deleted();
-
-                // if changed {
-                //     println!(
-                //         "{} - {:?}",
-                //         entry.path().unwrap().to_string(),
-                //         entry.status()
-                //     );
-                // }
-
-                changed
+                    || entry.status().is_index_deleted()
             });
         }
     }
