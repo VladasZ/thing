@@ -1,3 +1,5 @@
+# $nu.config-path
+
 use std/util "path add"
 
 path add ~/.cargo/bin
@@ -10,26 +12,37 @@ $env.config.show_banner = false
 
 $env.VAGRANT_DEFAULT_PROVIDER = "utm"
 
-ln -sf ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
-ln -sf ~/dev/thing/.shell/starship.toml ~/.config/starship.toml
+let is_windows = ($nu.os-info.name == 'windows')
 
-mkdir ~/dev/thing/.shell/_shorts
+def symlink [target link] {
+    if $is_windows {
+        ^cmd /c mklink $link $target | ignore
+    } else {
+        ^ln -sf $target $link
+    }
+}
 
-ln -sf ~/dev/thing/.shell/shorts/order.py ~/dev/thing/.shell/_shorts/order
-ln -sf ~/dev/thing/.shell/shorts/publish.py ~/dev/thing/.shell/_shorts/publish
-ln -sf ~/dev/thing/.shell/shorts/slink.py ~/dev/thing/.shell/_shorts/slink
-ln -sf ~/dev/thing/.shell/shorts/tag.py ~/dev/thing/.shell/_shorts/tag
+if not $is_windows {
 
-chmod +x ~/dev/thing/.shell/_shorts/order
+    symlink ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
+    symlink ~/dev/thing/.shell/starship.toml ~/.config/starship.toml
 
-# PATH setup
+    mkdir ~/dev/thing/.shell/_shorts
+
+    symlink ~/dev/thing/.shell/shorts/order.py   ~/dev/thing/.shell/_shorts/order
+    symlink ~/dev/thing/.shell/shorts/publish.py ~/dev/thing/.shell/_shorts/publish
+    symlink ~/dev/thing/.shell/shorts/slink.py   ~/dev/thing/.shell/_shorts/slink
+    symlink ~/dev/thing/.shell/shorts/tag.py     ~/dev/thing/.shell/_shorts/tag
+
+    chmod +x ~/dev/thing/.shell/_shorts/order
+}
+
 $env.PATH = ($env.PATH | append [
     "~/dev/thing/.shell/shorts"
     "~/dev/thing/.shell/_shorts"
     "~/dev/deps/qw/target/debug"
 ])
 
-# Aliases
 alias z = zellij
 alias dotf = terraform apply -auto-approve
 alias untf = terraform destroy -auto-approve
@@ -44,29 +57,29 @@ alias p = ansible-playbook
 alias c = clear
 
 def clone [...args] {
-    let binary_path = $"($env.HOME)/dev/thing/target/release/clone"
+    let binary_path = $"($nu.home-path)/dev/thing/target/release/clone"
     if ($binary_path | path exists) {
         ^$binary_path ...$args
     } else {
-        cargo run --manifest-path $"($env.HOME)/dev/thing/Cargo.toml" -p clone --release --target-dir $"($env.HOME)/dev/thing/target" -- ...$args
+        cargo run --manifest-path $"($nu.home-path)/dev/thing/Cargo.toml" -p clone --release --target-dir $"($nu.home-path)/dev/thing/target" -- ...$args
     }
 }
 
 def push [...args] {
-    let binary_path = $"($env.HOME)/dev/thing/target/release/push"
+    let binary_path = $"($nu.home-path)/dev/thing/target/release/push"
     if ($binary_path | path exists) {
         ^$binary_path ...$args
     } else {
-        cargo run --manifest-path $"($env.HOME)/dev/thing/Cargo.toml" -p push --release --target-dir $"($env.HOME)/dev/thing/target" -- ...$args
+        cargo run --manifest-path $"($nu.home-path)/dev/thing/Cargo.toml" -p push --release --target-dir $"($nu.home-path)/dev/thing/target" -- ...$args
     }
 }
 
 def st [...args] {
-    let binary_path = $"($env.HOME)/dev/thing/target/release/st"
+    let binary_path = $"($nu.home-path)/dev/thing/target/release/st"
     if ($binary_path | path exists) {
         ^$binary_path ...$args
     } else {
-        cargo run --manifest-path $"($env.HOME)/dev/thing/Cargo.toml" -p st --release --target-dir $"($env.HOME)/dev/thing/target" -- ...$args
+        cargo run --manifest-path $"($nu.home-path)/dev/thing/Cargo.toml" -p st --release --target-dir $"($nu.home-path)/dev/thing/target" -- ...$args
     }
 }
 
