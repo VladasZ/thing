@@ -77,9 +77,9 @@ def pull [] {
 
 # Close function
 def close [] {
-    pkill -x Gitnuro
-    pkill -x Obsidian
-    pkill -x RubyMine
+    pkill -x Gitnuro | ignore
+    pkill -x Obsidian | ignore
+    pkill -x RubyMine | ignore
     
     let apps = [
         "Firefox"
@@ -105,11 +105,11 @@ def close [] {
     ]
     
     for app in $apps {
-        osascript -e $'quit app "($app)"'
+        osascript -e $'quit app "($app)"' | ignore
     }
     
     sleep 2sec
-    osascript -e 'quit app "Alacritty"'
+    osascript -e 'quit app "Alacritty"' | ignore
 }
 
 def allow [target_path: string] {
