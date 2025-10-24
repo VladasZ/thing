@@ -1,6 +1,7 @@
 use std/util "path add"
 
 path add ~/.cargo/bin
+path add /opt/homebrew/bin
 
 $env.VAGRANT_DEFAULT_PROVIDER = "utm"
 
