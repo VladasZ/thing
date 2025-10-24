@@ -1,0 +1,16 @@
+[rust]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[python]
+disabled = true
+
+[package]
+disabled = true
+
+[cmd_duration]
+min_time = 1000
+show_milliseconds = true
+format = "⏱️ [$duration]($style) "

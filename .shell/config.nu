@@ -3,10 +3,15 @@ use std/util "path add"
 path add ~/.cargo/bin
 path add /opt/homebrew/bin
 
+mkdir ($nu.data-dir | path join "vendor/autoload")
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+
+$env.config.show_banner = false
+
 $env.VAGRANT_DEFAULT_PROVIDER = "utm"
 
-# Symlink setup
 ln -sf ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
+ln -sf ~/dev/thing/.shell/starship.toml ~/.config/starship.toml
 
 mkdir ~/dev/thing/.shell/_shorts
 
