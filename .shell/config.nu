@@ -41,6 +41,7 @@ alias l = lazygit
 alias k = kubectl
 alias a = ansible
 alias p = ansible-playbook
+alias c = clear
 
 def clone [...args] {
     let binary_path = $"($env.HOME)/dev/thing/target/release/clone"
