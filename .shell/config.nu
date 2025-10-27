@@ -22,20 +22,20 @@ def symlink [target link] {
     }
 }
 
-if not $is_windows {
+# if not $is_windows {
 
-    symlink ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
-    symlink ~/dev/thing/.shell/starship.toml ~/.config/starship.toml
+#     symlink ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
+#     symlink ~/dev/thing/.shell/starship.toml ~/.config/starship.toml
 
-    mkdir ~/dev/thing/.shell/_shorts
+#     mkdir ~/dev/thing/.shell/_shorts
 
-    symlink ~/dev/thing/.shell/shorts/order.py   ~/dev/thing/.shell/_shorts/order
-    symlink ~/dev/thing/.shell/shorts/publish.py ~/dev/thing/.shell/_shorts/publish
-    symlink ~/dev/thing/.shell/shorts/slink.py   ~/dev/thing/.shell/_shorts/slink
-    symlink ~/dev/thing/.shell/shorts/tag.py     ~/dev/thing/.shell/_shorts/tag
+#     symlink ~/dev/thing/.shell/shorts/order.py   ~/dev/thing/.shell/_shorts/order
+#     symlink ~/dev/thing/.shell/shorts/publish.py ~/dev/thing/.shell/_shorts/publish
+#     symlink ~/dev/thing/.shell/shorts/slink.py   ~/dev/thing/.shell/_shorts/slink
+#     symlink ~/dev/thing/.shell/shorts/tag.py     ~/dev/thing/.shell/_shorts/tag
 
-    chmod +x ~/dev/thing/.shell/_shorts/order
-}
+#     chmod +x ~/dev/thing/.shell/_shorts/order
+# }
 
 $env.PATH = ($env.PATH | append [
     "~/dev/thing/.shell/shorts"
