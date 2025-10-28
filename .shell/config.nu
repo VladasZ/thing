@@ -55,6 +55,7 @@ alias k = kubectl
 alias a = ansible
 alias p = ansible-playbook
 alias c = clear
+alias h = cd ~/
 
 def clone [...args] {
     let binary_path = $"($nu.home-path)/dev/thing/target/release/clone"
@@ -162,4 +163,15 @@ def bb [] {
     if (sys host | get name) == "Darwin" {
         close
     }
+}
+
+def rmlhost [] {
+    let lines = (open ~/.ssh/known_hosts | lines)
+    let count = ($lines | length)
+    let removed = ($lines | skip ($count - 2))
+
+    print "Last two lines:"
+    print $removed
+
+    $lines | drop 1 | save -f ~/.ssh/known_hosts
 }
