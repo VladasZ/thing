@@ -56,6 +56,8 @@ alias a = ansible
 alias p = ansible-playbook
 alias c = clear
 alias h = cd ~/
+alias hx = helix
+alias e = exits
 
 def clone [...args] {
     let binary_path = $"($nu.home-path)/dev/thing/target/release/clone"
