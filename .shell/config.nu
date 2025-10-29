@@ -58,6 +58,8 @@ alias c = clear
 alias h = cd ~/
 alias hx = helix
 alias e = exit
+alias q = exit
+alias h = Hyprland
 
 def clone [...args] {
     let binary_path = $"($nu.home-path)/dev/thing/target/release/clone"
