@@ -62,6 +62,7 @@ alias q = exit
 alias h = Hyprland
 alias t = btop --force-utf
 alias ping = gping
+alias matrix = unimatrix -s 96
 
 def clone [...args] {
     let binary_path = $"($nu.home-path)/dev/thing/target/release/clone"
