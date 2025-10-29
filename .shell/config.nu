@@ -123,6 +123,7 @@ def close [] {
         "RustRover"
         "RubyMine"
         "WebStorm"
+        "Docker Desktop"
     ]
     
     for app in $apps {
