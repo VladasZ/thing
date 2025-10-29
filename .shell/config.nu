@@ -60,6 +60,7 @@ alias hx = helix
 alias e = exit
 alias q = exit
 alias h = Hyprland
+alias t = btop --force-utf
 
 def clone [...args] {
     let binary_path = $"($nu.home-path)/dev/thing/target/release/clone"
