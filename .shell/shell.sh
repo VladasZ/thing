@@ -9,6 +9,7 @@ PROMPT='v %1~ %# '
 export VAGRANT_DEFAULT_PROVIDER=utm
 
 ln -sf ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
+ln -sf ~/dev/thing/.shell/hyprland.conf ~/.config/hypr/hyprland.conf
 ln -sf ~/dev/thing/.shell/config.nu "/Users/vladas/Library/Application Support/nushell/config.nu"
 
 mkdir -p ~/dev/thing/.shell/_shorts
