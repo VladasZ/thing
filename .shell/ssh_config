@@ -1,0 +1,22 @@
+Host m11
+    HostName 192.168.0.11
+
+Host m14
+    HostName 192.168.0.14
+
+Host tc1
+    HostName 192.168.0.201
+
+Host tc2
+    HostName 192.168.0.202
+
+Host pc
+    HostName 192.168.0.100
+
+Host pc1
+    HostName 192.168.0.101
+
+Host *
+  AddKeysToAgent yes
+  ForwardAgent yes
+  User vladas
