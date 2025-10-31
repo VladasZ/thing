@@ -64,6 +64,7 @@ alias t = btop --force-utf
 alias ping = gping
 alias matrix = unimatrix -s 96
 alias al = micro ~/.config/hypr/hyprland.conf
+alias hosts = sudo micro /etc/hosts
 
 def clone [...args] {
     let binary_path = $"($nu.home-path)/dev/thing/target/release/clone"

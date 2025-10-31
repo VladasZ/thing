@@ -27,4 +27,5 @@ columns = 140
 lines = 38
 
 [terminal]
-shell = "/usr/bin/nu"
+#shell = "/usr/bin/nu"
+shell = "/opt/homebrew/bin/nu"
