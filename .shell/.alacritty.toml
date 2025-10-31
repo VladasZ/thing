@@ -29,3 +29,6 @@ lines = 38
 [terminal]
 #shell = "/usr/bin/nu"
 shell = "/opt/homebrew/bin/nu"
+
+#sudo mkdir -p /opt/homebrew/bin
+#sudo ln -sf /usr/bin/nu /opt/homebrew/bin/nu
