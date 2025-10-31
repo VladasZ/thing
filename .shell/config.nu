@@ -66,6 +66,12 @@ alias matrix = unimatrix -s 96
 alias al = micro ~/.config/hypr/hyprland.conf
 alias hosts = sudo micro /etc/hosts
 
+
+# sudo scutil --set HostName new-name
+# sudo scutil --set LocalHostName new-name
+# sudo scutil --set ComputerName new-name
+
+
 def clone [...args] {
     let binary_path = $"($nu.home-path)/dev/thing/target/release/clone"
     if ($binary_path | path exists) {
