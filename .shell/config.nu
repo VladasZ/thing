@@ -41,6 +41,7 @@ $env.PATH = ($env.PATH | append [
     "~/dev/thing/.shell/shorts"
     "~/dev/thing/.shell/_shorts"
     "~/dev/deps/qw/target/debug"
+    "/Applications/Docker.app/Contents/Resources/bin"
 ])
 
 alias z = zellij
