@@ -60,7 +60,6 @@ alias h = cd ~/
 alias hx = helix
 alias e = exit
 alias q = exit
-alias h = Hyprland
 alias t = btop --force-utf
 alias ping = gping
 alias matrix = unimatrix -s 96
