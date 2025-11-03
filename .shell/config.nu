@@ -5,6 +5,8 @@ use std/util "path add"
 path add ~/.cargo/bin
 path add /opt/homebrew/bin
 
+$env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
+
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
