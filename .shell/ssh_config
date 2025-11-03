@@ -1,14 +1,8 @@
-Host m11
+Host m1
     HostName 192.168.0.11
 
-Host m14
+Host m4
     HostName 192.168.0.14
-
-Host tc1
-    HostName 192.168.0.201
-
-Host tc2
-    HostName 192.168.0.202
 
 Host pc
     HostName 192.168.0.100
