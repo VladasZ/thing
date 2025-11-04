@@ -5,16 +5,18 @@ use std/util "path add"
 path add ~/.cargo/bin
 path add /opt/homebrew/bin
 
+let is_windows = $nu.os-info.name == 'windows'
+let is_mac = $nu.os-info.name == 'macos'
+let is_linux = $nu.os-info.name == 'linux'
+let is_arch = $is_linux and (open /etc/os-release | str join "\n" | str contains "ID=arch")
+
 $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
+$env.config.show_banner = false
+$env.VAGRANT_DEFAULT_PROVIDER = "utm"
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
-$env.config.show_banner = false
-
-$env.VAGRANT_DEFAULT_PROVIDER = "utm"
-
-let is_windows = ($nu.os-info.name == 'windows')
 
 def symlink [target link] {
     if $is_windows {
@@ -159,7 +161,7 @@ def hi [] {
     cargo install-update -a
     rustup update
     
-    if (sys host | get name) == "Darwin" {
+    if $is_mac {
         brew update
         brew upgrade
     }
@@ -178,7 +180,7 @@ def bb [] {
         return
     }
     
-    if (sys host | get name) == "Darwin" {
+    if $is_mac {
         close
     }
 }
