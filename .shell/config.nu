@@ -172,6 +172,7 @@ def hi [] {
     if $is_arch {
         sudo pacman -Syu --noconfirm
         yay -Syu --noconfirm
+        yay -Yc --noconfirm
     }
     
     pull
