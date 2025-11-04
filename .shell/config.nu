@@ -8,9 +8,13 @@ path add /opt/homebrew/bin
 let is_windows = $nu.os-info.name == 'windows'
 let is_mac = $nu.os-info.name == 'macos'
 let is_linux = $nu.os-info.name == 'linux'
-let is_arch = $is_linux and (open /etc/os-release | str join "\n" | str contains "ID=arch")
+let is_arch: bool = $is_linux and (open /etc/os-release | str join "\n" | str contains "ID=arch")
 
-$env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
+
+if $is_linux {
+    $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
+}
+
 $env.config.show_banner = false
 $env.VAGRANT_DEFAULT_PROVIDER = "utm"
 
@@ -108,7 +112,6 @@ def pull [] {
     st "--pull"
 }
 
-# Close function
 def close [] {
     pkill -x Gitnuro | ignore
     pkill -x Obsidian | ignore
@@ -165,10 +168,10 @@ def hi [] {
         brew update
         brew upgrade
     }
-    
-    if (which apt | is-not-empty) {
-        sudo apt update
-        sudo apt upgrade -y
+
+    if $is_arch {
+        sudo pacman -Syu --noconfirm
+        yay -Syu --noconfirm
     }
     
     pull
