@@ -116,7 +116,8 @@ def close [] {
     pkill -x Gitnuro | ignore
     pkill -x Obsidian | ignore
     pkill -x RubyMine | ignore
-    
+    pkill -x BambuStudio | ignore
+
     let apps = [
         "Firefox"
         "Gitkraken"
@@ -138,7 +139,6 @@ def close [] {
         "RustRover"
         "RubyMine"
         "WebStorm"
-        "BambuStudio"
         "Docker Desktop"
     ]
     
