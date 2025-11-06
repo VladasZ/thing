@@ -138,6 +138,7 @@ def close [] {
         "RustRover"
         "RubyMine"
         "WebStorm"
+        "BambuStudio"
         "Docker Desktop"
     ]
     
