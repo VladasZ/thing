@@ -28,5 +28,8 @@ ln -s ~/dev/thing/.shell/config.nu ~/.config/nushell/config.nu
 rm -f ~/.config/starship.toml
 ln -s ~/dev/thing/.shell/starship.toml ~/.config/starship.toml
 
+ln -s ~/dev/thing/.shell/helix.toml ~/.config/helix/config.toml
+
+
 rm -f ~/.ssh/config
 ln -s ~/dev/thing/.shell/ssh_config ~/.ssh/config

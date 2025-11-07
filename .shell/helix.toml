@@ -1,0 +1,18 @@
+[editor.auto-save]
+focus-lost = true
+after-delay.enable = true
+after-delay.timeout = 500
+
+[keys.normal]
+C-s = ":write"
+Cmd-s = ":write"
+
+C-z = "undo"
+Cmd-z = "undo"
+
+C-S-z = "redo"
+Cmd-S-z = "redo"
+
+#[[language]]
+#name = "rust"
+#auto-format = true
