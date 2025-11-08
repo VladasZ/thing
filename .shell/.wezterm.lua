@@ -13,8 +13,27 @@ config.color_scheme = 'Bamboo'
 
 config.window_close_confirmation = 'NeverPrompt'
 
+config.window_decorations = "RESIZE"
+
 -- Spawn a fish shell in login mode
 --config.default_prog = { '/usr/local/bin/fish', '-l' }
+
+--https://github.com/quantonganh/quickselect.wezterm
+
+local toggle_terminal = wezterm.plugin.require("https://github.com/zsh-sage/toggle_terminal.wez")
+
+toggle_terminal.apply_to_config(config, {
+	key = "t", -- Key for the toggle action
+	mods = "CTRL", -- Modifier keys for the toggle action
+	direction = "Down", -- Direction to split the pane
+	--size = { Percent = 20 }, -- Size of the split pane
+	--change_invoker_id_everytime = false, -- Change invoker pane on every toggle
+	--zoom = {
+	--	auto_zoom_toggle_terminal = false, -- Automatically zoom toggle terminal pane
+	--	auto_zoom_invoker_pane = true, -- Automatically zoom invoker pane
+	--	remember_zoomed = true, -- Automatically re-zoom the toggle pane if it was zoomed before switching away
+	--}
+})
 
 config.keys = {
 	{
@@ -22,24 +41,43 @@ config.keys = {
 		key = 'DownArrow',
 		action = wezterm.action.DisableDefaultAssignment,
 	},
+	--https://github.com/wezterm/wezterm/issues/606#issuecomment-1238029208
 	{
-		key = 'l',
-		mods = 'CTRL|SHIFT',
-		action = wezterm.action.SplitPane {
-			direction = 'Right',
-			command = { args = { 'lazygit' } },
-			--size = { Percent = 50 },
-		},
+		key = 'c',
+		mods = 'CTRL',
+		action = wezterm.action_callback(function(window, pane)
+			selection_text = window:get_selection_text_for_pane(pane)
+			is_selection_active = string.len(selection_text) ~= 0
+			if is_selection_active then
+				window:perform_action(wezterm.action.CopyTo('ClipboardAndPrimarySelection'), pane)
+			else
+				window:perform_action(wezterm.action.SendKey{ key='c', mods='CTRL' }, pane)
+			end
+		end),
 	},
 	{
-		key = 't',
-		mods = 'ALT',
-		action = wezterm.action.SplitPane {
-			direction = 'Down',
-			--command = { args = { 'lazygit' } },
-			size = { Percent = 20 },
-		},
+		mods = 'CTRL',
+		key = 'v',
+		action = wezterm.action.PasteFrom 'Clipboard',
 	},
+	--{
+	--	key = 'l',
+	--	mods = 'CTRL|SHIFT',
+	--	action = wezterm.action.SplitPane {
+	--		direction = 'Right',
+	--		command = { args = { 'lazygit' } },
+	--		--size = { Percent = 50 },
+	--	},
+	--},
+	--{
+	--	key = 't',
+	--	mods = 'ALT',
+	--	action = wezterm.action.SplitPane {
+	--		direction = 'Down',
+	--		--command = { args = { 'lazygit' } },
+	--		size = { Percent = 20 },
+	--	},
+	--},
 }
 
 
