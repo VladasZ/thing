@@ -21,29 +21,12 @@ $env.VAGRANT_DEFAULT_PROVIDER = "utm"
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
-
-def symlink [target link] {
-    if $is_windows {
-        ^cmd /c mklink $link $target | ignore
-    } else {
-        ^ln -sf $target $link
-    }
-}
-
-# if not $is_windows {
-
-#     symlink ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
-#     symlink ~/dev/thing/.shell/starship.toml ~/.config/starship.toml
-
-#     mkdir ~/dev/thing/.shell/_shorts
-
-#     symlink ~/dev/thing/.shell/shorts/order.py   ~/dev/thing/.shell/_shorts/order
-#     symlink ~/dev/thing/.shell/shorts/publish.py ~/dev/thing/.shell/_shorts/publish
-#     symlink ~/dev/thing/.shell/shorts/slink.py   ~/dev/thing/.shell/_shorts/slink
-#     symlink ~/dev/thing/.shell/shorts/tag.py     ~/dev/thing/.shell/_shorts/tag
-
-#     chmod +x ~/dev/thing/.shell/_shorts/order
-# }
+ln -sf ~/dev/thing/.shell/config.nu ~/.config/nushell/config.nu
+ln -sf ~/dev/thing/.shell/starship.toml ~/.config/starship.toml
+ln -sf ~/dev/thing/.shell/helix/config.toml ~/.config/helix/config.toml
+ln -sf ~/dev/thing/.shell/helix/languages.toml ~/.config/helix/languages.toml
+ln -sf ~/dev/thing/.shell/ssh_config ~/.ssh/config
+ln -sf ~/dev/thing/.shell/.wezterm.lua ~/.wezterm.lua
 
 $env.PATH = ($env.PATH | append [
     "~/dev/thing/.shell/shorts"
@@ -66,7 +49,6 @@ alias p = ansible-playbook
 alias c = clear
 alias h = cd ~/
 alias hx = helix
-alias e = exit
 alias q = exit
 alias t = btop --force-utf
 alias ping = gping
@@ -80,11 +62,6 @@ def install [app: string] {
         sudo pacman -S $app --noconfirm
     }
 }
-
-if $is_arch {
-    alias install = sudo pacman -S
-}
-
 
 # sudo scutil --set HostName new-name
 # sudo scutil --set LocalHostName new-name
