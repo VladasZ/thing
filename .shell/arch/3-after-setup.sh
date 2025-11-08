@@ -27,3 +27,4 @@ ln -sf ~/dev/thing/.shell/starship.toml ~/.config/starship.toml
 ln -sf ~/dev/thing/.shell/helix/config.toml ~/.config/helix/config.toml
 ln -sf ~/dev/thing/.shell/helix/languages.toml ~/.config/helix/languages.toml
 ln -sf ~/dev/thing/.shell/ssh_config ~/.ssh/config
+ln -sf ~/dev/thing/.shell/.wezterm.lua ~/.wezterm.lua

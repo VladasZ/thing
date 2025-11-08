@@ -75,6 +75,17 @@ alias al = micro ~/.config/hypr/hyprland.conf
 alias hosts = sudo micro /etc/hosts
 
 
+def install [app: string] {
+    if $is_arch {
+        sudo pacman -S $app --noconfirm
+    }
+}
+
+if $is_arch {
+    alias install = sudo pacman -S
+}
+
+
 # sudo scutil --set HostName new-name
 # sudo scutil --set LocalHostName new-name
 # sudo scutil --set ComputerName new-name
