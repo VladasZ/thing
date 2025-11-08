@@ -1,0 +1,17 @@
+[editor]
+auto-save=true
+
+[keys.normal]
+C-s = ":write"
+Cmd-s = ":write"
+
+C-z = "undo"
+Cmd-z = "undo"
+
+C-S-z = "redo"
+Cmd-S-z = "redo"
+
+A-r = ":run-shell-command cargo run"
+
+[keys.normal.a]
+l = ":open ~//dev/thing/.shell/helix/config.toml"

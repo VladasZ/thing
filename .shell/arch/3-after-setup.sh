@@ -22,14 +22,8 @@ git clone https://github.com/VladasZ/local.git
 
 chsh -s /usr/bin/nu
 
-rm -f ~/.config/nushell/config.nu
-ln -s ~/dev/thing/.shell/config.nu ~/.config/nushell/config.nu
-
-rm -f ~/.config/starship.toml
-ln -s ~/dev/thing/.shell/starship.toml ~/.config/starship.toml
-
-ln -s ~/dev/thing/.shell/helix.toml ~/.config/helix/config.toml
-
-
-rm -f ~/.ssh/config
-ln -s ~/dev/thing/.shell/ssh_config ~/.ssh/config
+ln -sf ~/dev/thing/.shell/config.nu ~/.config/nushell/config.nu
+ln -sf ~/dev/thing/.shell/starship.toml ~/.config/starship.toml
+ln -sf ~/dev/thing/.shell/helix/config.toml ~/.config/helix/config.toml
+ln -sf ~/dev/thing/.shell/helix/languages.toml ~/.config/helix/languages.toml
+ln -sf ~/dev/thing/.shell/ssh_config ~/.ssh/config
