@@ -1,4 +1,6 @@
 local wezterm = require 'wezterm'
+local dev = wezterm.plugin.require("https://github.com/ChrisGVE/dev.wezterm")
+
 
 local is_mac = (package.config:sub(1,1) == '/' and io.popen("uname"):read("*l") == "Darwin")
 
@@ -27,8 +29,8 @@ end
 local toggle_terminal = wezterm.plugin.require("https://github.com/zsh-sage/toggle_terminal.wez")
 
 toggle_terminal.apply_to_config(config, {
-	key = "t", -- Key for the toggle action
-	mods = "CTRL", -- Modifier keys for the toggle action
+	key = "RightArrow", -- Key for the toggle action
+	mods = "CMD", -- Modifier keys for the toggle action
 	direction = "Down", -- Direction to split the pane
 	--size = { Percent = 20 }, -- Size of the split pane
 	--change_invoker_id_everytime = false, -- Change invoker pane on every toggle
@@ -41,9 +43,13 @@ toggle_terminal.apply_to_config(config, {
 
 config.keys = {
 	{
-		mods = 'CTRL',
+		mods = 'CMD',
 		key = 'DownArrow',
-		action = wezterm.action.DisableDefaultAssignment,
+		action = wezterm.action.SplitPane {
+			direction = 'Down',
+			--command = { args = { 'top' } },
+			size = { Percent = 20 },
+		},
 	},
 	--https://github.com/wezterm/wezterm/issues/606#issuecomment-1238029208
 	{
