@@ -21,3 +21,4 @@ git clone https://github.com/VladasZ/thing.git
 git clone https://github.com/VladasZ/local.git
 
 chsh -s /usr/bin/nu
+# chsh -s /opt/homebrew/bin/nu

@@ -60,6 +60,10 @@ alias hosts = sudo micro /etc/hosts
 def install [app: string] {
     if $is_arch {
         sudo pacman -S $app --noconfirm
+    } else if $is_mac {
+        brew install $app
+    } else {
+        panic "not implemented"
     }
 }
 

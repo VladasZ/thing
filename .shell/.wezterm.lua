@@ -1,5 +1,7 @@
 local wezterm = require 'wezterm'
 
+local is_mac = (package.config:sub(1,1) == '/' and io.popen("uname"):read("*l") == "Darwin")
+
 local config = wezterm.config_builder()
 
 
@@ -7,7 +9,7 @@ config.initial_cols = 120
 config.initial_rows = 28
 
 config.font = wezterm.font '0xProto Nerd Font'
-config.font_size = 12
+config.font_size = 16
 --config.color_scheme = 'Gruvbox (Gogh)' -- light
 config.color_scheme = 'Bamboo'
 
@@ -15,8 +17,10 @@ config.window_close_confirmation = 'NeverPrompt'
 
 config.window_decorations = "RESIZE"
 
--- Spawn a fish shell in login mode
---config.default_prog = { '/usr/local/bin/fish', '-l' }
+
+if is_mac then
+	config.default_prog = { '/opt/homebrew/bin/nu' }
+end
 
 --https://github.com/quantonganh/quickselect.wezterm
 
