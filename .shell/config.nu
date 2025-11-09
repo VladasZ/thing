@@ -21,6 +21,8 @@ $env.VAGRANT_DEFAULT_PROVIDER = "utm"
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
+mkdir ~/.config/hypr/
+
 ln -sf ~/dev/thing/.shell/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
 ln -sf ~/dev/thing/.shell/config.nu ~/.config/nushell/config.nu
 ln -sf ~/dev/thing/.shell/starship.toml ~/.config/starship.toml
