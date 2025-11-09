@@ -22,6 +22,7 @@ mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 
 mkdir ~/.config/hypr/
+mkdir ~/.config/helix/
 
 ln -sf ~/dev/thing/.shell/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
 ln -sf ~/dev/thing/.shell/config.nu ~/.config/nushell/config.nu
