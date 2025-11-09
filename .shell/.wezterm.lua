@@ -11,7 +11,13 @@ config.initial_cols = 120
 config.initial_rows = 28
 
 config.font = wezterm.font '0xProto Nerd Font'
-config.font_size = 16
+
+if is_mac then
+	config.font_size = 16
+else
+	config.font_size = 14
+end
+
 --config.color_scheme = 'Gruvbox (Gogh)' -- light
 config.color_scheme = 'Bamboo'
 

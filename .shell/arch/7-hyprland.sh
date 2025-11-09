@@ -1,8 +1,5 @@
 #!/bin/bash
 
-mkdir .config/hypr
-ln -sf ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
-ln -sf ~/dev/thing/.shell/hyprland.conf ~/.config/hypr/hyprland.conf
 yay -S hyprshot wlogout --noconfirm
 
 
