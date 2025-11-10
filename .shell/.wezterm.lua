@@ -23,7 +23,7 @@ config.color_scheme = 'Bamboo'
 
 config.window_close_confirmation = 'NeverPrompt'
 
-config.window_decorations = "RESIZE"
+--config.window_decorations = "RESIZE"
 
 
 if is_mac then
