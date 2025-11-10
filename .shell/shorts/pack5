@@ -6,10 +6,6 @@ import sys
 
 
 def compress_with_zpaq(folder_path):
-    if not os.path.isdir(folder_path):
-        print("Provided path is not a valid directory.")
-        return
-
     folder_name = os.path.basename(os.path.abspath(folder_path))
     archive_name = f"{folder_name}.zpaq"
     command = ["zpaq", "add", archive_name, folder_path, "-method", "5"]

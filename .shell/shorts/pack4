@@ -8,7 +8,7 @@ import sys
 def compress_with_zpaq(folder_path):
     folder_name = os.path.basename(os.path.abspath(folder_path))
     archive_name = f"{folder_name}.zpaq"
-    command = ["zpaq", "add", archive_name, folder_path, "-method", "3"]
+    command = ["zpaq", "add", archive_name, folder_path, "-method", "4"]
 
     try:
         subprocess.run(command, check=True)
