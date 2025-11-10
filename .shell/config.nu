@@ -2,14 +2,18 @@
 
 use std/util "path add"
 
-path add ~/.cargo/bin
-path add /opt/homebrew/bin
-
 let is_windows = $nu.os-info.name == 'windows'
 let is_mac = $nu.os-info.name == 'macos'
 let is_linux = $nu.os-info.name == 'linux'
 let is_arch: bool = $is_linux and (open /etc/os-release | str join "\n" | str contains "ID=arch")
 
+
+path add ~/.cargo/bin
+
+if $is_mac {
+    path add /opt/homebrew/bin
+    path add /Library/Developer/CommandLineTools/usr/bin/
+}
 
 if $is_linux {
     $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
@@ -52,13 +56,17 @@ alias a = ansible
 alias p = ansible-playbook
 alias c = clear
 alias h = cd ~/
-alias hx = helix
 alias q = exit
 alias t = btop --force-utf
 alias ping = gping
 alias matrix = unimatrix -s 96
 alias al = micro ~/.config/hypr/hyprland.conf
 alias hosts = sudo micro /etc/hosts
+
+if not $is_mac {
+    alias hx = helix
+}
+
 
 
 def install [app: string] {
