@@ -154,6 +154,8 @@ def close [] {
     sleep 2sec
     osascript -e 'quit app "Alacritty"' | ignore
     pkill -x WezTerm | ignore
+
+    exit
 }
 
 def allow [target_path: string] {
