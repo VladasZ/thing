@@ -85,15 +85,15 @@ config.keys = {
 	--		--size = { Percent = 50 },
 	--	},
 	--},
-	--{
-	--	key = 't',
-	--	mods = 'ALT',
-	--	action = wezterm.action.SplitPane {
-	--		direction = 'Down',
-	--		--command = { args = { 'lazygit' } },
-	--		size = { Percent = 20 },
-	--	},
-	--},
+	{
+		key = 't',
+		mods = 'ALT',
+		action = wezterm.action.SplitPane {
+			direction = 'Down',
+			--command = { args = { 'lazygit' } },
+			size = { Percent = 20 },
+		},
+	},
 }
 
 
