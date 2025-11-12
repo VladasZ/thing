@@ -94,6 +94,15 @@ config.keys = {
 			size = { Percent = 20 },
 		},
 	},
+	{
+		key = 'l',
+		mods = 'ALT',
+		action = wezterm.action.SplitPane {
+			direction = 'Right',
+		  	command = { args = { 'lazygit' } },
+			size = { Percent = 20 },
+		},
+	}
 }
 
 
