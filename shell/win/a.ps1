@@ -82,23 +82,23 @@ function pull {
 }
 
 function order {
-  py $HOME/dev/thing/.shell/shorts/order.py
+  py $HOME/dev/thing/shell/shorts/order.py
 }
 
 function unpack {
-    py $HOME/dev/thing/.shell/shorts/unpack $args
+    py $HOME/dev/thing/shell/shorts/unpack $args
 }
 
 function pack {
-    py $HOME/dev/thing/.shell/shorts/pack $args
+    py $HOME/dev/thing/shell/shorts/pack $args
 }
 
 function pack5 {
-    py $HOME/dev/thing/.shell/shorts/pack5 $args
+    py $HOME/dev/thing/shell/shorts/pack5 $args
 }
 
 function unpack_in_folder {
-    py $HOME/dev/thing/.shell/shorts/unpack_in_folder
+    py $HOME/dev/thing/shell/shorts/unpack_in_folder
 }
 
 function k {

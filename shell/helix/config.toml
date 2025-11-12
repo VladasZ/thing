@@ -8,5 +8,5 @@ auto-save=true
 A-r = ":run-shell-command cargo run"
 
 [keys.normal.a]
-l = ":open ~//dev/thing/.shell/helix/config.toml"
+l = ":open ~/dev/thing/shell/helix/config.toml"
 q = ":write-quit-all!"

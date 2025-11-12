@@ -28,17 +28,18 @@ starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.n
 mkdir ~/.config/hypr/
 mkdir ~/.config/helix/
 
-ln -sf ~/dev/thing/.shell/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
-ln -sf ~/dev/thing/.shell/config.nu ~/.config/nushell/config.nu
-ln -sf ~/dev/thing/.shell/starship.toml ~/.config/starship.toml
-ln -sf ~/dev/thing/.shell/helix/config.toml ~/.config/helix/config.toml
-ln -sf ~/dev/thing/.shell/helix/languages.toml ~/.config/helix/languages.toml
-ln -sf ~/dev/thing/.shell/ssh_config ~/.ssh/config
-ln -sf ~/dev/thing/.shell/.wezterm.lua ~/.wezterm.lua
+ln -sf ~/dev/thing/shell/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
+ln -sf ~/dev/thing/shell/config.nu ~/.config/nushell/config.nu
+# ln -sf ~/dev/thing/shell/config.nu "/Users/vladas/Library/Application Support/nushell/config.nu"
+ln -sf ~/dev/thing/shell/starship.toml ~/.config/starship.toml
+ln -sf ~/dev/thing/shell/helix/config.toml ~/.config/helix/config.toml
+ln -sf ~/dev/thing/shell/helix/languages.toml ~/.config/helix/languages.toml
+ln -sf ~/dev/thing/shell/ssh_config ~/.ssh/config
+ln -sf ~/dev/thing/shell/wezterm.lua ~/.wezterm.lua
 
 $env.PATH = ($env.PATH | append [
-    "~/dev/thing/.shell/shorts"
-    "~/dev/thing/.shell/_shorts"
+    "~/dev/thing/shell/shorts"
+    "~/dev/thing/shell/_shorts"
     "~/dev/deps/qw/target/debug"
     "/Applications/Docker.app/Contents/Resources/bin"
 ])

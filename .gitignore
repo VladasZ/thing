@@ -15,7 +15,7 @@ thing/
 generated/
 *.msi
 
-.shell/_shorts
+shell/_shorts
 .tmp*
-.shell/zed/embeddings/
+shell/zed/embeddings/
 .build/

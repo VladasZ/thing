@@ -8,21 +8,21 @@ PROMPT='v %1~ %# '
 
 export VAGRANT_DEFAULT_PROVIDER=utm
 
-ln -sf ~/dev/thing/.shell/.alacritty.toml ~/.alacritty.toml
-ln -sf ~/dev/thing/.shell/hyprland.conf ~/.config/hypr/hyprland.conf
-ln -sf ~/dev/thing/.shell/config.nu "/Users/vladas/Library/Application Support/nushell/config.nu"
+ln -sf ~/dev/thing/shell/.alacritty.toml ~/.alacritty.toml
+ln -sf ~/dev/thing/shell/hyprland.conf ~/.config/hypr/hyprland.conf
+ln -sf ~/dev/thing/shell/config.nu "/Users/vladas/Library/Application Support/nushell/config.nu"
 
-mkdir -p ~/dev/thing/.shell/_shorts
+mkdir -p ~/dev/thing/shell/_shorts
 
-ln -sf ~/dev/thing/.shell/shorts/order.py ~/dev/thing/.shell/_shorts/order
-ln -sf ~/dev/thing/.shell/shorts/publish.py ~/dev/thing/.shell/_shorts/publish
-ln -sf ~/dev/thing/.shell/shorts/slink.py ~/dev/thing/.shell/_shorts/slink
-ln -sf ~/dev/thing/.shell/shorts/tag.py ~/dev/thing/.shell/_shorts/tag
+ln -sf ~/dev/thing/shell/shorts/order.py ~/dev/thing/shell/_shorts/order
+ln -sf ~/dev/thing/shell/shorts/publish.py ~/dev/thing/shell/_shorts/publish
+ln -sf ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/_shorts/slink
+ln -sf ~/dev/thing/shell/shorts/tag.py ~/dev/thing/shell/_shorts/tag
 
-chmod +x ~/dev/thing/.shell/_shorts/order
+chmod +x ~/dev/thing/shell/_shorts/order
 
-export PATH=$PATH:~/dev/thing/.shell/shorts
-export PATH=$PATH:~/dev/thing/.shell/_shorts
+export PATH=$PATH:~/dev/thing/shell/shorts
+export PATH=$PATH:~/dev/thing/shell/_shorts
 export PATH=$PATH:~/dev/deps/qw/target/debug
 
 alias z=zellij
