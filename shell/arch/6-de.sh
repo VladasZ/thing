@@ -32,7 +32,7 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
-yay -S spotify wezterm-git deezer gitkraken jetbrains-toolbox docker-desktop visual-studio-code-bin freelens-bin --noconfirm
+yay -S spotify wezterm-git deezer gitkraken jetbrains-toolbox docker-desktop visual-studio-code-bin lens-bin --noconfirm
 yay -S vesktop --noconfirm # Discord
 
 sudo pacman -Suy sddm --noconfirm
