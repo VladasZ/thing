@@ -60,7 +60,6 @@ alias h = cd ~/
 alias q = exit
 alias t = btop --force-utf
 alias ping = gping
-alias matrix = unimatrix -s 96
 alias al = micro ~/.config/hypr/hyprland.conf
 alias hosts = sudo micro /etc/hosts
 

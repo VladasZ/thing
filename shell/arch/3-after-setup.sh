@@ -18,7 +18,8 @@ cd dev
 # git clone --recursive git@github.com:VlasdasZ/test-engine.git
 
 git clone https://github.com/VladasZ/thing.git
-git clone https://github.com/VladasZ/local.git
+
+ln -sf ~/dev/thing/shell/config.nu ~/.config/nushell/config.nu
 
 chsh -s /usr/bin/nu
 # chsh -s /opt/homebrew/bin/nu
