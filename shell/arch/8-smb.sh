@@ -20,7 +20,7 @@ sudo nano /etc/samba/smb.conf
 # [raid4TB]
 #    path = /mnt/raid4TB
 #    valid users = vladas
-#    browseable = yes
+#    browsable = yes
 #    writable = yes
 #    read only = no
 #    create mask = 0777
@@ -30,7 +30,7 @@ sudo nano /etc/samba/smb.conf
 # [home]
 #    path = /home/vladas
 #    valid users = vladas
-#    browseable = yes
+#    browsable = yes
 #    writable = yes
 #    read only = no
 #    create mask = 0700

@@ -14,6 +14,6 @@ disabled = true
 disabled = true
 
 [cmd_duration]
+format = "⏱️ [$duration]($style) "
 min_time = 1000
 show_milliseconds = true
-format = "⏱️ [$duration]($style) "

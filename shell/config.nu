@@ -62,6 +62,7 @@ alias t = btop --force-utf
 alias ping = gping
 alias al = micro ~/.config/hypr/hyprland.conf
 alias hosts = sudo micro /etc/hosts
+alias order = ~/dev/thing/shell/shorts/order.py
 
 if not $is_mac {
     alias hx = helix
@@ -207,3 +208,8 @@ def rmlhost [] {
 
     $lines | drop 1 | save -f ~/.ssh/known_hosts
 }
+
+# Rust:
+source $"($nu.home-path)/.cargo/env.nu"
+$env.SDKROOT = (xcrun --show-sdk-path)
+$env.CFLAGS = $"-isysroot ($env.SDKROOT)"
