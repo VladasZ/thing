@@ -209,6 +209,16 @@ def rmlhost [] {
     $lines | drop 1 | save -f ~/.ssh/known_hosts
 }
 
+def publish [package?: string] {
+    if ($package | is-not-empty) {
+        print $"Publishing package: ($package)"
+        cargo publish -p $package --allow-dirty
+    } else {
+        print "Publishing current package."
+        cargo publish --allow-dirty
+    }
+}
+
 # Rust:
 source $"($nu.home-path)/.cargo/env.nu"
 $env.SDKROOT = (xcrun --show-sdk-path)
