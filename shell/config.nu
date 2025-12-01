@@ -9,6 +9,7 @@ let is_arch: bool = $is_linux and (open /etc/os-release | str join "\n" | str co
 
 
 path add ~/.cargo/bin
+path add ~/.deno/bin/
 
 if $is_mac {
     path add /opt/homebrew/bin
