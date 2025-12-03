@@ -15,6 +15,8 @@ use walkdir::WalkDir;
 struct Args {
     #[structopt(long)]
     pull: bool,
+    #[structopt(long)]
+    files: bool,
 }
 
 fn main() -> Result<()> {
@@ -23,7 +25,7 @@ fn main() -> Result<()> {
     if args.pull {
         pull_all()?;
     } else {
-        check_all()?;
+        check_all(args.files)?;
     }
 
     Ok(())
@@ -31,7 +33,7 @@ fn main() -> Result<()> {
 
 fn pull_all() -> Result<()> {
     for dir in iter_repos()? {
-        if repo_has_changes(&dir) {
+        if repo_has_changes(&dir, false) {
             panic!(
                 "Repo: {} has changes. Commit all changes before pulling.",
                 dir.display()
@@ -46,11 +48,11 @@ fn pull_all() -> Result<()> {
     Ok(())
 }
 
-fn check_all() -> Result<()> {
+fn check_all(files: bool) -> Result<()> {
     let mut any = false;
 
     for dir in iter_repos()? {
-        if repo_has_changes(&dir) {
+        if repo_has_changes(&dir, files) {
             println!("{}", dir.display());
             any = true;
         }
@@ -82,23 +84,30 @@ fn is_git_repo(path: &Path) -> bool {
     path.join(".git").is_dir()
 }
 
-fn repo_has_changes(path: &Path) -> bool {
+fn repo_has_changes(path: &Path, show_files: bool) -> bool {
     if let Ok(repo) = Repository::discover(path) {
         let mut status_opts = StatusOptions::new();
         status_opts.include_untracked(true);
 
         if let Ok(statuses) = repo.statuses(Some(&mut status_opts)) {
             return statuses.iter().any(|entry| {
+
                 if entry.path().is_some_and(|path| path.contains(".mmdb")) {
                     return false;
                 }
 
-                entry.status().is_wt_new()
+                let changes = entry.status().is_wt_new()
                     || entry.status().is_wt_modified()
                     || entry.status().is_wt_deleted()
                     || entry.status().is_index_new()
                     || entry.status().is_index_modified()
-                    || entry.status().is_index_deleted()
+                    || entry.status().is_index_deleted();
+
+                if show_files && changes {
+                    println!("{}", entry.path().unwrap_or("UNKNOWN"))
+                }
+
+                changes
             });
         }
     }
