@@ -143,6 +143,8 @@ def close [] {
         "Visual Studio Code"
         "zoom.us"
         "RustRover"
+        "Clion"
+        "Safari"
         "RubyMine"
         "WebStorm"
         "Docker Desktop"
