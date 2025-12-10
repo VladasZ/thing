@@ -224,7 +224,7 @@ def publish [package?: string] {
 
 # Rust:
 if $is_mac {
-    source $"($nu.home-path)/.cargo/env.nu"
+    # source $"($nu.home-path)/.cargo/env.nu"
     $env.SDKROOT = (xcrun --show-sdk-path)
     $env.CFLAGS = $"-isysroot ($env.SDKROOT)"
 }
