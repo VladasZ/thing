@@ -14,7 +14,7 @@ use walkdir::WalkDir;
 #[derive(StructOpt, Debug)]
 struct Args {
     #[structopt(long)]
-    pull: bool,
+    pull:  bool,
     #[structopt(long)]
     files: bool,
 }
@@ -91,7 +91,6 @@ fn repo_has_changes(path: &Path, show_files: bool) -> bool {
 
         if let Ok(statuses) = repo.statuses(Some(&mut status_opts)) {
             return statuses.iter().any(|entry| {
-
                 if entry.path().is_some_and(|path| path.contains(".mmdb")) {
                     return false;
                 }
@@ -104,7 +103,7 @@ fn repo_has_changes(path: &Path, show_files: bool) -> bool {
                     || entry.status().is_index_deleted();
 
                 if show_files && changes {
-                    println!("{}", entry.path().unwrap_or("UNKNOWN"))
+                    println!("{}", entry.path().unwrap_or("UNKNOWN"));
                 }
 
                 changes

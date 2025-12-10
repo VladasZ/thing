@@ -64,6 +64,7 @@ alias ping = gping
 alias al = micro ~/.config/hypr/hyprland.conf
 alias hosts = sudo micro /etc/hosts
 alias order = ~/dev/thing/shell/shorts/order.py
+alias o = order
 
 if not $is_mac {
     alias hx = helix
