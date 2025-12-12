@@ -1,5 +1,5 @@
 local wezterm = require 'wezterm'
-local dev = wezterm.plugin.require("https://github.com/ChrisGVE/dev.wezterm")
+--local dev = wezterm.plugin.require("https://github.com/ChrisGVE/dev.wezterm")
 
 
 local is_mac = (package.config:sub(1,1) == '/' and io.popen("uname"):read("*l") == "Darwin")
@@ -31,21 +31,21 @@ if is_mac then
 end
 
 --https://github.com/quantonganh/quickselect.wezterm
-
-local toggle_terminal = wezterm.plugin.require("https://github.com/zsh-sage/toggle_terminal.wez")
-
-toggle_terminal.apply_to_config(config, {
-	key = "RightArrow", -- Key for the toggle action
-	mods = "CMD", -- Modifier keys for the toggle action
-	direction = "Down", -- Direction to split the pane
-	--size = { Percent = 20 }, -- Size of the split pane
-	--change_invoker_id_everytime = false, -- Change invoker pane on every toggle
-	--zoom = {
-	--	auto_zoom_toggle_terminal = false, -- Automatically zoom toggle terminal pane
-	--	auto_zoom_invoker_pane = true, -- Automatically zoom invoker pane
-	--	remember_zoomed = true, -- Automatically re-zoom the toggle pane if it was zoomed before switching away
-	--}
-})
+--
+--local toggle_terminal = wezterm.plugin.require("https://github.com/zsh-sage/toggle_terminal.wez")
+--
+--toggle_terminal.apply_to_config(config, {
+--	key = "RightArrow", -- Key for the toggle action
+--	mods = "CMD", -- Modifier keys for the toggle action
+--	direction = "Down", -- Direction to split the pane
+--	--size = { Percent = 20 }, -- Size of the split pane
+--	--change_invoker_id_everytime = false, -- Change invoker pane on every toggle
+--	--zoom = {
+--	--	auto_zoom_toggle_terminal = false, -- Automatically zoom toggle terminal pane
+--	--	auto_zoom_invoker_pane = true, -- Automatically zoom invoker pane
+--	--	remember_zoomed = true, -- Automatically re-zoom the toggle pane if it was zoomed before switching away
+--	--}
+--})
 
 config.keys = {
 	{
