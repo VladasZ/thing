@@ -223,6 +223,10 @@ def publish [package?: string] {
     }
 }
 
+def nuconf [] {
+    echo $nu.default-config-dir
+}
+
 # Rust:
 if $is_mac {
     # source $"($nu.home-path)/.cargo/env.nu"
