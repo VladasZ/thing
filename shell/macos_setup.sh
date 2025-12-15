@@ -27,6 +27,7 @@ brew install --cask hiddenbar
 brew install --cask monitorcontrol
 brew install --cask gitkraken
 brew install --cask battery
+brew install --cask daisydisk
 
 # open nu then
 
