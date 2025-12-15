@@ -1,6 +1,7 @@
 brew install nushell
 brew install starship
 brew install lazygit
+brew install --cask obsidian
 
 # open nu then
 
