@@ -30,7 +30,6 @@ mkdir ~/.config/hypr/
 mkdir ~/.config/helix/
 
 ln -sf ~/dev/thing/shell/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
-ln -sf ~/dev/thing/shell/config.nu ~/.config/nushell/config.nu
 # ln -sf ~/dev/thing/shell/config.nu "/Users/vladas/Library/Application Support/nushell/config.nu"
 ln -sf ~/dev/thing/shell/starship.toml ~/.config/starship.toml
 ln -sf ~/dev/thing/shell/helix/config.toml ~/.config/helix/config.toml
