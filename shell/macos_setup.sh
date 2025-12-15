@@ -23,11 +23,14 @@ brew install --cask appcleaner
 brew install --cask balenaetcher
 brew install --cask localsend
 brew install --cask pearcleaner
-brew install --cask hiddenbar
 brew install --cask monitorcontrol
 brew install --cask gitkraken
 brew install --cask battery
 brew install --cask daisydisk
+
+brew install --cask hiddenbar
+
+allow "/Applications/Hidden Bar.app"
 
 # open nu then
 
