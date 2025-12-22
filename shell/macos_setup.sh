@@ -1,3 +1,5 @@
+# Don't install all. Github will ban for spam
+
 brew install nushell
 brew install starship
 brew install lazygit
