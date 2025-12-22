@@ -229,6 +229,7 @@ def nuconf [] {
 # Rust:
 if $is_mac {
     # source $"($nu.home-path)/.cargo/env.nu"
+    # if ios: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
     $env.SDKROOT = (xcrun --show-sdk-path)
     $env.CFLAGS = $"-isysroot ($env.SDKROOT)"
 }
