@@ -18,7 +18,6 @@ brew install --cask deezer
 brew install --cask spotify
 brew install --cask telegram
 brew install --cask bambu-studio
-brew install --cask alt-tab
 brew install --cask appcleaner
 brew install --cask balenaetcher
 brew install --cask localsend
@@ -29,7 +28,6 @@ brew install --cask battery
 brew install --cask daisydisk
 
 brew install --cask hiddenbar
-
 allow "/Applications/Hidden Bar.app"
 
 # open nu then
