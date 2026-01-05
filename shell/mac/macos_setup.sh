@@ -29,9 +29,8 @@ brew install --cask monitorcontrol
 brew install --cask gitkraken
 brew install --cask battery
 brew install --cask daisydisk
+brew install --cask libreoffice
 
-brew install --cask hiddenbar
-allow "/Applications/Hidden Bar.app"
 
 # open nu then
 
