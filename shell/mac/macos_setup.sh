@@ -30,6 +30,7 @@ brew install --cask gitkraken
 brew install --cask battery
 brew install --cask daisydisk
 brew install --cask libreoffice
+brew install --cask utm
 
 
 # open nu then
