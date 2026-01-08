@@ -5,6 +5,7 @@ brew install starship
 brew install lazygit
 brew install btop
 brew install helm
+brew install cmake
 brew install --cask firefox
 brew install --cask obsidian
 brew install --cask wezterm
