@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+
+if len(sys.argv) > 1:
+    os.system("cargo run -p" + sys.argv[1] + " --release")
+else:
+    os.system("cargo run --release")
