@@ -66,6 +66,7 @@ alias order = ~/dev/thing/shell/shorts/order.py
 alias o = order
 alias cba = cargo build --all
 alias cta = cargo test --all
+alias cc = cargo clean
 
 if not $is_mac {
     alias hx = helix
