@@ -44,6 +44,9 @@ if has_make_target("lint"):
 
 run("cargo build --all")
 
+if has_make_target("wasm"):
+    run("make wasm")
+
 if has_make_target("test"):
     run("make test")
 
