@@ -64,6 +64,8 @@ alias al = micro ~/.config/hypr/hyprland.conf
 alias hosts = sudo micro /etc/hosts
 alias order = ~/dev/thing/shell/shorts/order.py
 alias o = order
+alias cba = cargo build --all
+alias cta = cargo test --all
 
 if not $is_mac {
     alias hx = helix
