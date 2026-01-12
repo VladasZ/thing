@@ -8,6 +8,7 @@ brew install helm
 brew install cmake
 brew install gh
 brew install gping
+brew install ncdu
 brew install --cask firefox
 brew install --cask obsidian
 brew install --cask wezterm
