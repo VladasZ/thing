@@ -86,9 +86,20 @@ def install [app: string] {
     }
 }
 
-# sudo scutil --set HostName new-name
-# sudo scutil --set LocalHostName new-name
-# sudo scutil --set ComputerName new-name
+def --env set-hostname [name: string] {
+    let targets = ["ComputerName", "LocalHostName", "HostName"]
+
+    for target in $targets {
+        print $"Setting ($target) to ($name)..."
+        sudo scutil --set $target $name
+    }
+
+    print "Flushing DNS cache..."
+    sudo killall -HUP mDNSResponder
+
+    print $"Hostname successfully changed to: ($name)"
+}
+
 
 
 def clone [...args] {
