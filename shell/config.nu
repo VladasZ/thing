@@ -44,11 +44,13 @@ $env.PATH = ($env.PATH | append [
     "/Applications/Docker.app/Contents/Resources/bin"
 ])
 
+alias te = cd ~/dev/test-engine/
+alias th = cd ~/dev/thing
+alias lab = cd ~/dev/games/labirintas
+
 alias z = zellij
 alias dotf = terraform apply -auto-approve
 alias untf = terraform destroy -auto-approve
-alias te = cd ~/dev/test-engine/
-alias th = cd ~/dev/thing
 alias d = sudo docker
 alias tf = terraform
 alias l = lazygit
