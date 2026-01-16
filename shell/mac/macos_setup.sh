@@ -36,6 +36,7 @@ brew install --cask battery
 brew install --cask daisydisk
 brew install --cask libreoffice
 brew install --cask utm
+brew install --cask whatsapp
 
 
 # open nu then
