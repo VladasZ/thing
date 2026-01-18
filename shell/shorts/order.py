@@ -50,6 +50,9 @@ if has_make_target("wasm"):
 if has_make_target("test"):
     run("make test")
 
+if has_make_target("build-ios"):
+    run("make build-ios")
+
 if has_make_target("cleanup"):
     run("make cleanup")
 
