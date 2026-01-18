@@ -103,29 +103,29 @@ def --env set-hostname [name: string] {
 
 
 def clone [...args] {
-    let binary_path = $"($nu.home-path)/dev/thing/target/release/clone"
+    let binary_path = $"($nu.home-dir)/dev/thing/target/release/clone"
     if ($binary_path | path exists) {
         ^$binary_path ...$args
     } else {
-        cargo run --manifest-path $"($nu.home-path)/dev/thing/Cargo.toml" -p clone --release --target-dir $"($nu.home-path)/dev/thing/target" -- ...$args
+        cargo run --manifest-path $"($nu.home-dir)/dev/thing/Cargo.toml" -p clone --release --target-dir $"($nu.home-dir)/dev/thing/target" -- ...$args
     }
 }
 
 def push [...args] {
-    let binary_path = $"($nu.home-path)/dev/thing/target/release/push"
+    let binary_path = $"($nu.home-dir)/dev/thing/target/release/push"
     if ($binary_path | path exists) {
         ^$binary_path ...$args
     } else {
-        cargo run --manifest-path $"($nu.home-path)/dev/thing/Cargo.toml" -p push --release --target-dir $"($nu.home-path)/dev/thing/target" -- ...$args
+        cargo run --manifest-path $"($nu.home-dir)/dev/thing/Cargo.toml" -p push --release --target-dir $"($nu.home-dir)/dev/thing/target" -- ...$args
     }
 }
 
 def st [...args] {
-    let binary_path = $"($nu.home-path)/dev/thing/target/release/st"
+    let binary_path = $"($nu.home-dir)/dev/thing/target/release/st"
     if ($binary_path | path exists) {
         ^$binary_path ...$args
     } else {
-        cargo run --manifest-path $"($nu.home-path)/dev/thing/Cargo.toml" -p st --release --target-dir $"($nu.home-path)/dev/thing/target" -- ...$args
+        cargo run --manifest-path $"($nu.home-dir)/dev/thing/Cargo.toml" -p st --release --target-dir $"($nu.home-dir)/dev/thing/target" -- ...$args
     }
 }
 
@@ -244,7 +244,7 @@ def nuconf [] {
 
 # Rust:
 if $is_mac {
-    # source $"($nu.home-path)/.cargo/env.nu"
+    # source $"($nu.home-dir)/.cargo/env.nu"
     # if ios: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
     $env.SDKROOT = (xcrun --show-sdk-path)
     $env.CFLAGS = $"-isysroot ($env.SDKROOT)"
