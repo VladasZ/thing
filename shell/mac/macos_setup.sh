@@ -37,6 +37,7 @@ brew install --cask daisydisk
 brew install --cask libreoffice
 brew install --cask utm
 brew install --cask whatsapp
+brew install --cask brave-browser
 
 
 # open nu then
