@@ -44,6 +44,6 @@ brew install --cask brave-browser
 
 ln -sf ~/dev/thing/shell/config.nu "/Users/vladas/Library/Application Support/nushell/config.nu"
 
-# install font
+# install font brew install --cask font-0xproto-nerd-font ?
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
