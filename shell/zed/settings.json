@@ -1,6 +1,9 @@
 {
+  "notification_panel": {
+    "button": false,
+  },
   "collaboration_panel": {
-    "dock": "right",
+    "button": false,
   },
   "auto_update": true,
   "disable_ai": true,
@@ -54,6 +57,8 @@
   "auto_install_extensions": {
     "nu": true,
     "lua": true,
+    "make": true,
+    "toml": true,
     "rust": true,
     "dockerfile": true,
     "docker-compose": true,
