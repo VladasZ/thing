@@ -28,6 +28,7 @@ starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.n
 
 mkdir ~/.config/hypr/
 mkdir ~/.config/helix/
+mkdir ~/.config/zed/
 
 ln -sf ~/dev/thing/shell/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
 # ln -sf ~/dev/thing/shell/config.nu "/Users/vladas/Library/Application Support/nushell/config.nu"
@@ -36,6 +37,8 @@ ln -sf ~/dev/thing/shell/helix/config.toml ~/.config/helix/config.toml
 ln -sf ~/dev/thing/shell/helix/languages.toml ~/.config/helix/languages.toml
 ln -sf ~/dev/thing/shell/ssh_config ~/.ssh/config
 ln -sf ~/dev/thing/shell/wezterm.lua ~/.wezterm.lua
+ln -sf ~/dev/thing/shell/zed/settings.json ~/.config/zed/settings.json
+ln -sf ~/dev/thing/shell/zed/keymap.json ~/.config/zed/keymap.json
 
 $env.PATH = ($env.PATH | append [
     "~/dev/thing/shell/shorts"
@@ -165,11 +168,11 @@ def close [] {
         "WebStorm"
         "Docker Desktop"
     ]
-    
+
     for app in $apps {
         osascript -e $'quit app "($app)"' | ignore
     }
-    
+
     sleep 2sec
     osascript -e 'quit app "Alacritty"' | ignore
     pkill -x WezTerm | ignore
@@ -182,7 +185,7 @@ def allow [target_path: string] {
         print $"Error: ($target_path) does not exist."
         return
     }
-    
+
     sudo xattr -rd com.apple.quarantine $target_path
     print $"Unquarantined: ($target_path)"
 }
@@ -191,7 +194,7 @@ def hi [] {
     cargo install cargo-update
     cargo install-update -a
     rustup update
-    
+
     if $is_mac {
         brew update
         brew upgrade
@@ -202,7 +205,7 @@ def hi [] {
         yay -Syu --noconfirm
         yay -Yc --noconfirm
     }
-    
+
     pull
 }
 
@@ -211,7 +214,7 @@ def bb [] {
     if $env.LAST_EXIT_CODE != 0 {
         return
     }
-    
+
     if $is_mac {
         close
     }

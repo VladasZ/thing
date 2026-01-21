@@ -1,0 +1,15 @@
+[
+  {
+    "bindings": {
+      "cmd-O": "workspace::Open",
+      "ctrl-O": "workspace::Open",
+      "cmd-t": "workspace::NewTerminal",
+    },
+  },
+  // {
+  //   "context": "Workspace",
+  //   "bindings": {
+  //     "cmd-P": "projects::OpenRecent", // ?
+  //   },
+  // },
+]
