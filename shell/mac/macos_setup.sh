@@ -11,6 +11,7 @@ brew install gping
 brew install ncdu
 brew install talosctl
 brew install --cask firefox
+brew install --cask zed
 brew install --cask obsidian
 brew install --cask wezterm
 brew install --cask jetbrains-toolbox
