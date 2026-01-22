@@ -78,9 +78,11 @@
   "auto_install_extensions": {
     "nu": true,
     "lua": true,
+    "xml": true,
     "make": true,
     "toml": true,
     "rust": true,
+    "jave": true,
     "dockerfile": true,
     "docker-compose": true,
   },
