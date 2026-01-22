@@ -1,9 +1,23 @@
 [
   {
     "bindings": {
-      "cmd-O": "workspace::Open",
-      "ctrl-O": "workspace::Open",
+      "cmd-o": "workspace::Open",
+      "ctrl-o": "workspace::Open",
+
+      "cmd-p": "projects::OpenRecent",
+      "ctrl-p": "projects::OpenRecent",
+
+      "cmd-r": "task::Rerun",
+      "ctrl-r": "task::Rerun",
+
       "cmd-t": "workspace::NewTerminal",
+      "ctrl-t": "workspace::NewTerminal",
+
+      "cmd-]": "pane::GoForward",
+      "cmd-[": "pane::GoBack",
+
+      "ctrl-]": "pane::GoForward",
+      "ctrl-[": "pane::GoBack",
     },
   },
   // {
