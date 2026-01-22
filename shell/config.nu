@@ -39,6 +39,7 @@ ln -sf ~/dev/thing/shell/ssh_config ~/.ssh/config
 ln -sf ~/dev/thing/shell/wezterm.lua ~/.wezterm.lua
 ln -sf ~/dev/thing/shell/zed/settings.json ~/.config/zed/settings.json
 ln -sf ~/dev/thing/shell/zed/keymap.json ~/.config/zed/keymap.json
+ln -sf ~/dev/thing/shell/zed/themes ~/.config/zed/
 
 $env.PATH = ($env.PATH | append [
     "~/dev/thing/shell/shorts"

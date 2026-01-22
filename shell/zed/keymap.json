@@ -4,6 +4,9 @@
       "cmd-o": "workspace::Open",
       "ctrl-o": "workspace::Open",
 
+      "cmd-h": "projects::OpenRemote",
+      "ctrl-h": "projects::OpenRemote",
+
       "cmd-p": "projects::OpenRecent",
       "ctrl-p": "projects::OpenRecent",
 

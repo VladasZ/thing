@@ -1,4 +1,25 @@
 {
+  "ssh_connections": [
+    {
+      "host": "pc1",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/vladas"],
+        },
+        {
+          "paths": ["/home/vladas/dev/thing/./"],
+        },
+        {
+          "paths": ["/mnt/raid4TB/services/./"],
+        },
+        {
+          "paths": ["/mnt/raid4TB/services/l2"],
+        },
+      ],
+    },
+  ],
+
   "notification_panel": {
     "button": false,
   },
@@ -20,8 +41,8 @@
   "buffer_font_family": "0xProto Nerd Font Mono",
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark",
+    "light": "Stark Light",
+    "dark": "Visual Studio Code Dark Modern",
   },
 
   "tab_bar": {
