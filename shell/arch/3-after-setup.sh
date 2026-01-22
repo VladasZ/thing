@@ -3,6 +3,7 @@
 set -euxo pipefail
 
 sudo pacman -Suy nushell git base-devel rustup lazygit ncdu alsa-lib starship micro nano helix duf yazi btop unzip gping speedtest-cli protobuf --noconfirm
+sudo pacman -Suy docker-buildx --noconfirm
 
 sudo sed -i '/\[multilib\]/,/Include/ s/^#//' /etc/pacman.conf
 
