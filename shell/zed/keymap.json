@@ -18,12 +18,14 @@
 
       "ctrl-]": "pane::GoForward",
       "ctrl-[": "pane::GoBack",
+
+      "cmd-G": "git_panel::ToggleFocus",
+      "ctrl-G": "git_panel::ToggleFocus",
+
+      "cmd-l": "git::Blame",
+      "ctrl-l": "git::Blame",
+
+      "cmd-1": "project_symbols::Toggle",
     },
   },
-  // {
-  //   "context": "Workspace",
-  //   "bindings": {
-  //     "cmd-P": "projects::OpenRecent", // ?
-  //   },
-  // },
 ]
