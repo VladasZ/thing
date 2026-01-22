@@ -20,10 +20,12 @@
       "ctrl-t": "workspace::NewTerminal",
 
       "cmd-]": "pane::GoForward",
-      "cmd-[": "pane::GoBack",
-
       "ctrl-]": "pane::GoForward",
+      "alt-]": "pane::GoForward",
+
+      "cmd-[": "pane::GoBack",
       "ctrl-[": "pane::GoBack",
+      "alt-[": "pane::GoBack",
 
       "cmd-G": "git_panel::ToggleFocus",
       "ctrl-G": "git_panel::ToggleFocus",
