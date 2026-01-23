@@ -16,8 +16,8 @@
       "cmd-r": "task::Rerun",
       "ctrl-r": "task::Rerun",
 
-      "cmd-t": "workspace::NewTerminal",
-      "ctrl-t": "workspace::NewTerminal",
+      "cmd-t": "terminal_panel::ToggleFocus",
+      "ctrl-t": "terminal_panel::ToggleFocus",
 
       "cmd-]": "pane::GoForward",
       "ctrl-]": "pane::GoForward",
