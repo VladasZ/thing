@@ -3,21 +3,27 @@
     "bindings": {
       "cmd-o": "workspace::Open",
       "ctrl-o": "workspace::Open",
+      "alt-o": "workspace::Open",
 
       "cmd-d": "file_finder::Toggle",
       "ctrl-d": "file_finder::Toggle",
+      "alt-d": "file_finder::Toggle",
 
       "cmd-h": "projects::OpenRemote",
       "ctrl-h": "projects::OpenRemote",
+      "alt-h": "projects::OpenRemote",
 
       "cmd-p": "projects::OpenRecent",
       "ctrl-p": "projects::OpenRecent",
+      "alt-p": "projects::OpenRecent",
 
       "cmd-r": "task::Rerun",
       "ctrl-r": "task::Rerun",
+      "alt-r": "task::Rerun",
 
       "cmd-t": "terminal_panel::ToggleFocus",
       "ctrl-t": "terminal_panel::ToggleFocus",
+      "alt-t": "terminal_panel::ToggleFocus",
 
       "cmd-]": "pane::GoForward",
       "ctrl-]": "pane::GoForward",
@@ -27,13 +33,20 @@
       "ctrl-[": "pane::GoBack",
       "alt-[": "pane::GoBack",
 
-      "cmd-G": "git_panel::ToggleFocus",
-      "ctrl-G": "git_panel::ToggleFocus",
+      "cmd-g": "git_panel::ToggleFocus",
+      "ctrl-g": "git_panel::ToggleFocus",
+      "alt-g": "git_panel::ToggleFocus",
+
+      "cmd-e": "project_panel::ToggleFocus",
+      "ctrl-e": "project_panel::ToggleFocus",
+      "alt-e": "project_panel::ToggleFocus",
 
       "cmd-l": "git::Blame",
       "ctrl-l": "git::Blame",
+      "alt-l": "git::Blame",
 
       "cmd-1": "project_symbols::Toggle",
+      "alt-1": "project_symbols::Toggle",
     },
   },
 ]

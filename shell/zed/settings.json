@@ -39,6 +39,7 @@
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "buffer_font_family": "0xProto Nerd Font Mono",
+
   "theme": {
     "mode": "system",
     "light": "Stark Light",
@@ -107,6 +108,7 @@
   },
 
   "terminal": {
+    "font_size": 14,
     "alternate_scroll": "off",
     "blinking": "terminal_controlled",
     "copy_on_select": false,
