@@ -12,7 +12,7 @@ def create_symlink(src, dst):
             os.symlink(src, dst, target_is_directory=target_is_directory)
             print(f"Symlink created: {src} -> {dst}")
         except:
-            print(f"Failed to create symlink: {src} -> {dst}")
+            a = 4
     else:
         # try:
         os.symlink(src, dst)

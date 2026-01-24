@@ -30,16 +30,20 @@ mkdir ~/.config/hypr/
 mkdir ~/.config/helix/
 mkdir ~/.config/zed/
 
-ln -sf ~/dev/thing/shell/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
+~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
 # ln -sf ~/dev/thing/shell/config.nu "/Users/vladas/Library/Application Support/nushell/config.nu"
-ln -sf ~/dev/thing/shell/starship.toml ~/.config/starship.toml
-ln -sf ~/dev/thing/shell/helix/config.toml ~/.config/helix/config.toml
-ln -sf ~/dev/thing/shell/helix/languages.toml ~/.config/helix/languages.toml
-ln -sf ~/dev/thing/shell/ssh_config ~/.ssh/config
-ln -sf ~/dev/thing/shell/wezterm.lua ~/.wezterm.lua
-ln -sf ~/dev/thing/shell/zed/settings.json ~/.config/zed/settings.json
-ln -sf ~/dev/thing/shell/zed/keymap.json ~/.config/zed/keymap.json
-ln -sf ~/dev/thing/shell/zed/themes ~/.config/zed/
+~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/starship.toml ~/.config/starship.toml
+~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/helix/config.toml ~/.config/helix/config.toml
+~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/helix/languages.toml ~/.config/helix/languages.toml
+~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/ssh_config ~/.ssh/config
+~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/wezterm.lua ~/.wezterm.lua
+
+if $is_linux or $is_mac {
+    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/settings.json ~/.config/zed/settings.json
+    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/keymap.json ~/.config/zed/keymap.json
+    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/themes ~/.config/zed/
+}
+
 
 $env.PATH = ($env.PATH | append [
     "~/dev/thing/shell/shorts"
@@ -205,6 +209,10 @@ def hi [] {
         sudo pacman -Syu --noconfirm
         yay -Syu --noconfirm
         yay -Yc --noconfirm
+    }
+
+    if $is_windows {
+        scoop update -a
     }
 
     pull
