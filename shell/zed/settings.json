@@ -128,7 +128,7 @@
     "option_as_meta": false,
     "button": true,
     "shell": {
-      "program": "C:/Users/vladas/scoop/shims/nu.exe",
+      "program": "nu",
     },
     "scroll_multiplier": 3.0,
     "toolbar": {
