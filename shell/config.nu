@@ -89,6 +89,8 @@ def install [app: string] {
         sudo pacman -S $app --noconfirm
     } else if $is_mac {
         brew install $app
+    } else if $is_windows {
+        scoop install $app
     } else {
         panic "not implemented"
     }
