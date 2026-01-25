@@ -174,6 +174,7 @@ def close [] {
         "RubyMine"
         "WebStorm"
         "Docker Desktop"
+        "Zed"
     ]
 
     for app in $apps {
