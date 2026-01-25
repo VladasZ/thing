@@ -41,7 +41,7 @@ mkdir ~/.config/zed/
 if $is_linux or $is_mac {
     ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/settings.json ~/.config/zed/settings.json
     ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/keymap.json ~/.config/zed/keymap.json
-    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/themes ~/.config/zed/
+    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/themes ~/.config/zed/themes
 }
 
 

@@ -1,25 +1,22 @@
 #!/usr/bin/env python3
 
 import os
-import platform
 import sys
+from contextlib import suppress
 
 
 def create_symlink(src, dst):
+    if os.path.exists(dst) and not os.path.islink(dst):
+        print(
+            f"Error: '{dst}' exists and is a regular file/directory. Manual deletion required."
+        )
+        return
+
     target_is_directory = os.path.isdir(src)
 
-    if platform.system() == "Windows":
-        try:
-            os.symlink(src, dst, target_is_directory=target_is_directory)
-            print(f"Symlink created: {src} -> {dst}")
-        except:
-            a = 4
-    else:
-        try:
-            os.symlink(src, dst)
-            print(f"Symlink created: {src} -> {dst}")
-        except:
-            a = 4
+    with suppress(FileExistsError):
+        os.symlink(src, dst, target_is_directory=target_is_directory)
+        print(f"Symlink created: {src} -> {dst}")
 
 
 if __name__ == "__main__":
