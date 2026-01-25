@@ -55,6 +55,7 @@ $env.PATH = ($env.PATH | append [
 alias te = cd ~/dev/test-engine/
 alias th = cd ~/dev/thing
 alias lab = cd ~/dev/games/labirintas
+alias l2 = cd ~/dev/games/l2
 
 alias z = zellij
 alias dotf = terraform apply -auto-approve
@@ -77,6 +78,7 @@ alias o = order
 alias cba = cargo build --all
 alias cta = cargo test --all
 alias cc = cargo clean
+
 
 if not $is_mac {
     alias hx = helix
