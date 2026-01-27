@@ -7,4 +7,10 @@
     "reveal_target": "center",
     "hide": "on_success",
   },
+  {
+    "label": "Test",
+    "command": "cargo test --all",
+    "reveal": "always",
+    "reveal_target": "center",
+  },
 ]
