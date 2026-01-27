@@ -45,6 +45,10 @@
       "ctrl-l": "git::Blame",
       "alt-l": "git::Blame",
 
+      "cmd-n": "editor::GoToDiagnostic",
+      "ctrl-n": "editor::GoToDiagnostic",
+      "alt-n": "editor::GoToDiagnostic",
+
       "cmd-1": "project_symbols::Toggle",
       "alt-1": "project_symbols::Toggle",
     },
