@@ -40,11 +40,11 @@ brew install --cask utm
 brew install --cask whatsapp
 brew install --cask brave-browser
 
+# brew install --cask font-0xproto-nerd-font ? needs mono
 
 # open nu then
 
 ln -sf ~/dev/thing/shell/config.nu "/Users/vladas/Library/Application Support/nushell/config.nu"
 
-# install font brew install --cask font-0xproto-nerd-font ?
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh

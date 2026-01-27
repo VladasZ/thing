@@ -40,7 +40,11 @@
     "dark": "Visual Studio Code Dark Modern",
   },
 
-  "icon_theme": "JetBrains New UI Icons (Light)",
+  "icon_theme": {
+    "mode": "system",
+    "light": "JetBrains New UI Icons (Light)",
+    "dark": "JetBrains New UI Icons (Dark)",
+  },
 
   "tab_bar": {
     "show": true,
