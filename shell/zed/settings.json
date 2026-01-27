@@ -40,6 +40,8 @@
     "dark": "Visual Studio Code Dark Modern",
   },
 
+  "icon_theme": "JetBrains New UI Icons (Light)",
+
   "tab_bar": {
     "show": true,
     "show_nav_history_buttons": false,
