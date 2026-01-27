@@ -5,13 +5,7 @@
       "args": [],
       "projects": [
         {
-          "paths": ["/home/vladas"],
-        },
-        {
-          "paths": ["/home/vladas/dev/thing/./"],
-        },
-        {
-          "paths": ["/mnt/raid4TB/services/./"],
+          "paths": ["/home/vladas/dev/thing"],
         },
         {
           "paths": ["/mnt/raid4TB/services/l2"],
@@ -109,11 +103,6 @@
 
   "terminal": {
     "font_size": 14,
-    "alternate_scroll": "off",
-    "blinking": "terminal_controlled",
-    "copy_on_select": false,
-    "keep_selection_on_copy": true,
-    "dock": "bottom",
     "default_width": 640,
     "default_height": 320,
     "detect_venv": {
@@ -124,9 +113,6 @@
     },
     "env": {},
     "line_height": "comfortable",
-    "minimum_contrast": 45,
-    "option_as_meta": false,
-    "button": true,
     "shell": {
       "program": "nu",
     },
@@ -134,9 +120,20 @@
     "toolbar": {
       "breadcrumbs": false,
     },
-    "working_directory": "current_project_directory",
-    "scrollbar": {
-      "show": null,
-    },
+  },
+
+  "project_panel": {
+    "default_width": 240,
+    // Spacing between worktree entries in the project panel. Can be 'comfortable' or 'standard'.
+    "entry_spacing": "standard",
+    // Amount of indentation for nested items.
+    "indent_size": 18,
+    // Whether to reveal it in the project panel automatically,
+    // when a corresponding project entry becomes active.
+    // Gitignored entries are never auto revealed.
+    "auto_reveal_entries": true,
+    "show_diagnostics": "off",
+    // Whether to hide the root entry when only one folder is open in the window.
+    "hide_root": true,
   },
 }
