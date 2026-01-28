@@ -84,6 +84,7 @@
     "toml": true,
     "rust": true,
     "jave": true,
+    "proto": true,
     "cargo-tom": true,
     "dockerfile": true,
     "docker-compose": true,
