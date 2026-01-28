@@ -1,5 +1,11 @@
 [
   {
+    "context": "Workspace",
+    "bindings": {
+      "alt-g": ["task::Spawn", { "task_name": "run file" }],
+    },
+  },
+  {
     "bindings": {
       "cmd-o": "workspace::Open",
       "ctrl-o": "workspace::Open",
@@ -20,6 +26,10 @@
       "cmd-r": "task::Rerun",
       "ctrl-r": "task::Rerun",
       "alt-r": "task::Rerun",
+
+      "cmd-b": ["task::Spawn", { "task_name": "Build" }],
+      "ctrl-b": ["task::Spawn", { "task_name": "Build" }],
+      "alt-b": ["task::Spawn", { "task_name": "Build" }],
 
       "cmd-t": "terminal_panel::ToggleFocus",
       "ctrl-t": "terminal_panel::ToggleFocus",
