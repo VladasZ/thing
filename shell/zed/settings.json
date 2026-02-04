@@ -148,6 +148,16 @@
   },
 
   "lsp": {
+    "cargo-tom": {
+      "initialization_options": {
+        "per_page": 25,
+        "feature_display_mode": "UnusedOpt",
+        "hide_docs_info_message": false,
+        "sort_format": true,
+        "stable_version": true,
+        "offline": false,
+      },
+    },
     "rust-analyzer": {
       "initialization_options": {
         "check": {
