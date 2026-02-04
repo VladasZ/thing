@@ -3,6 +3,9 @@
   {
     "label": "Build",
     "command": "cargo build --all",
+    "env": {
+      "RUSTFLAGS": "-A warnings",
+    },
     "reveal": "always",
     "reveal_target": "center",
     "hide": "on_success",
