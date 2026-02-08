@@ -16,4 +16,16 @@
     "reveal": "always",
     "reveal_target": "center",
   },
+  {
+    "label": "Docker compose up",
+    "command": "docker compose up -d",
+    "reveal": "always",
+    "reveal_target": "center",
+  },
+  {
+    "label": "Docker compose logs",
+    "command": "docker compose logs -f",
+    "reveal": "always",
+    "reveal_target": "center",
+  },
 ]
