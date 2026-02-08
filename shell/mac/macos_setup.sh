@@ -15,7 +15,6 @@ brew install --cask zed
 brew install --cask obsidian
 brew install --cask wezterm
 brew install --cask jetbrains-toolbox
-brew install --cask visual-studio-code
 brew install --cask transmission
 brew install --cask discord
 brew install --cask zoom
