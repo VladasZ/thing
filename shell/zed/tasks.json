@@ -11,6 +11,12 @@
     "hide": "on_success",
   },
   {
+    "label": "Order",
+    "command": "~/dev/thing/shell/shorts/order.py",
+    "reveal": "always",
+    "reveal_target": "center",
+  },
+  {
     "label": "Test",
     "command": "cargo test --all",
     "reveal": "always",
