@@ -5,32 +5,22 @@
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/home/vladas/dev/thing"
-          ]
+          "paths": ["/home/vladas/dev/thing"],
         },
         {
-          "paths": [
-            "/mnt/raid4TB/services/icarus"
-          ]
+          "paths": ["/mnt/raid4TB/services/icarus"],
         },
         {
-          "paths": [
-            "/mnt/raid4TB/services/jellyfin/./"
-          ]
+          "paths": ["/mnt/raid4TB/services/jellyfin/./"],
         },
         {
-          "paths": [
-            "/mnt/raid4TB/services/l2"
-          ]
+          "paths": ["/mnt/raid4TB/services/l2"],
         },
         {
-          "paths": [
-            "/mnt/raid4TB/services/valheim"
-          ]
-        }
-      ]
-    }
+          "paths": ["/mnt/raid4TB/services/valheim"],
+        },
+      ],
+    },
   ],
 
   "notification_panel": {
@@ -99,6 +89,7 @@
     "nu": true,
     "lua": true,
     "xml": true,
+    "sql": true,
     "make": true,
     "toml": true,
     "rust": true,
