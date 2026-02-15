@@ -10,6 +10,7 @@ brew install gh
 brew install gping
 brew install ncdu
 brew install talosctl
+brew install libpq
 brew install --cask firefox
 brew install --cask zed
 brew install --cask obsidian

@@ -13,6 +13,7 @@ path add ~/.deno/bin/
 
 if $is_mac {
     path add /opt/homebrew/bin
+    path add /opt/homebrew/opt/libpq/bin
     path add /Library/Developer/CommandLineTools/usr/bin/
 }
 
