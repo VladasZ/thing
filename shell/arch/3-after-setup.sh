@@ -2,8 +2,8 @@
 
 set -euxo pipefail
 
-sudo pacman -Suy nushell git base-devel rustup lazygit ncdu alsa-lib starship micro nano helix duf yazi btop unzip gping speedtest-cli protobuf --noconfirm
-sudo pacman -Suy docker-buildx unzip --noconfirm
+sudo pacman -S nushell git base-devel rustup lazygit ncdu alsa-lib starship micro nano helix duf yazi btop unzip gping speedtest-cli protobuf --noconfirm
+sudo pacman -S docker-buildx unzip rsync --noconfirm
 
 sudo sed -i '/\[multilib\]/,/Include/ s/^#//' /etc/pacman.conf
 

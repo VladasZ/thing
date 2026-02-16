@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sudo pacman -Suy nvidia-dkms nvidia-utils --noconfirm
-sudo pacman -Suy vulkan-intel lib32-vulkan-intel mesa lib32-mesa --noconfirm
+sudo pacman -S nvidia-dkms nvidia-utils --noconfirm
+sudo pacman -S vulkan-intel lib32-vulkan-intel mesa lib32-mesa --noconfirm
 
 let file = "/etc/modprobe.d/nvidia.conf"
 

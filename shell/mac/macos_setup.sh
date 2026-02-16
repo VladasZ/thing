@@ -41,6 +41,7 @@ brew install --cask brave-browser
 brew install --cask guitar-pro
 brew install --cask crystalfetch
 brew install --cask dbeaver-community
+brew install --cask inkscape
 
 # brew install --cask font-0xproto-nerd-font ? needs mono
 
