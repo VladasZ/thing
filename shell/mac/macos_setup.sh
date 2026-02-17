@@ -12,6 +12,7 @@ brew install ncdu
 brew install talosctl
 brew install wget
 brew install libpq
+brew install devcontainer
 brew install --cask firefox
 brew install --cask zed
 brew install --cask obsidian
