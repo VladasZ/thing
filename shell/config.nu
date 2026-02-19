@@ -58,6 +58,7 @@ alias te = cd ~/dev/test-engine/
 alias th = cd ~/dev/thing
 alias lab = cd ~/dev/games/labirintas
 alias l2 = cd ~/dev/games/l2
+alias lsa = ls -a -l
 
 alias z = zellij
 alias dotf = terraform apply -auto-approve
@@ -78,6 +79,7 @@ alias hosts = sudo micro /etc/hosts
 alias order = ~/dev/thing/shell/shorts/order.py
 alias o = order
 alias cba = cargo build --all
+alias cbr = cargo build --release
 alias cta = cargo test --all
 alias cc = cargo clean
 
