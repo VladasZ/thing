@@ -2,11 +2,12 @@
 
 brew install nushell
 brew install starship
+brew install rg
+brew install gh
 brew install lazygit
 brew install btop
 brew install helm
 brew install cmake
-brew install gh
 brew install gping
 brew install ncdu
 brew install talosctl
