@@ -11,6 +11,10 @@
     "hide": "on_success",
   },
   {
+    "label": "Cargo Run",
+    "command": "cargo run",
+  },
+  {
     "label": "Order",
     "command": "~/dev/thing/shell/shorts/order.py",
     "reveal": "always",
