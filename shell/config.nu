@@ -78,6 +78,7 @@ alias al = micro ~/.config/hypr/hyprland.conf
 alias hosts = sudo micro /etc/hosts
 alias order = ~/dev/thing/shell/shorts/order.py
 alias o = order
+alias cb = cargo build
 alias cba = cargo build --all
 alias cbr = cargo build --release
 alias cta = cargo test --all
