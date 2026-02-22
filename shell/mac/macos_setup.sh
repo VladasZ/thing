@@ -46,6 +46,7 @@ brew install --cask crystalfetch
 brew install --cask dbeaver-community
 brew install --cask inkscape
 brew install --cask blender
+brew install --cask postman
 
 # brew install --cask font-0xproto-nerd-font ? needs mono
 
