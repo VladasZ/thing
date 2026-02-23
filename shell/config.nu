@@ -84,12 +84,11 @@ alias cbr = cargo build --release
 alias cta = cargo test --all
 alias cc = cargo clean
 
+npm config set fund false --location=global
 
 if not $is_mac {
     alias hx = helix
 }
-
-
 
 def install [app: string] {
     if $is_arch {
