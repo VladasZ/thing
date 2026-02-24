@@ -11,6 +11,13 @@
     "hide": "on_success",
   },
   {
+    "label": "Lint",
+    "command": "make lint",
+    "reveal": "always",
+    "reveal_target": "center",
+    "hide": "on_success",
+  },
+  {
     "label": "Cargo Run",
     "command": "cargo run",
   },
