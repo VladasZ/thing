@@ -6,17 +6,13 @@ use structopt::StructOpt;
 #[derive(StructOpt, Debug)]
 struct Args {
     repo: String,
-
-    /// Clone as HTTPS
-    #[structopt(long, short)]
-    https: bool,
 }
 
 fn main() -> Result<()> {
     let args = Args::from_args();
 
-    let link = if args.https {
-        format!("https://github.com/{}", args.repo)
+    let link = if args.repo.starts_with("http") || args.repo.contains("@") {
+        args.repo
     } else {
         format!("git@github.com:{}", args.repo)
     };
