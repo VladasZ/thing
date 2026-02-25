@@ -5,19 +5,22 @@
       "args": [],
       "projects": [
         {
-          "paths": ["/home/vladas/dev/petuh/./"],
+          "paths": ["/home/vladas/dev/petuh"],
         },
         {
           "paths": ["/home/vladas/dev/thing"],
         },
         {
-          "paths": ["/mnt/raid4TB/local/./"],
+          "paths": ["/home/vladas/dev/neuro"],
+        },
+        {
+          "paths": ["/mnt/raid4TB/local"],
         },
         {
           "paths": ["/mnt/raid4TB/services/icarus"],
         },
         {
-          "paths": ["/mnt/raid4TB/services/jellyfin/./"],
+          "paths": ["/mnt/raid4TB/services/jellyfin"],
         },
         {
           "paths": ["/mnt/raid4TB/services/l2"],
@@ -169,16 +172,16 @@
       "settings": {
         "typescript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
+            "enabled": "always",
+          },
         },
         "javascript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
-        }
+            "enabled": "always",
+          },
+        },
       },
-      "enable_lsp_tasks": true
+      "enable_lsp_tasks": true,
     },
     "cargo-tom": {
       "initialization_options": {
