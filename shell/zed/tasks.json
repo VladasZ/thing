@@ -22,6 +22,10 @@
     "command": "cargo run",
   },
   {
+    "label": "Cargo Run Release",
+    "command": "cargo run --release",
+  },
+  {
     "label": "Order",
     "command": "~/dev/thing/shell/shorts/order.py",
     "reveal": "always",
