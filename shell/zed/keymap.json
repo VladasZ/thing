@@ -6,6 +6,13 @@
     },
   },
   {
+    "context": "Editor",
+    "bindings": {
+      "cmd-down": "editor::SwitchSourceHeader",
+      "cmd-up": "editor::SwitchSourceHeader",
+    },
+  },
+  {
     "bindings": {
       "cmd-o": "workspace::Open",
       "ctrl-o": "workspace::Open",
