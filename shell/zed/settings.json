@@ -106,6 +106,7 @@
     "java": true,
     "wgsl": true,
     "proto": true,
+    "neocmake": true,
     "cargo-tom": true,
     "dockerfile": true,
     "git-firefly": true,
