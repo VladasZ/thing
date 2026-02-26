@@ -14,7 +14,7 @@ use walkdir::WalkDir;
 #[derive(StructOpt, Debug)]
 struct Args {
     #[structopt(long)]
-    pull:  bool,
+    pull: bool,
     #[structopt(long)]
     files: bool,
 }
@@ -74,7 +74,11 @@ fn iter_repos() -> Result<impl Iterator<Item = PathBuf>> {
     let iter = WalkDir::new(format!("{}/dev", home.display()))
         .into_iter()
         .flatten()
-        .filter(|a| !a.path().to_string_lossy().contains("target") && is_git_repo(a.path()))
+        .filter(|a| {
+            !a.path().to_string_lossy().contains("target")
+                && !a.path().to_string_lossy().contains("build")
+                && is_git_repo(a.path())
+        })
         .map(|a| a.path().to_owned());
 
     Ok(iter)
