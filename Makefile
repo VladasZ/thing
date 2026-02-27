@@ -18,3 +18,6 @@ test:
 
 cleanup:
 	echo cleanup
+
+win:
+	nu ./shell/win/soft.nu
