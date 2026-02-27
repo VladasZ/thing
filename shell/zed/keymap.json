@@ -10,6 +10,10 @@
     "bindings": {
       "cmd-down": "editor::SwitchSourceHeader",
       "cmd-up": "editor::SwitchSourceHeader",
+      "ctrl-down": "editor::SwitchSourceHeader",
+      "ctrl-up": "editor::SwitchSourceHeader",
+      "alt-down": "editor::SwitchSourceHeader",
+      "alt-up": "editor::SwitchSourceHeader",
     },
   },
   {
