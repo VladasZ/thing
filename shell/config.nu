@@ -16,6 +16,7 @@ if $is_mac {
     path add /opt/homebrew/opt/llvm/bin
     path add /opt/homebrew/opt/libpq/bin
     path add /Library/Developer/CommandLineTools/usr/bin/
+    path add /Users/vladas/.local/bin
 }
 
 if $is_linux {
@@ -39,6 +40,7 @@ mkdir ~/.config/zed/
 ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/helix/languages.toml ~/.config/helix/languages.toml
 ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/ssh_config ~/.ssh/config
 ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/wezterm.lua ~/.wezterm.lua
+~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/ke/commands.yaml ~/.ke/commands.yaml
 
 if $is_linux or $is_mac {
     ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/settings.json ~/.config/zed/settings.json
@@ -270,4 +272,37 @@ if $is_mac {
     # if ios: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
     $env.SDKROOT = (xcrun --show-sdk-path)
     $env.CFLAGS = $"-isysroot ($env.SDKROOT)"
+}
+
+# nvm (Node Version Manager) — nvm is a bash function, so we wrap it via bash.
+# `nvm use` also updates PATH in the current shell.
+if $is_mac {
+    $env.NVM_DIR = ($nu.home-dir | path join ".nvm")
+
+    # Auto-load default node version into PATH on shell start
+    let nvm_default_alias = ($env.NVM_DIR | path join "alias/default")
+    if ($nvm_default_alias | path exists) {
+        let version = (open $nvm_default_alias | str trim)
+        let node_bin = ($env.NVM_DIR | path join $"versions/node/($version)/bin")
+        if ($node_bin | path exists) {
+            path add $node_bin
+        }
+    }
+}
+
+def --env nvm [...args: string] {
+    let nvm_sh = "/opt/homebrew/opt/nvm/nvm.sh"
+    let cmd = ($args | str join " ")
+
+    if ($args | first? | default "" | $in == "use") {
+        # Run nvm use in bash, capture the resolved version, then update PATH here
+        let version = (bash -c $"source ($nvm_sh) && nvm ($cmd) && node --version" | str trim)
+        let node_bin = ($env.NVM_DIR | path join $"versions/node/($version)/bin")
+        if ($node_bin | path exists) {
+            $env.PATH = ($env.PATH | prepend $node_bin)
+            print $"Now using Node ($version)"
+        }
+    } else {
+        bash -c $"source ($nvm_sh) && nvm ($cmd)"
+    }
 }
