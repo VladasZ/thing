@@ -278,7 +278,7 @@ if $is_mac {
 }
 
 # nvm (Node Version Manager) — nvm is a bash function, so we wrap it via bash.
-# `nvm use` also updates PATH in the current shell. a
+# `nvm use` also updates PATH in the current shell.
 if $is_mac {
     $env.NVM_DIR = ($nu.home-dir | path join ".nvm")
 
@@ -309,3 +309,7 @@ def --env nvm [...args: string] {
         bash -c $"source ($nvm_sh) && nvm ($cmd)"
     }
 }
+
+git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/id_ed25519.pub
+git config --global commit.gpgsign true
