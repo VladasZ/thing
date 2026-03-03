@@ -88,6 +88,7 @@ alias cbr = cargo build --release
 alias cta = cargo test --all
 alias cc = cargo clean
 alias sr = wezterm cli split-pane --right
+alias pc = pre-commit run
 
 npm config set fund false --location=global
 
