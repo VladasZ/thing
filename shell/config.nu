@@ -61,6 +61,7 @@ alias te = cd ~/dev/test-engine/
 alias th = cd ~/dev/thing
 alias lab = cd ~/dev/games/labirintas
 alias l2 = cd ~/dev/games/l2
+alias ll = cd ~/dev/job/agi/live-lens-system/
 alias lsa = ls -a -l
 
 alias z = zellij

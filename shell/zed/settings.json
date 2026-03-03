@@ -3,7 +3,7 @@
   "agent": {
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.6",
+      "model": "claude-haiku-4.5",
       "enable_thinking": false,
     },
     "favorite_models": [],
@@ -65,6 +65,26 @@
     "C++": {
       "format_on_save": "on",
     },
+    "Python": {
+      "language_servers": [
+        // Disable basedpyright and enable pyright, and otherwise
+        // use the default configuration.
+        "pyright",
+        "!basedpyright",
+        "...",
+      ],
+    },
+    "Django": {
+      "language_servers": [
+        "django-language-server",
+        "!django-template-lsp",
+        "...",
+      ],
+    },
+  },
+
+  "file_types": {
+    "Django": ["**/templates/**/*.html"],
   },
 
   "close_on_file_delete": true,
