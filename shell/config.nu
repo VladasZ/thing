@@ -278,7 +278,7 @@ if $is_mac {
 }
 
 # nvm (Node Version Manager) — nvm is a bash function, so we wrap it via bash.
-# `nvm use` also updates PATH in the current shell.
+# `nvm use` also updates PATH in the current shell. a
 if $is_mac {
     $env.NVM_DIR = ($nu.home-dir | path join ".nvm")
 
