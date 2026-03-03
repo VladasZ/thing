@@ -1,13 +1,15 @@
 - global:
-    sr: wezterm cli split-pane --right
+  sr: wezterm cli split-pane --right
 
 - folder: ~/dev/job/agi/live-lens-system/frontend
-  commands:
-    up: npm run dev
+  up: npm run dev
 
 - folder: ~/dev/job/agi/live-lens-system/backend
-  commands:
-    down: just down
-    up: |
-      just up
-      docker compose logs -f
+  down: just down -v
+  up: |
+    just setup
+    just up
+    docker compose logs -f
+
+- folder: ~/dev/apps/ke
+  hi: echo Helloyy
