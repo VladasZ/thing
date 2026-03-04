@@ -42,7 +42,7 @@ fn pull_all() -> Result<()> {
         }
     }
 
-    let results: Vec<(PathBuf, Result<()>)> = repos
+    let results: Vec<(PathBuf, Result<bool>)> = repos
         .par_iter()
         .map(|dir| {
             let res = pull_repo(dir);
@@ -53,8 +53,10 @@ fn pull_all() -> Result<()> {
     let mut any_err = false;
     for (dir, res) in results {
         match res {
-            Ok(()) => {
-                println!("Pulled: {}", dir.display());
+            Ok(changed) => {
+                if changed {
+                    println!("Pulled: {}", dir.display());
+                }
             }
             Err(e) => {
                 eprintln!("Failed to pull {}: {:#}", dir.display(), e);
@@ -70,40 +72,60 @@ fn pull_all() -> Result<()> {
     Ok(())
 }
 
-fn pull_repo(path: &Path) -> Result<()> {
-    // Run `git pull --recurse-submodules` in the repo directory
-    let status = Command::new("git")
+fn pull_repo(path: &Path) -> Result<bool> {
+    let before = Command::new("git")
+        .args(["rev-parse", "--verify", "HEAD"])
+        .current_dir(path)
+        .output()
+        .ok()
+        .and_then(|o| String::from_utf8(o.stdout).ok())
+        .map(|s| s.trim().to_string());
+
+    let pull_out = Command::new("git")
         .arg("pull")
         .arg("--recurse-submodules")
         .current_dir(path)
-        .stdout(Stdio::inherit())
-        .stderr(Stdio::inherit())
-        .stdin(Stdio::inherit())
-        .status()
+        .stdout(Stdio::piped())
+        .stderr(Stdio::piped())
+        .stdin(Stdio::null())
+        .output()
         .with_context(|| format!("failed to run git pull in {}", path.display()))?;
 
-    if !status.success() {
-        return Err(anyhow!("git pull failed in {}", path.display()));
+    if !pull_out.status.success() {
+        let stderr = String::from_utf8_lossy(&pull_out.stderr);
+        return Err(anyhow!("git pull failed in {}: {}", path.display(), stderr));
     }
 
-    // Run `git submodule update --init --recursive` in the repo directory
-    let status = Command::new("git")
+    let sub_out = Command::new("git")
         .arg("submodule")
         .arg("update")
         .arg("--init")
         .arg("--recursive")
         .current_dir(path)
-        .stdout(Stdio::inherit())
-        .stderr(Stdio::inherit())
-        .stdin(Stdio::inherit())
-        .status()
+        .stdout(Stdio::piped())
+        .stderr(Stdio::piped())
+        .stdin(Stdio::null())
+        .output()
         .with_context(|| format!("failed to update submodules in {}", path.display()))?;
 
-    if !status.success() {
-        return Err(anyhow!("git submodule update failed in {}", path.display()));
+    if !sub_out.status.success() {
+        let stderr = String::from_utf8_lossy(&sub_out.stderr);
+        return Err(anyhow!(
+            "git submodule update failed in {}: {}",
+            path.display(),
+            stderr
+        ));
     }
 
-    Ok(())
+    let after = Command::new("git")
+        .args(["rev-parse", "--verify", "HEAD"])
+        .current_dir(path)
+        .output()
+        .ok()
+        .and_then(|o| String::from_utf8(o.stdout).ok())
+        .map(|s| s.trim().to_string());
+
+    Ok(before != after)
 }
 
 fn check_all(show_files: bool) -> Result<()> {
