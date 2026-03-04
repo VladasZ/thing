@@ -12,6 +12,7 @@ path = "src/st.rs"
 anyhow = { workspace = true }
 dirs = { workspace = true }
 git2 = { workspace = true }
+rayon = "1.9"
 structopt = { workspace = true }
 walkdir = { workspace = true }
 

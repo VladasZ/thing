@@ -5,7 +5,7 @@ use std/util "path add"
 source ~/dev/thing/shell/nu/os.nu
 source ~/dev/thing/shell/nu/symlinks.nu
 source ~/dev/thing/shell/nu/aliases.nu
-
+source ~/dev/thing/shell/nu/functions.nu
 
 path add ~/.cargo/bin
 path add ~/.deno/bin/
@@ -40,4 +40,5 @@ $env.PATH = ($env.PATH | append [
 
 npm config set fund false --location=global
 
-source ~/dev/thing/shell/nu/functions.nu
+# idk what is going on with this but it often fails on ios and simple macos
+$env.SDKROOT = (xcrun --sdk macosx --show-sdk-path)

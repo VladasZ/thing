@@ -1,13 +1,12 @@
 use std::{
-    env::set_current_dir,
     path::{Path, PathBuf},
-    process::exit,
+    process::{Command, Stdio, exit},
 };
 
-use anyhow::{Result, anyhow};
-use command::run;
+use anyhow::{Context, Result, anyhow};
 use dirs::home_dir;
 use git2::{Repository, StatusOptions};
+use rayon::prelude::*;
 use structopt::StructOpt;
 use walkdir::WalkDir;
 
@@ -32,33 +31,99 @@ fn main() -> Result<()> {
 }
 
 fn pull_all() -> Result<()> {
-    for dir in iter_repos()? {
-        if repo_has_changes(&dir, false) {
-            panic!(
+    let repos = iter_repos()?;
+
+    for dir in &repos {
+        if repo_has_changes(dir, false) {
+            return Err(anyhow!(
                 "Repo: {} has changes. Commit all changes before pulling.",
                 dir.display()
-            );
+            ));
         }
-        println!("\nPulling: \n{}", dir.display());
-        set_current_dir(&dir)?;
-        run("git pull --recurse-submodules")?;
-        run("git submodule update --init --recursive")?;
+    }
+
+    let results: Vec<(PathBuf, Result<()>)> = repos
+        .par_iter()
+        .map(|dir| {
+            let res = pull_repo(dir);
+            (dir.clone(), res)
+        })
+        .collect();
+
+    let mut any_err = false;
+    for (dir, res) in results {
+        match res {
+            Ok(()) => {
+                println!("Pulled: {}", dir.display());
+            }
+            Err(e) => {
+                eprintln!("Failed to pull {}: {:#}", dir.display(), e);
+                any_err = true;
+            }
+        }
+    }
+
+    if any_err {
+        return Err(anyhow!("One or more repositories failed to pull"));
     }
 
     Ok(())
 }
 
-fn check_all(files: bool) -> Result<()> {
-    let mut any = false;
+fn pull_repo(path: &Path) -> Result<()> {
+    // Run `git pull --recurse-submodules` in the repo directory
+    let status = Command::new("git")
+        .arg("pull")
+        .arg("--recurse-submodules")
+        .current_dir(path)
+        .stdout(Stdio::inherit())
+        .stderr(Stdio::inherit())
+        .stdin(Stdio::inherit())
+        .status()
+        .with_context(|| format!("failed to run git pull in {}", path.display()))?;
 
-    for dir in iter_repos()? {
-        if repo_has_changes(&dir, files) {
-            println!("{}", dir.display());
-            any = true;
-        }
+    if !status.success() {
+        return Err(anyhow!("git pull failed in {}", path.display()));
     }
 
-    if any {
+    // Run `git submodule update --init --recursive` in the repo directory
+    let status = Command::new("git")
+        .arg("submodule")
+        .arg("update")
+        .arg("--init")
+        .arg("--recursive")
+        .current_dir(path)
+        .stdout(Stdio::inherit())
+        .stderr(Stdio::inherit())
+        .stdin(Stdio::inherit())
+        .status()
+        .with_context(|| format!("failed to update submodules in {}", path.display()))?;
+
+    if !status.success() {
+        return Err(anyhow!("git submodule update failed in {}", path.display()));
+    }
+
+    Ok(())
+}
+
+fn check_all(show_files: bool) -> Result<()> {
+    let repos = iter_repos()?;
+
+    let changed: Vec<(PathBuf, Vec<String>)> = repos
+        .par_iter()
+        .filter_map(|dir| repo_status_info(dir, show_files).map(|files| (dir.clone(), files)))
+        .collect();
+
+    if !changed.is_empty() {
+        for (dir, files) in &changed {
+            println!("{}", dir.display());
+            if show_files {
+                for f in files {
+                    println!("{}", f);
+                }
+            }
+        }
+
         println!("Uncommitted changes");
         exit(1);
     } else {
@@ -68,35 +133,37 @@ fn check_all(files: bool) -> Result<()> {
     Ok(())
 }
 
-fn iter_repos() -> Result<impl Iterator<Item = PathBuf>> {
+fn iter_repos() -> Result<Vec<PathBuf>> {
     let home = home_dir().ok_or(anyhow!("Can't get home dir"))?;
-
-    let iter = WalkDir::new(format!("{}/dev", home.display()))
+    let repos: Vec<PathBuf> = WalkDir::new(format!("{}/dev", home.display()))
         .into_iter()
         .flatten()
-        .filter(|a| {
-            !a.path().to_string_lossy().contains("target")
-                && !a.path().to_string_lossy().contains("build")
-                && is_git_repo(a.path())
+        .filter(|entry| {
+            let p = entry.path().to_string_lossy();
+            !p.contains("target") && !p.contains("build") && is_git_repo(entry.path())
         })
-        .map(|a| a.path().to_owned());
+        .map(|entry| entry.path().to_owned())
+        .collect();
 
-    Ok(iter)
+    Ok(repos)
 }
 
 fn is_git_repo(path: &Path) -> bool {
     path.join(".git").is_dir()
 }
 
-fn repo_has_changes(path: &Path, show_files: bool) -> bool {
+fn repo_status_info(path: &Path, show_files: bool) -> Option<Vec<String>> {
     if let Ok(repo) = Repository::discover(path) {
         let mut status_opts = StatusOptions::new();
         status_opts.include_untracked(true);
 
         if let Ok(statuses) = repo.statuses(Some(&mut status_opts)) {
-            return statuses.iter().any(|entry| {
-                if entry.path().is_some_and(|path| path.contains(".mmdb")) {
-                    return false;
+            let mut files = Vec::new();
+            let mut has_changes = false;
+
+            for entry in statuses.iter() {
+                if entry.path().is_some_and(|p| p.contains(".mmdb")) {
+                    continue;
                 }
 
                 let changes = entry.status().is_wt_new()
@@ -106,13 +173,22 @@ fn repo_has_changes(path: &Path, show_files: bool) -> bool {
                     || entry.status().is_index_modified()
                     || entry.status().is_index_deleted();
 
-                if show_files && changes {
-                    println!("{}", entry.path().unwrap_or("UNKNOWN"));
+                if changes {
+                    has_changes = true;
+                    if show_files {
+                        files.push(entry.path().unwrap_or("UNKNOWN").to_string());
+                    }
                 }
+            }
 
-                changes
-            });
+            if has_changes {
+                return Some(files);
+            }
         }
     }
-    false
+    None
+}
+
+fn repo_has_changes(path: &Path, show_files: bool) -> bool {
+    repo_status_info(path, show_files).is_some()
 }
