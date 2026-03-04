@@ -23,6 +23,10 @@ config.color_scheme = 'Bamboo'
 
 config.window_close_confirmation = 'NeverPrompt'
 
+wezterm.on('mux-is-process-stateful', function(_proc)
+    return false
+end)
+
 --config.window_decorations = "RESIZE"
 
 
