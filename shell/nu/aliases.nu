@@ -31,5 +31,5 @@ alias cbr = cargo build --release
 alias cta = cargo test --all
 alias cc = cargo clean
 alias sr = wezterm cli split-pane --right | ignore
-alias sd = wezterm cli split-pane --down | ignore
+alias sd = wezterm cli split-pane --bottom | ignore
 alias pc = pre-commit run

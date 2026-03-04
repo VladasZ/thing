@@ -26,6 +26,10 @@
     "command": "cargo run --release",
   },
   {
+    "label": "Profile",
+    "command": "make profile",
+  },
+  {
     "label": "Order",
     "command": "~/dev/thing/shell/shorts/order.py",
     "reveal": "always",
