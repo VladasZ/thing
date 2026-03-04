@@ -52,7 +52,7 @@ brew install --cask postman
 
 # open nu then
 
-ln -sf ~/dev/thing/shell/config.nu "/Users/vladas/Library/Application Support/nushell/config.nu"
+ln -sf ~/dev/thing/shell/nu/config.nu "/Users/vladas/Library/Application Support/nushell/config.nu"
 
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh

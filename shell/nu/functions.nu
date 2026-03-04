@@ -1,100 +1,4 @@
-# $nu.config-path
-
-use std/util "path add"
-
-let is_windows = $nu.os-info.name == 'windows'
-let is_mac = $nu.os-info.name == 'macos'
-let is_linux = $nu.os-info.name == 'linux'
-let is_arch: bool = $is_linux and (open /etc/os-release | str join "\n" | str contains "ID=arch")
-
-
-path add ~/.cargo/bin
-path add ~/.deno/bin/
-
-if $is_mac {
-    path add /opt/homebrew/bin
-    path add /opt/homebrew/opt/llvm/bin
-    path add /opt/homebrew/opt/libpq/bin
-    path add /Library/Developer/CommandLineTools/usr/bin/
-    path add /Users/vladas/.local/bin
-}
-
-if $is_linux {
-    $env.SSH_AUTH_SOCK = $"($env.XDG_RUNTIME_DIR)/ssh-agent.socket"
-}
-
-$env.config.show_banner = false
-$env.VAGRANT_DEFAULT_PROVIDER = "utm"
-
-mkdir ($nu.data-dir | path join "vendor/autoload")
-starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
-
-mkdir ~/.config/hypr/
-mkdir ~/.config/helix/
-mkdir ~/.config/zed/
-
-~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
-# ln -sf ~/dev/thing/shell/config.nu "/Users/vladas/Library/Application Support/nushell/config.nu"
-~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/starship.toml ~/.config/starship.toml
-~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/helix/config.toml ~/.config/helix/config.toml
-~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/helix/languages.toml ~/.config/helix/languages.toml
-~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/ssh_config ~/.ssh/config
-~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/wezterm.lua ~/.wezterm.lua
-~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/ke/commands.yaml ~/.ke/commands.yaml
-
-if $is_linux or $is_mac {
-    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/settings.json ~/.config/zed/settings.json
-    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/keymap.json ~/.config/zed/keymap.json
-    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/tasks.json ~/.config/zed/tasks.json
-    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/themes ~/.config/zed/themes
-}
-
-
-$env.PATH = ($env.PATH | append [
-    "~/dev/thing/shell/shorts"
-    "~/dev/thing/shell/_shorts"
-    "~/dev/deps/qw/target/debug"
-    "/Applications/Docker.app/Contents/Resources/bin"
-])
-
-alias te = cd ~/dev/test-engine/
-alias th = cd ~/dev/thing
-alias lab = cd ~/dev/games/labirintas
-alias l2 = cd ~/dev/games/l2
-alias ll = cd ~/dev/job/agi/live-lens-system/
-alias lsa = ls -a -l
-
-alias z = zellij
-alias dotf = terraform apply -auto-approve
-alias untf = terraform destroy -auto-approve
-alias d = sudo docker
-alias tf = terraform
-alias l = lazygit
-alias k = kubectl
-alias a = ansible
-alias p = ansible-playbook
-alias c = clear
-alias h = cd ~/
-alias q = exit
-alias t = btop --force-utf
-alias ping = gping
-alias al = micro ~/.config/hypr/hyprland.conf
-alias hosts = sudo micro /etc/hosts
-alias order = ~/dev/thing/shell/shorts/order.py
-alias o = order
-alias cb = cargo build
-alias cba = cargo build --all
-alias cbr = cargo build --release
-alias cta = cargo test --all
-alias cc = cargo clean
-alias sr = wezterm cli split-pane --right | ignore
-alias pc = pre-commit run
-
-npm config set fund false --location=global
-
-if not $is_mac {
-    alias hx = helix
-}
+source ~/dev/thing/shell/nu/os.nu
 
 def install [app: string] {
     if $is_arch {
@@ -121,8 +25,6 @@ def --env set-hostname [name: string] {
 
     print $"Hostname successfully changed to: ($name)"
 }
-
-
 
 def clone [...args] {
     let binary_path = $"($nu.home-dir)/dev/thing/target/release/clone"
@@ -269,36 +171,11 @@ def nuconf [] {
     echo $nu.default-config-dir
 }
 
-# Rust:
-if $is_mac {
-    # source $"($nu.home-dir)/.cargo/env.nu"
-    # if ios: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
-    $env.SDKROOT = (xcrun --show-sdk-path)
-    $env.CFLAGS = $"-isysroot ($env.SDKROOT)"
-}
-
-# nvm (Node Version Manager) — nvm is a bash function, so we wrap it via bash.
-# `nvm use` also updates PATH in the current shell.
-if $is_mac {
-    $env.NVM_DIR = ($nu.home-dir | path join ".nvm")
-
-    # Auto-load default node version into PATH on shell start
-    let nvm_default_alias = ($env.NVM_DIR | path join "alias/default")
-    if ($nvm_default_alias | path exists) {
-        let version = (open $nvm_default_alias | str trim)
-        let node_bin = ($env.NVM_DIR | path join $"versions/node/($version)/bin")
-        if ($node_bin | path exists) {
-            path add $node_bin
-        }
-    }
-}
-
 def --env nvm [...args: string] {
     let nvm_sh = "/opt/homebrew/opt/nvm/nvm.sh"
     let cmd = ($args | str join " ")
 
     if ($args | first? | default "" | $in == "use") {
-        # Run nvm use in bash, capture the resolved version, then update PATH here
         let version = (bash -c $"source ($nvm_sh) && nvm ($cmd) && node --version" | str trim)
         let node_bin = ($env.NVM_DIR | path join $"versions/node/($version)/bin")
         if ($node_bin | path exists) {
@@ -310,6 +187,10 @@ def --env nvm [...args: string] {
     }
 }
 
-git config --global gpg.format ssh
-git config --global user.signingkey ~/.ssh/id_ed25519.pub
-git config --global commit.gpgsign true
+def up [] {
+    let cwd = (pwd)
+    let left_pane = (wezterm cli spawn --cwd $cwd | str trim)
+    let right_pane = (wezterm cli split-pane --right --pane-id $left_pane --cwd $cwd | str trim)
+    wezterm cli send-text --pane-id $left_pane $"cd backend; ke up\n"
+    wezterm cli send-text --pane-id $right_pane $"cd frontend; ke up\n"
+}

@@ -20,7 +20,7 @@ cd dev
 
 git clone https://github.com/VladasZ/thing.git
 
-ln -sf ~/dev/thing/shell/config.nu ~/.config/nushell/config.nu
+ln -sf ~/dev/thing/shell/nu/config.nu ~/.config/nushell/config.nu
 
 chsh -s /usr/bin/nu
 # chsh -s /opt/homebrew/bin/nu
