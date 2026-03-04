@@ -3,7 +3,7 @@
   "agent": {
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-5-mini",
+      "model": "gemini-3-flash-preview",
       "enable_thinking": false,
     },
     "favorite_models": [],

@@ -42,3 +42,7 @@ npm config set fund false --location=global
 
 # idk what is going on with this but it often fails on ios and simple macos
 $env.SDKROOT = (xcrun --sdk macosx --show-sdk-path)
+
+git config --global gpg.format ssh
+git config --global user.signingkey ~/.ssh/id_ed25519.pub
+git config --global commit.gpgsign true
