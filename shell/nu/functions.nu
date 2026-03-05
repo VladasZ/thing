@@ -89,6 +89,8 @@ def close [] {
         "WebStorm"
         "Docker Desktop"
         "Zed"
+        "Notes"
+        "DBeaver"
     ]
 
     for app in $apps {
