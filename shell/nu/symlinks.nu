@@ -13,6 +13,10 @@ mkdir ~/.config/zed/
 ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/wezterm.lua ~/.wezterm.lua
 ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/ke/commands.yaml ~/.ke/commands.yaml
 
+if $is_windows {
+    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/nu/config.nu C:\Users\vladas\AppData\Roaming\nushell\config.nu
+}
+
 if $is_linux or $is_mac {
     ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/settings.json ~/.config/zed/settings.json
     ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/keymap.json ~/.config/zed/keymap.json
