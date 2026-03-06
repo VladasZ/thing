@@ -191,7 +191,7 @@ def --env nvm [...args: string] {
 
 def up [] {
     let cwd = (pwd)
-    let left_pane = (wezterm cli spawn --cwd $cwd | str trim)
+    let left_pane = $env.WEZTERM_PANE
     let right_pane = (wezterm cli split-pane --right --pane-id $left_pane --cwd $cwd | str trim)
     wezterm cli send-text --pane-id $left_pane $"cd backend; ke up\n"
     wezterm cli send-text --pane-id $right_pane $"cd frontend; ke up\n"
