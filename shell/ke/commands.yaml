@@ -11,7 +11,7 @@
     just up
     docker compose logs -f
   check: |
-    just test
+    just test --create-db
     just fmt
     just lint
 
