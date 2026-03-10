@@ -1,14 +1,4 @@
 {
-  "show_edit_predictions": false,
-  "agent": {
-    "default_model": {
-      "provider": "copilot_chat",
-      "model": "gemini-3-flash-preview",
-      "enable_thinking": false,
-    },
-    "favorite_models": [],
-    "model_parameters": [],
-  },
   "ssh_connections": [
     {
       "host": "pc1",
@@ -49,7 +39,7 @@
     "button": false,
   },
   "auto_update": true,
-  "disable_ai": false,
+  "disable_ai": true,
 
   "autosave": {
     "after_delay": {
