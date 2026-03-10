@@ -10,6 +10,10 @@
     just setup
     just up
     docker compose logs -f
+  check: |
+    just test
+    just fmt
+    just lint
 
 - folder: ~/dev/apps/ke
   hi: echo Helloyy

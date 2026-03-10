@@ -36,3 +36,5 @@ alias cc = cargo clean
 alias sr = wezterm cli split-pane --right | ignore
 alias sd = wezterm cli split-pane --bottom | ignore
 alias pc = pre-commit run
+
+alias time = python3 ~/dev/job/interview/timesheet.py
