@@ -196,3 +196,7 @@ def up [] {
     wezterm cli send-text --pane-id $left_pane $"cd backend; ke up\n"
     wezterm cli send-text --pane-id $right_pane $"cd frontend; ke up\n"
 }
+
+def claude-my [...args] {
+     with-env { CLAUDE_CONFIG_DIR: ([$env.HOME, ".claude-my"] | path join) } { claude ...$args }
+ }
