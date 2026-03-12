@@ -4,11 +4,9 @@ gui:
   nerdFontsVersion: "3"
   showFileIcons: true
   border: rounded
-
   sidePanelWidth: 0.28
   expandFocusedSidePanel: true
   expandedSidePanelWeight: 4
-
   theme:
     activeBorderColor:
       - "#c6a0f6"

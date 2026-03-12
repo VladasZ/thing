@@ -13,7 +13,6 @@ alias dotf = terraform apply -auto-approve
 alias untf = terraform destroy -auto-approve
 alias d = sudo docker
 alias tf = terraform
-alias l = lazygit
 alias k = kubectl
 alias a = ansible
 alias p = ansible-playbook
