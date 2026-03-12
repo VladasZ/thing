@@ -61,6 +61,7 @@
         // use the default configuration.
         "pyright",
         "!basedpyright",
+        "!pylsp",
         "...",
       ],
     },
@@ -173,7 +174,9 @@
         "activate_script": "default",
       },
     },
-    "env": {},
+    "env": {
+      "PATH": "/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+    },
     "line_height": "comfortable",
     "shell": {
       "program": "nu",
