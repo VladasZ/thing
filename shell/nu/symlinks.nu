@@ -4,7 +4,9 @@ mkdir ~/.config/hypr/
 mkdir ~/.config/helix/
 mkdir ~/.config/zed/
 
-~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
+if $is_arch {
+    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
+}
 # ln -sf ~/dev/thing/shell/nu/config.nu "/Users/vladas/Library/Application Support/nushell/config.nu"
 ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/starship.toml ~/.config/starship.toml
 ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/helix/config.toml ~/.config/helix/config.toml
@@ -15,6 +17,11 @@ mkdir ~/.config/zed/
 
 if $is_windows {
     ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/nu/config.nu C:\Users\vladas\AppData\Roaming\nushell\config.nu
+
+    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/settings.json ~/AppData\Roaming\Zed\settings.json
+    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/keymap.json ~/AppData\Roaming\Zed\keymap.json
+    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/tasks.json ~/AppData\Roaming\Zed\tasks.json
+    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/themes ~/AppData\Roaming\Zed\themes
 }
 
 if $is_linux or $is_mac {
