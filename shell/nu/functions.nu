@@ -230,6 +230,10 @@ s.close()
 " ($port | into string)
 }
 
+def nt [] {
+    wezterm cli spawn | ignore
+}
+
 def claude-my [...args] {
      with-env { CLAUDE_CONFIG_DIR: ([$env.HOME, ".claude-my"] | path join) } { claude ...$args }
  }

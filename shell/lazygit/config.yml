@@ -1,10 +1,14 @@
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
 
 gui:
+  log:
+    showGraph: always
+    showWholeGraph: true
+
   nerdFontsVersion: "3"
   showFileIcons: true
   border: rounded
-  sidePanelWidth: 0.28
+  sidePanelWidth: 0.5
   expandFocusedSidePanel: true
   expandedSidePanelWeight: 4
   theme:
