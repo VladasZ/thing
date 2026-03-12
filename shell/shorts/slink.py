@@ -14,6 +14,8 @@ def create_symlink(src, dst):
 
     target_is_directory = os.path.isdir(src)
 
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+
     with suppress(FileExistsError):
         os.symlink(src, dst, target_is_directory=target_is_directory)
         print(f"Symlink created: {src} -> {dst}")

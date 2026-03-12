@@ -1,8 +1,5 @@
 source ~/dev/thing/shell/nu/os.nu
 
-mkdir ~/.config/hypr/
-mkdir ~/.config/helix/
-mkdir ~/.config/zed/
 
 if $is_arch {
     ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
@@ -17,11 +14,19 @@ if $is_arch {
 
 if $is_windows {
     ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/nu/config.nu C:\Users\vladas\AppData\Roaming\nushell\config.nu
-
+    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/lazygit/config.yml ~/AppData\Roaming\lazygit\config.yml
     ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/settings.json ~/AppData\Roaming\Zed\settings.json
     ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/keymap.json ~/AppData\Roaming\Zed\keymap.json
     ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/tasks.json ~/AppData\Roaming\Zed\tasks.json
     ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/zed/themes ~/AppData\Roaming\Zed\themes
+}
+
+if $is_linux {
+    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/lazygit/config.yml ~/.config/lazygit/config.yml
+}
+
+if $is_mac {
+    ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/lazygit/config.yml "~/Library/Application Support/lazygit/config.yml"
 }
 
 if $is_linux or $is_mac {
