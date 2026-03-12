@@ -197,6 +197,39 @@ def up [] {
     wezterm cli send-text --pane-id $right_pane $"cd frontend; ke up\n"
 }
 
+def ports [] {
+    lsof -i -P -n
+    | lines
+    | skip 1
+    | where { |line| $line | str contains "(LISTEN)" }
+    | each { |line|
+        let parts = ($line | split row -r '\s+')
+        let address = ($parts | get 8)
+        let port = ($address | split row ":" | last | into int)
+        {app: ($parts | get 0), pid: ($parts | get 1 | into int), port: $port, address: $address}
+    }
+    | sort-by port
+}
+
+def clog [port: int] {
+    print $"Clogging port ($port)... Press Ctrl+C to release."
+    python3 -c "
+import socket, sys
+port = int(sys.argv[1])
+s = socket.socket()
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+s.bind(('', port))
+s.listen(1)
+while True:
+    try:
+        conn, _ = s.accept()
+        conn.close()
+    except KeyboardInterrupt:
+        break
+s.close()
+" ($port | into string)
+}
+
 def claude-my [...args] {
      with-env { CLAUDE_CONFIG_DIR: ([$env.HOME, ".claude-my"] | path join) } { claude ...$args }
  }
