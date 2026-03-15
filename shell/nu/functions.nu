@@ -255,6 +255,16 @@ def clean [] {
         print $"Cleaning ($dir)..."
         cargo clean --manifest-path ($dir | path join "Cargo.toml")
     } | ignore
+
+    let answer = (input "Clean Docker? [y/n] ")
+    if $answer == "y" {
+        print "Cleaning Docker..."
+        let containers = (docker ps -aq | lines | where { |l| $l != "" })
+        if ($containers | is-not-empty) {
+            docker rm -f ...$containers | ignore
+        }
+        docker system prune -af --volumes | ignore
+    }
 }
 
 def claude-my [...args] {
