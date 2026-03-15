@@ -234,6 +234,29 @@ def nt [] {
     wezterm cli spawn | ignore
 }
 
+def clean [] {
+    let dev = ($nu.home-dir | path join "dev")
+    let roots = glob $"($dev)/**/Cargo.toml" --depth 10
+        | each { |f| $f | path dirname }
+        | where { |dir|
+            mut ancestor = ($dir | path dirname)
+            mut is_root = true
+            while $ancestor != $dev {
+                if ($ancestor | path join "Cargo.toml" | path exists) {
+                    $is_root = false
+                    break
+                }
+                $ancestor = ($ancestor | path dirname)
+            }
+            $is_root
+        }
+
+    $roots | each { |dir|
+        print $"Cleaning ($dir)..."
+        cargo clean --manifest-path ($dir | path join "Cargo.toml")
+    } | ignore
+}
+
 def claude-my [...args] {
      with-env { CLAUDE_CONFIG_DIR: ([$env.HOME, ".claude-my"] | path join) } { claude ...$args }
  }
