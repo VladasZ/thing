@@ -256,6 +256,11 @@ def clean [] {
         cargo clean --manifest-path ($dir | path join "Cargo.toml")
     } | ignore
 
+    if $is_mac {
+        print "Cleaning Simulator dyld cache..."
+        sudo rm -rf /Library/Developer/CoreSimulator/Caches/dyld
+    }
+
     let answer = (input "Clean Docker? [y/n] ")
     if $answer == "y" {
         print "Cleaning Docker..."
