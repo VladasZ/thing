@@ -110,7 +110,22 @@ config.keys = {
 		  	command = { args = { 'lazygit' } },
 			size = { Percent = 20 },
 		},
-	}
+	},
+	{
+		key = 'n',
+		mods = 'CMD',
+		action = wezterm.action.SpawnTab 'CurrentPaneDomain',
+	},
+	{
+		key = 'n',
+		mods = 'ALT',
+		action = wezterm.action.SpawnTab 'CurrentPaneDomain',
+	},
+	{
+		key = 'n',
+		mods = 'CTRL',
+		action = wezterm.action.SpawnTab 'CurrentPaneDomain',
+	},
 }
 
 
