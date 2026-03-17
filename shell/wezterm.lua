@@ -18,8 +18,12 @@ else
 	config.font_size = 14
 end
 
---config.color_scheme = 'Gruvbox (Gogh)' -- light
-config.color_scheme = 'Bamboo'
+local appearance = wezterm.gui and wezterm.gui.get_appearance() or 'Dark'
+if appearance:find 'Dark' then
+	config.color_scheme = 'Bamboo'
+else
+	config.color_scheme = 'Gruvbox (Gogh)'
+end
 
 config.window_close_confirmation = 'NeverPrompt'
 
