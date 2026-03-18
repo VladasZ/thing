@@ -5,31 +5,63 @@
       "args": [],
       "projects": [
         {
-          "paths": ["/home/vladas/dev/petuh"],
+          "paths": [
+            "/home/vladas"
+          ]
         },
         {
-          "paths": ["/home/vladas/dev/thing"],
+          "paths": [
+            "/home/vladas/dev/neuro"
+          ]
         },
         {
-          "paths": ["/home/vladas/dev/neuro"],
+          "paths": [
+            "/home/vladas/dev/petuh"
+          ]
         },
         {
-          "paths": ["/mnt/raid4TB/local"],
+          "paths": [
+            "/home/vladas/dev/thing"
+          ]
         },
         {
-          "paths": ["/mnt/raid4TB/services/icarus"],
+          "paths": [
+            "/mnt/raid4TB/local"
+          ]
         },
         {
-          "paths": ["/mnt/raid4TB/services/jellyfin"],
+          "paths": [
+            "/mnt/raid4TB/services/icarus"
+          ]
         },
         {
-          "paths": ["/mnt/raid4TB/services/l2"],
+          "paths": [
+            "/mnt/raid4TB/services/jellyfin"
+          ]
         },
         {
-          "paths": ["/mnt/raid4TB/services/valheim"],
+          "paths": [
+            "/mnt/raid4TB/services/l2"
+          ]
         },
-      ],
+        {
+          "paths": [
+            "/mnt/raid4TB/services/valheim"
+          ]
+        }
+      ]
     },
+    {
+      "host": "my-vm.us-central1-a.project-f669ad6d-7f8a-443b-a8d",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/vladas/pubsub"
+          ]
+        }
+      ]
+    }
   ],
 
   "notification_panel": {

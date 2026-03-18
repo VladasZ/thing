@@ -280,6 +280,14 @@ def lit [] {
     osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to false'
 }
 
+def reload [] {
+    exec nu
+}
+
 def claude-my [...args] {
      with-env { CLAUDE_CONFIG_DIR: ([$env.HOME, ".claude-my"] | path join) } { claude ...$args }
- }
+}
+
+def g [...args] {
+    ^g ...$args
+}

@@ -1,0 +1,196 @@
+#!/usr/bin/env python3
+import json
+import os
+import subprocess
+import sys
+from datetime import datetime
+from pathlib import Path
+
+CONFIG_DIR = Path.home() / ".config" / "g"
+
+
+def run(cmd, capture=False):
+    if capture:
+        return subprocess.check_output(cmd, text=True)
+    subprocess.check_call(cmd)
+
+
+def gcloud(*args, capture=False):
+    return run(["gcloud"] + list(args), capture=capture)
+
+
+def gcloud_json(*args):
+    return json.loads(gcloud(*args, "--format=json", capture=True))
+
+
+def get_zone(name):
+    instances = gcloud_json("compute", "instances", "list", f"--filter=name={name}")
+    return instances[0]["zone"].split("/")[-1]
+
+
+def cmd_inst():
+    gcloud("compute", "instances", "list")
+
+
+def cmd_clusters():
+    gcloud("container", "clusters", "list")
+
+
+def cmd_topics():
+    gcloud("pubsub", "topics", "list")
+
+
+def cmd_subs():
+    gcloud("pubsub", "subscriptions", "list")
+
+
+def cmd_buckets():
+    run(["gsutil", "ls"])
+
+
+def cmd_save(name):
+    zone = get_zone(name)
+    instance = gcloud_json("compute", "instances", "describe", name, f"--zone={zone}")
+    snapshot_name = f"{name}-snapshot-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+    gcloud("compute", "disks", "snapshot", name, f"--zone={zone}", f"--snapshot-names={snapshot_name}")
+    disk_name = instance["disks"][0]["source"].split("/")[-1]
+    disk = gcloud_json("compute", "disks", "describe", disk_name, f"--zone={zone}")
+    state = {
+        "name": name,
+        "machine_type": instance["machineType"].split("/")[-1],
+        "zone": zone,
+        "disk_size": disk["sizeGb"],
+        "disk_type": disk["type"].split("/")[-1],
+        "snapshot": snapshot_name,
+    }
+    CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+    with open(CONFIG_DIR / f"{name}.json", "w") as f:
+        json.dump(state, f, indent=2)
+    print(f"Saved {name} state and disk snapshot {snapshot_name}")
+
+
+def cmd_restore(name):
+    with open(CONFIG_DIR / f"{name}.json") as f:
+        state = json.load(f)
+    gcloud("compute", "disks", "create", f"{name}-disk", f"--source-snapshot={state['snapshot']}", f"--zone={state['zone']}", f"--type={state['disk_type']}")
+    gcloud("compute", "instances", "create", state["name"], f"--machine-type={state['machine_type']}", f"--zone={state['zone']}", f"--disk=name={name}-disk,boot=yes,auto-delete=yes")
+    print(f"Restored {name} from snapshot {state['snapshot']}")
+
+
+def cmd_down(name):
+    zone = get_zone(name)
+    instance = gcloud_json("compute", "instances", "describe", name, f"--zone={zone}")
+    machine_type = instance["machineType"].split("/")[-1]
+    disks = [d["source"].split("/")[-1] for d in instance["disks"]]
+    disk_details = gcloud_json("compute", "disks", "list", f"--filter=name=({' '.join(disks)})", f"--zones={zone}")
+    disk_info = {d["name"]: d for d in disk_details}
+    print(f"Will delete instance: {name} (zone: {zone}, type: {machine_type})")
+    for disk in disks:
+        d = disk_info.get(disk, {})
+        size = d.get("sizeGb", "?")
+        dtype = d.get("type", "?").split("/")[-1]
+        print(f"  disk: {disk} ({size}GB, {dtype})")
+    answer = input("Proceed? [y/n] ")
+    if answer != "y":
+        return
+    gcloud("compute", "instances", "delete", name, f"--zone={zone}", "--quiet")
+    for disk in disks:
+        try:
+            gcloud("compute", "disks", "delete", disk, f"--zone={zone}", "--quiet")
+        except subprocess.CalledProcessError:
+            print(f"  disk {disk} already deleted, skipping")
+
+
+def cmd_saved():
+    configs = sorted(CONFIG_DIR.glob("*.json"))
+    if not configs:
+        print("No saved machines.")
+        return
+    for path in configs:
+        with open(path) as f:
+            s = json.load(f)
+        print(f"{s['name']}: {s['machine_type']}, {s['zone']}, disk {s['disk_size']}GB {s['disk_type']}, snapshot {s['snapshot']}")
+
+
+def cmd_list():
+    sections = [
+        ("Instances", ["compute", "instances", "list"]),
+        ("Disks", ["compute", "disks", "list"]),
+        ("Snapshots", ["compute", "snapshots", "list"]),
+        ("Clusters", ["container", "clusters", "list"]),
+        ("PubSub Topics", ["pubsub", "topics", "list"]),
+        ("PubSub Subscriptions", ["pubsub", "subscriptions", "list"]),
+    ]
+    for title, args in sections:
+        print(f"\n=== {title} ===", flush=True)
+        gcloud(*args)
+
+
+def cmd_snaps():
+    gcloud("compute", "snapshots", "list")
+
+
+def cmd_ssh_up():
+    gcloud("compute", "config-ssh")
+
+
+def cmd_ssh_down():
+    gcloud("compute", "config-ssh", "--remove")
+
+
+COMMANDS = {
+    "buckets":  (cmd_buckets, 0),
+    "clusters": (cmd_clusters, 0),
+    "down":     (cmd_down, 1),
+    "inst":     (cmd_inst, 0),
+    "list":     (cmd_list, 0),
+    "restore":  (cmd_restore, 1),
+    "save":     (cmd_save, 1),
+    "saved":    (cmd_saved, 0),
+    "snaps":    (cmd_snaps, 0),
+    "ssh-down": (cmd_ssh_down, 0),
+    "ssh-up":   (cmd_ssh_up, 0),
+    "subs":     (cmd_subs, 0),
+    "topics":   (cmd_topics, 0),
+}
+
+
+HELP = {
+    "buckets":  "list storage buckets",
+    "clusters": "list GKE clusters",
+    "down":     "delete instance and its disks  <name>",
+    "inst":     "list compute instances",
+    "list":     "show all GCP resources",
+    "restore":  "recreate instance from saved config  <name>",
+    "save":     "snapshot instance and save config  <name>",
+    "saved":    "show locally saved machine configs",
+    "snaps":    "list disk snapshots",
+    "ssh-down": "remove GCP hosts from ~/.ssh/config",
+    "ssh-up":   "add GCP hosts to ~/.ssh/config",
+    "subs":     "list pubsub subscriptions",
+    "topics":   "list pubsub topics",
+}
+
+
+def usage():
+    print("usage: g <command> [args]\n")
+    for cmd, desc in HELP.items():
+        print(f"  {cmd:<12} {desc}")
+    sys.exit(1)
+
+
+if len(sys.argv) < 2 or sys.argv[1] in ("help", "--help", "-h"):
+    usage()
+
+command = sys.argv[1]
+if command not in COMMANDS:
+    print(f"unknown command: {command}")
+    usage()
+
+fn, nargs = COMMANDS[command]
+args = sys.argv[2:]
+if len(args) != nargs:
+    print(f"{command} expects {nargs} argument(s), got {len(args)}")
+    sys.exit(1)
+
+fn(*args)
