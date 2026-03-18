@@ -57,6 +57,11 @@
       "projects": [
         {
           "paths": [
+            "/home/vladas"
+          ]
+        },
+        {
+          "paths": [
             "/home/vladas/pubsub"
           ]
         }

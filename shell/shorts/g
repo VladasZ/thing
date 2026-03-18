@@ -112,6 +112,17 @@ def cmd_saved():
         print(f"{s['name']}: {s['machine_type']}, {s['zone']}, disk {s['disk_size']}GB {s['disk_type']}, snapshot {s['snapshot']}")
 
 
+def cmd_cluster_create(name):
+    gcloud(
+        "container", "clusters", "create", name,
+        "--zone=us-central1-a",
+        "--machine-type=e2-medium",
+        "--num-nodes=1",
+        "--disk-type=pd-ssd",
+    )
+    gcloud("container", "clusters", "get-credentials", name, "--zone=us-central1-a")
+
+
 def cmd_list():
     sections = [
         ("Instances", ["compute", "instances", "list"]),
@@ -139,8 +150,9 @@ def cmd_ssh_down():
 
 
 COMMANDS = {
-    "buckets":  (cmd_buckets, 0),
-    "clusters": (cmd_clusters, 0),
+    "buckets":         (cmd_buckets, 0),
+    "cluster-create":  (cmd_cluster_create, 1),
+    "clusters":        (cmd_clusters, 0),
     "down":     (cmd_down, 1),
     "inst":     (cmd_inst, 0),
     "list":     (cmd_list, 0),
@@ -156,8 +168,9 @@ COMMANDS = {
 
 
 HELP = {
-    "buckets":  "list storage buckets",
-    "clusters": "list GKE clusters",
+    "buckets":        "list storage buckets",
+    "cluster-create": "create a GKE cluster  <name>",
+    "clusters":       "list GKE clusters",
     "down":     "delete instance and its disks  <name>",
     "inst":     "list compute instances",
     "list":     "show all GCP resources",
