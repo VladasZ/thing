@@ -17,6 +17,14 @@
     },
   },
   {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-n": "pane::SplitRight",
+      "ctrl-n": "pane::SplitRight",
+      "alt-n": "pane::SplitRight",
+    },
+  },
+  {
     "bindings": {
       "cmd-o": "workspace::Open",
       "ctrl-o": "workspace::Open",
