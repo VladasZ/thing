@@ -51,6 +51,3 @@ if not ($ssh_config | path exists) {
     $ssh_include | save --append $ssh_config
 }
 
-if ("~/.cargo/env.nu" | path expand | path exists) {
-    source "~/.cargo/env.nu"
-}
