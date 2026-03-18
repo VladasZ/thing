@@ -2,10 +2,8 @@
 
 set -euxo pipefail
 
-# Install nushell and starship on Debian
-
 sudo apt-get update
-sudo apt-get install -y curl unzip ncdu duf btop
+sudo apt-get install -y curl unzip ncdu duf btop pkg-config libssl-dev
 
 # Install nushell
 NUSHELL_VERSION=$(curl -s https://api.github.com/repos/nushell/nushell/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
