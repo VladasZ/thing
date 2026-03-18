@@ -152,6 +152,10 @@ def cmd_list():
         gcloud(*args)
 
 
+def cmd_open():
+    run(["open", "https://console.cloud.google.com/compute/instances?authuser=1&project=project-f669ad6d-7f8a-443b-a8d"])
+
+
 def cmd_snaps():
     gcloud("compute", "snapshots", "list")
 
@@ -176,6 +180,7 @@ COMMANDS = {
     "down":     (cmd_down, 1),
     "inst":     (cmd_inst, 0),
     "list":     (cmd_list, 0),
+    "open":     (cmd_open, 0),
     "restore":  (cmd_restore, 1),
     "save":     (cmd_save, 1),
     "saved":    (cmd_saved, 0),
@@ -196,6 +201,7 @@ HELP = {
     "down":     "delete instance and its disks  <name>",
     "inst":     "list compute instances",
     "list":     "show all GCP resources",
+    "open":     "open GCP console in browser",
     "restore":  "recreate instance from saved config  <name>",
     "save":     "snapshot instance and save config  <name>",
     "saved":    "show locally saved machine configs",
