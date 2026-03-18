@@ -119,6 +119,7 @@ def cmd_cluster_create(name):
         "--machine-type=e2-medium",
         "--num-nodes=1",
         "--disk-type=pd-ssd",
+        "--disk-size=30",
     )
     gcloud("container", "clusters", "get-credentials", name, "--zone=us-central1-a")
 
