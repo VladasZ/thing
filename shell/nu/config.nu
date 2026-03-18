@@ -43,4 +43,12 @@ if $is_mac {
     # idk what is going on with this but it often fails on ios and simple macos
     $env.SDKROOT = (xcrun --sdk macosx --show-sdk-path)
 }
+let ssh_config = ("~/.ssh/config" | path expand)
+let ssh_include = "Include ~/dev/thing/shell/ssh_config"
+if not ($ssh_config | path exists) {
+    $ssh_include | save $ssh_config
+} else if not (open $ssh_config | str contains $ssh_include) {
+    $ssh_include | save --append $ssh_config
+}
+
 source "~/.cargo/env.nu"

@@ -8,7 +8,6 @@ if $is_arch {
 ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/starship.toml ~/.config/starship.toml
 ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/helix/config.toml ~/.config/helix/config.toml
 ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/helix/languages.toml ~/.config/helix/languages.toml
-~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/ssh_config ~/.ssh/config
 ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/wezterm.lua ~/.wezterm.lua
 ~/dev/thing/shell/shorts/slink.py ~/dev/thing/shell/ke/commands.yaml ~/.ke/commands.yaml
 
