@@ -24,3 +24,5 @@ ln -sf ~/dev/thing/shell/nu/config.nu ~/.config/nushell/config.nu
 
 chsh -s /usr/bin/nu
 # chsh -s /opt/homebrew/bin/nu
+
+bash ~/dev/thing/shell/common/common-setup.sh

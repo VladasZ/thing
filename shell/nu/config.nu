@@ -39,16 +39,8 @@ $env.PATH = ($env.PATH | append [
 ])
 
 
-npm config set fund false --location=global
-
 if $is_mac {
     # idk what is going on with this but it often fails on ios and simple macos
     $env.SDKROOT = (xcrun --sdk macosx --show-sdk-path)
-
-    git config --global gpg.format ssh
-    git config --global user.signingkey ~/.ssh/id_ed25519.pub
-    git config --global commit.gpgsign true
 }
-
-git config --global user.email "146100@gmail.com"
-git config --global user.name "Vladas Zakrevskis"
+source "~/.cargo/env.nu"

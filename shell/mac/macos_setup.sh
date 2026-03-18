@@ -57,3 +57,5 @@ ln -sf ~/dev/thing/shell/nu/config.nu "/Users/vladas/Library/Application Support
 
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+bash ~/dev/thing/shell/common/common-setup.sh
