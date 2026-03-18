@@ -31,19 +31,19 @@ Host *
 #
 # You should not hand-edit this section, unless you are deleting it.
 #
-Host gke-my-cluster-default-pool-c4946428-hljk.us-central1-a.project-f669ad6d-7f8a-443b-a8d
-    HostName 34.28.155.46
+Host gke-my-cluster-default-pool-086667d2-4bw8.us-central1-a.project-f669ad6d-7f8a-443b-a8d
+    HostName 34.60.25.176
     IdentityFile /Users/vladas/.ssh/google_compute_engine
     UserKnownHostsFile=/Users/vladas/.ssh/google_compute_known_hosts
-    HostKeyAlias=compute.438094432564662359
+    HostKeyAlias=compute.2799456937825477962
     IdentitiesOnly=yes
     CheckHostIP=no
 
 Host my-vm.us-central1-a.project-f669ad6d-7f8a-443b-a8d
-    HostName 34.16.118.107
+    HostName 34.63.242.235
     IdentityFile /Users/vladas/.ssh/google_compute_engine
     UserKnownHostsFile=/Users/vladas/.ssh/google_compute_known_hosts
-    HostKeyAlias=compute.475847255226044872
+    HostKeyAlias=compute.7069781420878014372
     IdentitiesOnly=yes
     CheckHostIP=no
 
