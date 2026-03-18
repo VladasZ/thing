@@ -51,9 +51,9 @@ def cmd_buckets():
 def cmd_save(name):
     zone = get_zone(name)
     instance = gcloud_json("compute", "instances", "describe", name, f"--zone={zone}")
-    snapshot_name = f"{name}-snapshot-{datetime.now().strftime('%Y%m%d%H%M%S')}"
-    gcloud("compute", "disks", "snapshot", name, f"--zone={zone}", f"--snapshot-names={snapshot_name}")
     disk_name = instance["disks"][0]["source"].split("/")[-1]
+    snapshot_name = f"{name}-snapshot-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+    gcloud("compute", "disks", "snapshot", disk_name, f"--zone={zone}", f"--snapshot-names={snapshot_name}")
     disk = gcloud_json("compute", "disks", "describe", disk_name, f"--zone={zone}")
     state = {
         "name": name,
@@ -123,6 +123,21 @@ def cmd_cluster_create(name):
     gcloud("container", "clusters", "get-credentials", name, "--zone=us-central1-a")
 
 
+def cmd_cluster_down(name):
+    clusters = gcloud_json("container", "clusters", "list", f"--filter=name={name}")
+    if not clusters:
+        print(f"cluster {name} not found")
+        sys.exit(1)
+    zone = clusters[0]["zone"]
+    node_count = clusters[0]["currentNodeCount"]
+    machine_type = clusters[0]["nodeConfig"]["machineType"]
+    print(f"Will delete cluster: {name} (zone: {zone}, {node_count}x {machine_type})")
+    answer = input("Proceed? [y/n] ")
+    if answer != "y":
+        return
+    gcloud("container", "clusters", "delete", name, f"--zone={zone}", "--quiet")
+
+
 def cmd_list():
     sections = [
         ("Instances", ["compute", "instances", "list"]),
@@ -141,6 +156,10 @@ def cmd_snaps():
     gcloud("compute", "snapshots", "list")
 
 
+def cmd_snap_delete(name):
+    gcloud("compute", "snapshots", "delete", name, "--quiet")
+
+
 def cmd_ssh_up():
     gcloud("compute", "config-ssh")
 
@@ -152,6 +171,7 @@ def cmd_ssh_down():
 COMMANDS = {
     "buckets":         (cmd_buckets, 0),
     "cluster-create":  (cmd_cluster_create, 1),
+    "cluster-down":    (cmd_cluster_down, 1),
     "clusters":        (cmd_clusters, 0),
     "down":     (cmd_down, 1),
     "inst":     (cmd_inst, 0),
@@ -159,6 +179,7 @@ COMMANDS = {
     "restore":  (cmd_restore, 1),
     "save":     (cmd_save, 1),
     "saved":    (cmd_saved, 0),
+    "snap-delete": (cmd_snap_delete, 1),
     "snaps":    (cmd_snaps, 0),
     "ssh-down": (cmd_ssh_down, 0),
     "ssh-up":   (cmd_ssh_up, 0),
@@ -170,6 +191,7 @@ COMMANDS = {
 HELP = {
     "buckets":        "list storage buckets",
     "cluster-create": "create a GKE cluster  <name>",
+    "cluster-down":   "delete a GKE cluster  <name>",
     "clusters":       "list GKE clusters",
     "down":     "delete instance and its disks  <name>",
     "inst":     "list compute instances",
@@ -177,6 +199,7 @@ HELP = {
     "restore":  "recreate instance from saved config  <name>",
     "save":     "snapshot instance and save config  <name>",
     "saved":    "show locally saved machine configs",
+    "snap-delete": "delete a snapshot  <name>",
     "snaps":    "list disk snapshots",
     "ssh-down": "remove GCP hosts from ~/.ssh/config",
     "ssh-up":   "add GCP hosts to ~/.ssh/config",
