@@ -13,6 +13,9 @@ disabled = true
 [vagrant]
 disabled = true
 
+[gcloud]
+disabled = true
+
 [cmd_duration]
 format = "⏱️ [$duration]($style) "
 min_time = 1000
