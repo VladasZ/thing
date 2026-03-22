@@ -10,6 +10,10 @@ Host pc
 Host pc1
     HostName 192.168.0.101
 
+Host si
+    HostName 188.34.183.52
+    User vladas
+
 Host *
   AddKeysToAgent yes
   ForwardAgent yes
