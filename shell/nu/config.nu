@@ -10,6 +10,7 @@ source ~/dev/thing/shell/nu/projects.nu
 
 path add ~/.cargo/bin
 path add ~/.deno/bin/
+path add ~/.local/bin
 
 if $is_mac {
     path add /opt/homebrew/bin
@@ -50,4 +51,3 @@ if not ($ssh_config | path exists) {
 } else if not (open $ssh_config | str contains $ssh_include) {
     $ssh_include | save --append $ssh_config
 }
-
