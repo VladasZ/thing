@@ -130,6 +130,11 @@ def hi [] {
         yay -Yc --noconfirm
     }
 
+    if $is_debian {
+        sudo apt update
+        sudo apt upgrade -y
+    }
+
     if $is_windows {
         scoop update -a
     }
