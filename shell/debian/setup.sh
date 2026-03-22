@@ -3,7 +3,7 @@
 set -euxo pipefail
 
 sudo apt-get update
-sudo apt-get install -y curl unzip ncdu duf btop pkg-config libssl-dev
+sudo apt-get install -y curl unzip ncdu duf btop pkg-config libssl-dev npm
 
 # Install nushell
 NUSHELL_VERSION=$(curl -s https://api.github.com/repos/nushell/nushell/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
