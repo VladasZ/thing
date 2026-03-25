@@ -5,8 +5,8 @@ use std/util "path add"
 source ~/dev/thing/shell/nu/os.nu
 source ~/dev/thing/shell/nu/symlinks.nu
 source ~/dev/thing/shell/nu/aliases.nu
-source ~/dev/thing/shell/nu/functions.nu
 source ~/dev/thing/shell/nu/projects.nu
+source ~/dev/thing/shell/nu/functions.nu
 
 path add ~/.cargo/bin
 path add ~/.deno/bin/
