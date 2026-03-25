@@ -36,8 +36,19 @@ def l [] {
 }
 
 def --env p [] {
-    let repo = try { projects | str join "\n" | ^fzf --height=40% --prompt="Project: " | str trim | path expand } catch { return }
-    if ($repo | is-not-empty) {
+    let out = try {
+        projects | str join "\n" | ^fzf --height=40% --prompt="Project: " --expect=ctrl-d --header="ctrl-d: delete" | lines
+    } catch { return }
+    let key = $out | get 0? | default ""
+    let repo = $out | get 1? | default "" | str trim | path expand
+    if ($repo | is-empty) { return }
+    if $key == "ctrl-d" {
+        let answer = (input $"Delete ($repo)? [y/n] ")
+        if $answer == "y" {
+            rm -rf $repo
+            refresh-projects
+        }
+    } else {
         cd $repo
         clear
     }
