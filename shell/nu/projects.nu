@@ -51,6 +51,7 @@ def gh-clone [] {
     } catch { return }
     if ($repo | is-empty) { return }
     ^git clone --recurse-submodules $"git@github.com:($repo).git"
+    refresh-projects
 }
 
 def --env p [] {
