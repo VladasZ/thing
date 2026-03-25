@@ -3,7 +3,7 @@ source ~/dev/thing/shell/nu/os.nu
 alias te = cd ~/dev/test-engine/
 alias th = cd ~/dev/thing
 alias lab = cd ~/dev/games/labirintas
-alias l2 = cd ~/dev/games/l2
+alias dev = cd ~/dev
 alias ll = cd ~/dev/job/agi/live-lens-system/
 alias sivs = cd ~/dev/job/siva/SIVS/
 alias lsa = ls -a -l
