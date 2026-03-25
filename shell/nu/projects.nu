@@ -35,6 +35,24 @@ def l [] {
     }
 }
 
+def gh-clone [] {
+    let repo = try {
+        let orgs = ^gh org list | lines | where { |l| $l | is-not-empty }
+        let sources = [""] ++ $orgs
+        $sources | each { |owner|
+            if ($owner | is-empty) {
+                ^gh repo list --limit 500 --json nameWithOwner --jq '.[].nameWithOwner' | lines
+            } else {
+                ^gh repo list $owner --limit 500 --json nameWithOwner --jq '.[].nameWithOwner' | lines
+            }
+        } | flatten | where { |l| $l | is-not-empty } | str join "\n"
+        | ^fzf --height=40% --prompt="GitHub: "
+        | str trim
+    } catch { return }
+    if ($repo | is-empty) { return }
+    ^git clone --recurse-submodules $"git@github.com:($repo).git"
+}
+
 def --env p [] {
     let out = try {
         projects | str join "\n" | ^fzf --height=40% --prompt="Project: " --expect=ctrl-d --header="ctrl-d: delete" | lines
