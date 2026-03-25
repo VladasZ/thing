@@ -1,26 +1,30 @@
+def refresh-projects [] {
+    let file = ($nu.home-dir | path join ".config/nu-projects.txt")
+    let all = glob $"($nu.home-dir)/dev/**/.git" --depth 8
+        | where { |p| ($p | path type) == "dir" }
+        | each { |p| $p | path dirname }
+        | sort
+    let repos = $all | where { |r|
+        not ($all | any { |other| $other != $r and ($r | str starts-with $"($other)/") })
+    }
+    let prev = if ($file | path exists) {
+        open $file | lines | where { |l| $l | is-not-empty }
+    } else {
+        []
+    }
+    let added = $repos | where { |r| not ($prev | any { |p| $p == $r }) }
+    let removed = $prev | where { |p| not ($repos | any { |r| $r == $p }) }
+    $repos | str join "\n" | save -f $file
+    print $"Projects: ($repos | length) total, +($added | length) -($removed | length)"
+}
+
 def projects [] {
-    [
-        ~/dev/apps/ke
-        ~/dev/apps/skaityk
-        ~/dev/deps/hreads
-        ~/dev/deps/netrun
-        ~/dev/deps/neuro
-        ~/dev/deps/plat
-        ~/dev/deps/reflected
-        ~/dev/deps/refs
-        ~/dev/deps/sercli
-        ~/dev/deps/test-moblie
-        ~/dev/deps/vents
-        ~/dev/games/labirintas
-        ~/dev/games/PolyRiders-Godot
-        ~/dev/job/agi/live-lens-config
-        ~/dev/job/agi/live-lens-system
-        ~/dev/job/agi/portal-data-pipeline-service
-        ~/dev/job/interview
-        ~/dev/job/siva/SIVS
-        ~/dev/test-engine
-        ~/dev/thing
-    ]
+    let file = ($nu.home-dir | path join ".config/nu-projects.txt")
+    if ($file | path exists) {
+        open $file | lines | where { |l| $l | is-not-empty }
+    } else {
+        []
+    }
 }
 
 def l [] {

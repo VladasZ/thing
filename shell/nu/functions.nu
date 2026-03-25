@@ -140,6 +140,7 @@ def hi [] {
     }
 
     pull
+    refresh-projects
 }
 
 def bb [] {
