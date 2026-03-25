@@ -3,8 +3,8 @@
     {
       "host": "si",
       "args": [],
-      "projects": []
-    }
+      "projects": [],
+    },
   ],
 
   "notification_panel": {
@@ -100,7 +100,7 @@
     "line_endings_button": false,
   },
 
-  "auto_indent": true,
+  "auto_indent": "syntax_aware",
   "auto_indent_on_paste": true,
   "auto_install_extensions": {
     "nu": true,
@@ -197,7 +197,7 @@
       "initialization_options": {
         "per_page": 25,
         "feature_display_mode": "UnusedOpt",
-        "hide_docs_info_message": false,
+        "hide_docs_info_message": true,
         "sort_format": true,
         "stable_version": true,
         "offline": false,
