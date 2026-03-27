@@ -6,6 +6,8 @@
 
 - folder: ~/dev/job/agi/live-lens-system/backend
   down: just down -v
+  shell: docker compose exec web python manage.py shell
+  console: docker compose exec web python manage.py shell
   up: |
     just setup
     just up
