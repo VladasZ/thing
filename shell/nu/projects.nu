@@ -55,6 +55,20 @@ def gh-clone [] {
 }
 
 def --env p [] {
+    if (which fzf | is-empty) {
+        let answer = (input "fzf is not installed. Install it now? [y/n] ")
+        if $answer == "y" {
+            if (sys host).name == "Darwin" {
+                ^brew install fzf
+            } else if ($"/etc/arch-release" | path exists) {
+                ^sudo pacman -S --noconfirm fzf
+            } else {
+                ^sudo apt install -y fzf
+            }
+        } else {
+            return
+        }
+    }
     let out = try {
         projects | str join "\n" | ^fzf --height=40% --prompt="Project: " --expect=ctrl-d --header="ctrl-d: delete" | lines
     } catch { return }
