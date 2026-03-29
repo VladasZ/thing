@@ -290,7 +290,7 @@ def reload [] {
     exec nu
 }
 
-def claude-my [...args] {
+def cm [...args] {
      with-env { CLAUDE_CONFIG_DIR: ([$env.HOME, ".claude-my"] | path join) } { claude ...$args }
 }
 
