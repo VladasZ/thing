@@ -15,6 +15,8 @@ brew install wget
 brew install libpq
 brew install fzf
 brew install devcontainer
+brew install bruno
+brew install bruno-cli
 brew install --cask firefox
 brew install --cask zed
 brew install --cask obsidian
