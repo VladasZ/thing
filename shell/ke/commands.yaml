@@ -9,6 +9,7 @@
   shell: docker compose exec web python manage.py shell
   console: docker compose exec web python manage.py shell
   up: |
+    uv run python manage.py makemigrations --merge --no-input || true
     just setup
     just up
     docker compose logs -f
