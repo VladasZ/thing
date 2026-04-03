@@ -36,6 +36,23 @@ def l [] {
 }
 
 def gh-clone [] {
+    if (which gh | is-empty) {
+        let answer = (input "gh is not installed. Install it now? [y/n] ")
+        if $answer == "y" {
+            if (sys host).name == "Darwin" {
+                ^brew install gh
+            } else if ($"/etc/arch-release" | path exists) {
+                ^sudo pacman -S --noconfirm github-cli
+            } else {
+                ^sudo apt install -y gh
+            }
+        } else {
+            return
+        }
+    }
+    if (do { ^gh auth status } | complete).exit_code != 0 {
+        ^gh auth login
+    }
     let repo = try {
         let orgs = ^gh org list | lines | where { |l| $l | is-not-empty }
         let sources = [""] ++ $orgs
