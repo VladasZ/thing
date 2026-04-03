@@ -294,6 +294,10 @@ def cm [...args] {
      with-env { CLAUDE_CONFIG_DIR: ([$env.HOME, ".claude-my"] | path join) } { claude ...$args }
 }
 
+def cz [...args] {
+     with-env { CLAUDE_CONFIG_DIR: ([$env.HOME, ".claude-z"] | path join) } { claude ...$args }
+}
+
 def qw-local [...args] {
     cargo run --manifest-path /Users/vladas/dev/deps/qw/Cargo.toml -- ...$args
 }
