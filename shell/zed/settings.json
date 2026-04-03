@@ -19,6 +19,11 @@
           "paths": [
             "/home/vladas/dev/backend"
           ]
+        },
+        {
+          "paths": [
+            "/home/vladas/dev/thing"
+          ]
         }
       ]
     }
