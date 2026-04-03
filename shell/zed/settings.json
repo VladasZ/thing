@@ -3,8 +3,20 @@
     {
       "host": "si",
       "args": [],
-      "projects": [],
+      "projects": []
     },
+    {
+      "host": "pc1",
+      "username": "vladas",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/vladas"
+          ]
+        }
+      ]
+    }
   ],
 
   "notification_panel": {
