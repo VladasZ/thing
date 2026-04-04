@@ -35,6 +35,20 @@ def l [] {
     }
 }
 
+def gh-pick-repo [] {
+    let orgs = ^gh org list | lines | where { |l| $l | is-not-empty }
+    let sources = [""] ++ $orgs
+    $sources | each { |owner|
+        if ($owner | is-empty) {
+            ^gh repo list --limit 500 --json nameWithOwner --jq '.[].nameWithOwner' | lines
+        } else {
+            ^gh repo list $owner --limit 500 --json nameWithOwner --jq '.[].nameWithOwner' | lines
+        }
+    } | flatten | where { |l| $l | is-not-empty } | str join "\n"
+    | ^fzf --height=40% --prompt="GitHub: "
+    | str trim
+}
+
 def gh-clone [] {
     if (which gh | is-empty) {
         let answer = (input "gh is not installed. Install it now? [y/n] ")
@@ -53,23 +67,30 @@ def gh-clone [] {
     if (do { ^gh auth status } | complete).exit_code != 0 {
         ^gh auth login
     }
-    let repo = try {
-        let orgs = ^gh org list | lines | where { |l| $l | is-not-empty }
-        let sources = [""] ++ $orgs
-        $sources | each { |owner|
-            if ($owner | is-empty) {
-                ^gh repo list --limit 500 --json nameWithOwner --jq '.[].nameWithOwner' | lines
-            } else {
-                ^gh repo list $owner --limit 500 --json nameWithOwner --jq '.[].nameWithOwner' | lines
-            }
-        } | flatten | where { |l| $l | is-not-empty } | str join "\n"
-        | ^fzf --height=40% --prompt="GitHub: "
-        | str trim
-    } catch { return }
+    let repo = try { gh-pick-repo } catch { return }
     if ($repo | is-empty) { return }
     ^git clone --recurse-submodules $"git@github.com:($repo).git"
     refresh-projects
 }
+
+def gh-open [repo?: string] {
+    let selected = if ($repo | is-not-empty) {
+        $repo
+    } else {
+        try { gh-pick-repo } catch { return }
+    }
+    if ($selected | is-empty) { return }
+    let url = $"https://github.com/($selected)"
+    if $is_mac {
+        ^open $url
+    } else if $is_windows {
+        start $url
+    } else {
+        xdg-open $url
+    }
+}
+
+alias gho = gh-open
 
 def --env p [] {
     if (which fzf | is-empty) {
