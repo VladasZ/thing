@@ -51,6 +51,8 @@ brew install --cask inkscape
 brew install --cask blender
 brew install --cask postman
 
+brew install infisical/get-cli/infisical
+
 # brew install --cask font-0xproto-nerd-font ? needs mono
 
 # open nu then
