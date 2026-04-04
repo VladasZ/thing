@@ -92,6 +92,19 @@ def gh-open [repo?: string] {
 
 alias gho = gh-open
 
+def gh-open-current [] {
+    let url = gh repo view --json url --jq '.url' | str trim
+    if $is_mac {
+        ^open $url
+    } else if $is_windows {
+        start $url
+    } else {
+        xdg-open $url
+    }
+}
+
+alias ghoo = gh-open-current
+
 def --env p [] {
     if (which fzf | is-empty) {
         let answer = (input "fzf is not installed. Install it now? [y/n] ")
