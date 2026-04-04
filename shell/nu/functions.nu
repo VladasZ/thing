@@ -305,3 +305,14 @@ def qw-local [...args] {
 def g [...args] {
     ^g ...$args
 }
+
+def gh-open [] {
+    let url = (gh repo view --json url --jq '.url' | str trim)
+    if $is_mac {
+        ^open $url
+    } else if $is_windows {
+        start $url
+    } else {
+        xdg-open $url
+    }
+}
