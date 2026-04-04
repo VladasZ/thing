@@ -46,7 +46,7 @@ brew install --cask whatsapp
 brew install --cask brave-browser
 brew install --cask guitar-pro
 brew install --cask crystalfetch
-brew install --cask dbeaver-community
+brew install --cask beekeeper-studio
 brew install --cask inkscape
 brew install --cask blender
 brew install --cask postman
