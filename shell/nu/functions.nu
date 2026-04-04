@@ -306,6 +306,8 @@ def g [...args] {
     ^g ...$args
 }
 
+alias gho = gh-open
+
 def gh-open [] {
     let url = (gh repo view --json url --jq '.url' | str trim)
     if $is_mac {
