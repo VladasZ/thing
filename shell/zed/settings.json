@@ -17,7 +17,17 @@
         },
         {
           "paths": [
+            "/home/vladas/dev"
+          ]
+        },
+        {
+          "paths": [
             "/home/vladas/dev/backend"
+          ]
+        },
+        {
+          "paths": [
+            "/home/vladas/dev/game-server"
           ]
         },
         {
